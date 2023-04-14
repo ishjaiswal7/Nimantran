@@ -163,7 +163,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:visibility="visible">
-            <androidx.appcompat.widget.SearchView
+      <!--      <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchViewSelectMyGuest"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -184,17 +184,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/searchViewSelectMyGuest"
                 />
+-->
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/swipeRefreshLayoutMyGuest"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/searchViewSelectMyGuest">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewSelectMyGuest"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/item_select_my_guest" />
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
