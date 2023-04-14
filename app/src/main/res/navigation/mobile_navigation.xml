@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.nimantran.ui.main.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_myGiftsFragment"
+            app:destination="@id/myGiftsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myProfileFragment"
+            app:destination="@id/myProfileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_templateDesignsFragment"
+            app:destination="@id/templateDesignsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myGuestListFragment"
+            app:destination="@id/myGuestListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myNotificationFragment"
+            app:destination="@id/myNotificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/templateDesignsFragment"
+        android:name="com.example.nimantran.ui.main.addcard.TemplateDesignsFragment"
+        android:label="TemplateDesignsFragment" >
+        <action
+            android:id="@+id/action_templateDesignsFragment_to_cardEditorFragment"
+            app:destination="@id/cardEditorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardEditorFragment"
+        android:name="com.example.nimantran.ui.main.addcard.CardEditorFragment"
+        android:label="fragment_card_editor"
+        tools:layout="@layout/fragment_card_editor" >
+        <action
+            android:id="@+id/action_cardEditorFragment_to_selectGuestForCardFragment"
+            app:destination="@id/selectGuestForCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myGiftsFragment"
+        android:name="com.example.nimantran.ui.main.clientGifts.MyGiftsFragment"
+        android:label="fragment_my_gift_orders"
+        tools:layout="@layout/fragment_my_gifts" >
+        <action
+            android:id="@+id/action_myGiftsFragment_to_myOrdersFragment"
+            app:destination="@id/myOrdersFragment" />
+        <action
+            android:id="@+id/action_myGiftsFragment_to_myGiftDetailsFragment"
+            app:destination="@id/myGiftDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myGuestListFragment"
+        android:name="com.example.nimantran.ui.main.clientGuests.MyGuestListFragment"
+        android:label="fragment_my_guest_list"
+        tools:layout="@layout/fragment_my_guest_list" >
+        <action
+            android:id="@+id/action_myGuestListFragment_to_addMyGuestFragment"
+            app:destination="@id/addMyGuestFragment" />
+        <action
+            android:id="@+id/action_myGuestListFragment_to_editGuestFragment"
+            app:destination="@id/editGuestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myProfileFragment"
+        android:name="com.example.nimantran.ui.main.settings.MyProfileFragment"
+        android:label="fragment_my_profile"
+        tools:layout="@layout/fragment_my_profile" />
+    <fragment
+        android:id="@+id/myOrdersFragment"
+        android:name="com.example.nimantran.ui.main.clientOrders.MyOrdersFragment"
+        android:label="fragment_my_orders"
+        tools:layout="@layout/fragment_my_orders" >
+        <action
+            android:id="@+id/action_myOrdersFragment_to_myOrderDetailsFragment"
+            app:destination="@id/myOrderDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myOrderDetailsFragment"
+        android:name="com.example.nimantran.ui.main.clientOrders.MyOrderDetailsFragment"
+        android:label="fragment_my_order_details"
+        tools:layout="@layout/fragment_my_order_details" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <dialog
+        android:id="@+id/myGiftDetailsFragment"
+        android:name="com.example.nimantran.ui.main.clientGifts.MyGiftDetailsFragment"
+        android:label="fragment_my_gift_details"
+        tools:layout="@layout/fragment_my_gift_details" >
+        <argument
+            android:name="item"
+            app:argType="string"
+            android:defaultValue="Gift Name" />
+        <action
+            android:id="@+id/action_myGiftDetailsFragment_to_selectGuestForGiftFragment"
+            app:destination="@id/selectGuestForGiftFragment" />
+    </dialog>
+    <fragment
+        android:id="@+id/myNotificationFragment"
+        android:name="com.example.nimantran.ui.main.notification.MyNotificationFragment"
+        android:label="fragment_my_notification"
+        tools:layout="@layout/fragment_my_notification" >
+        <action
+            android:id="@+id/action_myNotificationFragment_to_myReadNotificationFragment"
+            app:destination="@id/myReadNotificationFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/myReadNotificationFragment"
+        android:name="com.example.nimantran.ui.main.notification.MyReadNotificationFragment"
+        android:label="fragment_my_read_notification"
+        tools:layout="@layout/fragment_my_read_notification" />
+    <fragment
+        android:id="@+id/selectGuestForGiftFragment"
+        android:name="com.example.nimantran.ui.main.clientGifts.SelectGuestForGiftFragment"
+        android:label="fragment_select_my_guest_for_gift"
+        tools:layout="@layout/fragment_select_my_guest_for_gift" >
+        <action
+            android:id="@+id/action_selectGuestForGiftFragment_to_getOrderDetailsFragment"
+            app:destination="@id/getOrderDetailsFragment" />
+        <argument
+            android:name="item"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectGuestForCardFragment"
+        android:name="com.example.nimantran.ui.main.addcard.SelectGuestForCardFragment"
+        android:label="SelectGuestForCardFragment" />
+    <fragment
+        android:id="@+id/getOrderDetailsFragment"
+        android:name="com.example.nimantran.ui.main.clientGifts.GetOrderDetailsFragment"
+        android:label="fragment_get_order_details"
+        tools:layout="@layout/fragment_get_order_details" >
+        <argument
+            android:name="item"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMyGuestFragment"
+        android:name="com.example.nimantran.ui.main.clientGuests.AddMyGuestFragment"
+        android:label="fragment_add_my_guest"
+        tools:layout="@layout/fragment_add_my_guest" />
+    <fragment
+        android:id="@+id/editGuestFragment"
+        android:name="com.example.nimantran.ui.main.clientGuests.EditMyGuestFragment"
+        android:label="fragment_edit_guest"
+        tools:layout="@layout/fragment_edit_my_guest" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+</navigation>

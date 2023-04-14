@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.nimantran.ui.admin.gift.EditGiftFragment">
+
+    <data>
+        <variable
+            name="viewModelEditGift"
+            type="com.example.nimantran.ui.admin.gift.GiftViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/editGiftContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingTop="12dp"
+
+            android:paddingRight="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageViewBackToGiftList"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/ic_arrow_back" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Gift Details"
+                android:textColor="@color/secondaryDarkColor"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageViewDelete"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+
+                android:padding="8dp"
+                android:src="@drawable/ic_delete" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/viewLine"
+            android:layout_width="wrap_content"
+            android:layout_height="0.5dp"
+            android:background="@color/primaryDarkColor"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="24dp"
+            android:paddingBottom="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewLine">
+
+            <ImageView
+                android:id="@+id/ImageViewGift"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                app:image="@{viewModelEditGift.selectedGift.image}"
+                tools:src="@drawable/gift_items"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout2">
+
+            <ImageView
+                android:id="@+id/ImageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_gift"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/TextView1"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/TextView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Item"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/ImageView1"
+                app:layout_constraintStart_toEndOf="@id/ImageView1"
+                app:layout_constraintTop_toTopOf="@id/ImageView1"
+
+                />
+
+            <EditText
+                android:id="@+id/editGiftName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+
+                android:text="@{viewModelEditGift.selectedGift.item}"
+                android:hint="Name"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:paddingLeft="5dp"
+                android:textColor="@android:color/black"
+                app:layout_constraintBottom_toBottomOf="@id/TextView1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/TextView3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ImageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_price"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toStartOf="@id/TextView2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ImageView1"
+                />
+
+            <TextView
+                android:id="@+id/TextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Price"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/ImageView2"
+                app:layout_constraintStart_toEndOf="@id/ImageView2"
+                app:layout_constraintTop_toTopOf="@id/ImageView2"
+
+                />
+
+            <EditText
+                android:id="@+id/editGiftPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{String.valueOf(viewModelEditGift.selectedGift.price)}"
+                android:hint="1000"
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:paddingLeft="5dp"
+                android:textColor="@android:color/black"
+                app:layout_constraintBottom_toBottomOf="@id/TextView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/TextView3"
+                app:layout_constraintTop_toTopOf="@id/TextView2" />
+
+
+            <ImageView
+                android:id="@+id/ImageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_store"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toStartOf="@id/TextView3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ImageView2"
+                />
+
+            <TextView
+                android:id="@+id/TextView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Quantity"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/ImageView3"
+                app:layout_constraintStart_toEndOf="@id/ImageView3"
+                app:layout_constraintTop_toTopOf="@id/ImageView3"
+                />
+
+            <EditText
+                android:id="@+id/editGiftQuantity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{String.valueOf(viewModelEditGift.selectedGift.quantity)}"
+                android:hint="10000"
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:paddingLeft="5dp"
+                android:textColor="@color/primaryTextColor"
+                app:layout_constraintBottom_toBottomOf="@id/TextView3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/TextView3"
+                app:layout_constraintTop_toTopOf="@id/TextView3" />
+
+            <ImageView
+                android:id="@+id/ImageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_note"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toStartOf="@id/TextView4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ImageView3"
+                />
+
+            <TextView
+                android:id="@+id/TextView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Description"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/ImageView4"
+                app:layout_constraintStart_toEndOf="@id/ImageView4"
+                app:layout_constraintTop_toTopOf="@id/ImageView4" />
+
+            <ScrollView
+                android:id="@+id/ScrollView1"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TextView4"
+                app:layout_constraintStart_toStartOf="@id/TextView4"
+                >
+                <EditText
+                    android:id="@+id/editGiftDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="@{viewModelEditGift.selectedGift.description}"
+                    android:hint="Share your thoughts about this product"
+                    android:inputType="textMultiLine"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/primaryTextColor"
+                    />
+            </ScrollView>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSaveGift"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/round_border"
+                android:text="Save"
+                app:layout_constraintEnd_toStartOf="@id/btnCancel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/round_border"
+                android:text="Cancel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btnSaveGift"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEditGift"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/round_border"
+                android:text="Edit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/myGiftsFragment"
+        android:icon="@drawable/ic_gift"
+        android:title="Gifts"/>
+
+    <item
+        android:id="@+id/templateDesignsFragment"
+        android:icon="@drawable/ic_template_designs"
+        android:title="Add Card"
+        />
+    <item
+        android:id="@+id/myGuestListFragment"
+        android:icon="@drawable/ic_guests"
+        android:title="Guests"/>
+
+    <item
+        android:id="@+id/myProfileFragment"
+        android:icon="@drawable/ic_person"
+        android:title="Profile"/>
+
+</menu>

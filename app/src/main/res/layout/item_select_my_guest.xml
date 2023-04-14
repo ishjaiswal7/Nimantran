@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="guest"
+            type="com.example.nimantran.models.user.Guest" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewMyGuest"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        app:cardElevation="30dp"
+        app:cardCornerRadius="10dp"            >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <CheckBox
+                android:id="@+id/checkBoxMyGuest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/textViewMyGuestPhone"
+                app:layout_constraintEnd_toEndOf="@id/textViewMyGuestPhone"
+                />
+
+            <TextView
+                android:id="@+id/textViewMyGuestName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:text="@{guest.name}"
+                android:layout_marginLeft="8dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewMyGuestPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{guest.phone}"
+                android:hint="9984800187"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/textViewMyGuestName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/textViewMyGuestName" />
+            <TextView
+                android:id="@+id/textViewMyGuestAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@{guest.address}"
+                android:hint="LDA, Lucknow, UP, India 226016"
+                app:layout_constraintTop_toBottomOf="@id/textViewMyGuestName"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/textViewMyGuestPhone"
+                app:layout_constraintStart_toStartOf="@id/textViewMyGuestName"
+                />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

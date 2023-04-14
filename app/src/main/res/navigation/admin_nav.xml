@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_nav"
+    app:startDestination="@id/adminDashboardFragment">
+
+    <fragment
+        android:id="@+id/adminDashboardFragment"
+        android:name="com.example.nimantran.ui.admin.AdminDashboardFragment"
+        android:label="fragment_admin_dashboard"
+        tools:layout="@layout/fragment_admin_dashboard">
+        <action
+            android:id="@+id/action_adminDashboardFragment_to_userListFragment"
+            app:destination="@id/userListFragment" />
+        <action
+            android:id="@+id/action_adminDashboardFragment_to_giftListFragment"
+            app:destination="@id/giftListFragment" />
+        <action
+            android:id="@+id/action_adminDashboardFragment_to_notificationListFragment"
+            app:destination="@id/notificationListFragment" />
+        <action
+            android:id="@+id/action_adminDashboardFragment_to_orderListFragment"
+            app:destination="@id/orderListFragment" />
+        <action
+            android:id="@+id/action_adminDashboardFragment_to_appInsightFragment"
+            app:destination="@id/appInsightFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userListFragment"
+        android:name="com.example.nimantran.ui.admin.client.ClientListFragment"
+        android:label="fragment_user_list"
+        tools:layout="@layout/fragment_client_list" />
+    <fragment
+        android:id="@+id/addGiftFragment"
+        android:name="com.example.nimantran.ui.admin.gift.AddGiftFragment"
+        android:label="fragment_gift_detail"
+        tools:layout="@layout/fragment_add_gift" />
+    <fragment
+        android:id="@+id/giftListFragment"
+        android:name="com.example.nimantran.ui.admin.gift.GiftListFragment"
+        android:label="fragment_gift_list"
+        tools:layout="@layout/fragment_gift_list">
+        <action
+            android:id="@+id/action_giftListFragment_to_addGiftFragment"
+            app:destination="@id/addGiftFragment" />
+        <action
+            android:id="@+id/action_giftListFragment_to_editGiftFragment"
+            app:destination="@id/editGiftFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationListFragment"
+        android:name="com.example.nimantran.ui.admin.notification.NotificationListFragment"
+        android:label="fragment_notification_list"
+        tools:layout="@layout/fragment_notification_list">
+        <action
+            android:id="@+id/action_notificationListFragment_to_addNotificationFragment"
+            app:destination="@id/addNotificationFragment" />
+        <action
+            android:id="@+id/action_notificationListFragment_to_readNotificationFragment"
+            app:destination="@id/readNotificationFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addNotificationFragment"
+        android:name="com.example.nimantran.ui.admin.notification.AddNotificationFragment"
+        android:label="fragment_add_notification"
+        tools:layout="@layout/fragment_add_notification" />
+    <fragment
+        android:id="@+id/appInsightFragment"
+        android:name="com.example.nimantran.ui.admin.insight.AppInsightFragment"
+        android:label="fragment_app_insight"
+        tools:layout="@layout/fragment_app_insight" />
+    <fragment
+        android:id="@+id/orderListFragment"
+        android:name="com.example.nimantran.ui.admin.order.OrderListFragment"
+        android:label="fragment_order_list"
+        tools:layout="@layout/fragment_order_list" >
+        <action
+            android:id="@+id/action_orderListFragment_to_orderStatusFragment"
+            app:destination="@id/orderStatusFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/readNotificationFragment"
+        android:name="com.example.nimantran.ui.admin.notification.ReadNotificationFragment"
+        android:label="fragment_read_notification"
+        tools:layout="@layout/fragment_read_notification">
+        <argument
+            android:name="subject"
+            app:argType="string"
+            app:nullable="false" />
+    </dialog>
+    <fragment
+        android:id="@+id/editGiftFragment"
+        android:name="com.example.nimantran.ui.admin.gift.EditGiftFragment"
+        android:label="fragment_edit_gift">
+        <argument
+            android:name="item"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_editGiftFragment_to_giftListFragment"
+            app:destination="@id/giftListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderStatusFragment"
+        android:name="com.example.nimantran.ui.admin.order.OrderStatusFragment"
+        android:label="fragment_order_status"
+        tools:layout="@layout/fragment_order_status" >
+        <action
+            android:id="@+id/action_orderStatusFragment_to_updateOrderStatusFragment"
+            app:destination="@id/updateOrderStatusFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/updateOrderStatusFragment"
+        android:name="com.example.nimantran.ui.admin.order.UpdateOrderStatusFragment"
+        android:label="fragment_update_order_status"
+        tools:layout="@layout/fragment_update_order_status" />
+</navigation>

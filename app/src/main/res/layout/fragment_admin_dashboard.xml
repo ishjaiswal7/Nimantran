@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.admin.AdminDashboardFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/userManagement"
+        android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="24dp"
+        app:cardElevation="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/appInsight">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/circle_1"
+                android:padding="15dp"
+                android:src="@drawable/users" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/black_overlay"></View>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:text="Users"
+                android:textStyle="bold"></TextView>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/appInsight"
+        android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="24dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/userManagement"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/circle_1"
+                android:padding="15dp"
+                android:src="@drawable/insights" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/black_overlay"></View>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:text="Insights"
+                android:textStyle="bold">
+
+            </TextView>
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/orderManagement"
+        android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        android:layout_marginEnd="71dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/userManagement"
+        app:layout_constraintStart_toStartOf="@+id/userManagement"
+        app:layout_constraintTop_toBottomOf="@id/userManagement">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/circle_1"
+                android:padding="15dp"
+                android:src="@drawable/orders" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/black_overlay"></View>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:text="Orders"
+                android:textStyle="bold">
+
+            </TextView>
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/giftManagement"
+        android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        app:cardElevation="10dp"
+        tools:layout_editor_absoluteY="170dp"
+        app:layout_constraintStart_toStartOf="@id/appInsight"
+        app:layout_constraintEnd_toEndOf="@id/appInsight"
+        app:layout_constraintTop_toBottomOf="@id/appInsight">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/circle_1"
+                android:padding="15dp"
+                android:src="@drawable/gift_items" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/black_overlay"></View>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:text="Gift Items"
+                android:textStyle="bold"></TextView>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/notificationManagement"
+        android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        android:layout_marginEnd="271dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/orderManagement"
+        app:layout_constraintStart_toStartOf="@+id/orderManagement"
+        app:layout_constraintTop_toBottomOf="@+id/orderManagement">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/circle_1"
+                android:padding="15dp"
+                android:src="@drawable/ic_notifications" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/black_overlay"></View>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:text="Send Notification"
+                android:textStyle="bold"></TextView>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/logout"
+        android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:layout_margin="10dp"
+        android:layout_marginEnd="271dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/giftManagement"
+        app:layout_constraintStart_toStartOf="@+id/giftManagement"
+        app:layout_constraintTop_toBottomOf="@+id/giftManagement">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/circle_1"
+                android:padding="15dp"
+                android:src="@drawable/ic_logout" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/black_overlay"></View>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:text="Logout"
+                android:textStyle="bold"></TextView>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

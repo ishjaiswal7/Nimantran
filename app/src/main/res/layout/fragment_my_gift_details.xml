@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.main.clientGifts.MyGiftDetailsFragment">
+    <data>
+        <variable
+            name="myGiftsViewModel"
+            type="com.example.nimantran.ui.main.clientGifts.MyGiftsViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/myGiftContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="400dp"
+            android:background="@drawable/round_border"
+            app:cardElevation="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonOrder"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/round_border"
+                    android:text="Order"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/ImageViewGift"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <ImageView
+                    android:id="@+id/ImageViewGift"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/gift_items"
+                    app:image="@{myGiftsViewModel.selectedMyGift.image}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/buttonOrder" />
+
+
+
+                    <ImageView
+                        android:id="@+id/ImageView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/ic_gift"
+                        app:layout_constraintTop_toBottomOf="@id/ImageViewGift"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+
+                    <TextView
+                        android:id="@+id/TextView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Item"
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/ImageView1"
+                        app:layout_constraintStart_toEndOf="@id/ImageView1"
+                        app:layout_constraintTop_toTopOf="@id/ImageView1"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/TextViewItemName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:paddingLeft="5dp"
+                        tools:text="Coffe Mugs"
+                        android:text="@{myGiftsViewModel.selectedMyGift.item}"
+                        android:textColor="@color/primaryTextColor"
+                        app:layout_constraintBottom_toBottomOf="@id/TextView1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/TextView3"
+                        app:layout_constraintTop_toTopOf="@id/TextView1" />
+
+
+
+                    <ImageView
+                        android:id="@+id/ImageView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_price"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintStart_toStartOf="@id/ImageView1"
+                        app:layout_constraintTop_toBottomOf="@id/ImageView1"
+                        />
+
+                    <TextView
+                        android:id="@+id/TextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Price"
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/ImageView2"
+                        app:layout_constraintStart_toEndOf="@id/ImageView2"
+                        app:layout_constraintTop_toTopOf="@id/ImageView2"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/TextViewItemPrice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:paddingLeft="5dp"
+                        app:price_text="@{myGiftsViewModel.selectedMyGift.price}"
+                        tools:text="250"
+                        android:textColor="@color/primaryTextColor"
+                        app:layout_constraintBottom_toBottomOf="@id/TextView2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/TextView3"
+                        app:layout_constraintTop_toTopOf="@id/TextView2"
+                        />
+
+
+
+                    <ImageView
+                        android:id="@+id/ImageView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_note"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintStart_toStartOf="@id/ImageView2"
+                        app:layout_constraintTop_toBottomOf="@id/ImageView2"
+                        />
+
+                    <TextView
+                        android:id="@+id/TextView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Description"
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/ImageView3"
+                        app:layout_constraintStart_toEndOf="@id/ImageView3"
+                        app:layout_constraintTop_toTopOf="@id/ImageView3" />
+
+                    <ScrollView
+                        android:id="@+id/ScrollView1"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/TextView3"
+                        app:layout_constraintStart_toStartOf="@id/TextView3"
+                        >
+                        <TextView
+                            android:id="@+id/TextViewItemDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="@{myGiftsViewModel.selectedMyGift.description}"
+                            tools:text="This is a very good product"
+                            android:layout_marginEnd="8dp"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/primaryTextColor"
+                            />
+                    </ScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

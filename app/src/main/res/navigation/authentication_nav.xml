@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/authentication_nav"
+    app:startDestination="@id/getInFragment">
+    <fragment
+        android:id="@+id/privacyPolicyFragment"
+        android:name="com.example.nimantran.ui.authentication.PrivacyPolicyFragment"
+        android:label="fragment_privacy_policy"
+        tools:layout="@layout/fragment_privacy_policy" />
+    <fragment
+        android:id="@+id/getInFragment"
+        android:name="com.example.nimantran.ui.authentication.GetInFragment"
+        android:label="fragment_get_in"
+        tools:layout="@layout/fragment_get_in" >
+        <action
+            android:id="@+id/action_getInFragment_to_OTPFragment"
+            app:destination="@id/OTPFragment" />
+        <action
+            android:id="@+id/action_getInFragment_to_guestAuthenticationFragment"
+            app:destination="@id/guestAuthenticationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/OTPFragment"
+        android:name="com.example.nimantran.ui.authentication.OTPFragment"
+        android:label="fragment_otp"
+        tools:layout="@layout/fragment_otp" >
+        <action
+            android:id="@+id/action_OTPFragment_to_getDetailsFragment"
+            app:destination="@id/getDetailsFragment" />
+        <argument
+            android:name="otp"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+        <argument
+            android:name="token"
+            app:argType="com.google.firebase.auth.PhoneAuthProvider$ForceResendingToken" />
+    </fragment>
+    <fragment
+        android:id="@+id/getDetailsFragment"
+        android:name="com.example.nimantran.ui.authentication.GetClientDetailsFragment"
+        android:label="fragment_get_details"
+        tools:layout="@layout/fragment_get_client_details" >
+        <action
+            android:id="@+id/action_getDetailsFragment_to_privacyPolicyFragment"
+            app:destination="@id/privacyPolicyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/guestAuthenticationFragment"
+        android:name="com.example.nimantran.ui.authentication.GuestAuthenticationFragment"
+        android:label="fragment_guest_authentication"
+        tools:layout="@layout/fragment_guest_authentication" >
+        <action
+            android:id="@+id/action_guestAuthenticationFragment_to_invitationResponseFragment"
+            app:destination="@id/invitationResponseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/invitationResponseFragment"
+        android:name="com.example.nimantran.ui.authentication.InvitationResponseFragment"
+        android:label="fragment_invitation_response"
+        tools:layout="@layout/fragment_invitation_response" />
+</navigation>

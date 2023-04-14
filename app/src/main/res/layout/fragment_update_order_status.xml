@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.admin.order.UpdateOrderStatusFragment">
+    <data>
+        <variable
+            name="order"
+            type="com.example.nimantran.ui.admin.order.OrderListViewModel" />
+    </data>
+    <RadioGroup
+        android:id="@+id/radioGroupOrderStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <RadioButton
+            android:id="@+id/radioButtonOrderPlaced"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_placed"
+            android:textSize="12sp"
+
+            />
+        <RadioButton
+            android:id="@+id/radioButtonOrderConfirmed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_confirmed"
+            android:textSize="12sp"
+            />
+
+        <RadioButton
+            android:id="@+id/radioButtonOrderDispatched"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_dispatched"
+            android:textSize="12sp"
+
+            />
+        <RadioButton
+            android:id="@+id/radioButtonOrderDelivered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_delivered"
+            android:textSize="12sp"/>
+        <RadioButton
+            android:id="@+id/radioButtonOrderAddressNotFound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address_not_found"
+            android:textSize="12sp"/>
+    </RadioGroup>
+
+</layout>

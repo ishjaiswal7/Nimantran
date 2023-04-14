@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "194719491301",
+    "project_id": "nimantran-8260d",
+    "storage_bucket": "nimantran-8260d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194719491301:android:b9be55f19b034fae87200c",
+        "android_client_info": {
+          "package_name": "com.example.nimantran"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "194719491301-27ba99qia09dns21fga5mdjn789dbust.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nimantran",
+            "certificate_hash": "627e51f6ae2959bbc6d6b562735aa3ff189d1094"
+          }
+        },
+        {
+          "client_id": "194719491301-6dnl3k0krft0l8pobj91m9nnkn08ki57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDLpSil-Ztt1lTwG3cwmZwRocghH00JIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "194719491301-6dnl3k0krft0l8pobj91m9nnkn08ki57.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
