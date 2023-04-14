@@ -36,7 +36,7 @@
 
                 <ImageView
                     android:id="@+id/imageViewGift"
-                    android:layout_width="160dp"
+                    android:layout_width="100dp"
                     android:layout_height="80dp"
                     android:padding="4dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -44,16 +44,16 @@
                     tools:src="@drawable/gift_items"
                     image="@{vmGifts.selectedMyGift.image}"
                     />
-<!--                    app:src="@{vmGifts.selectedMyGift.image}" -->
                 <TextView
                     android:id="@+id/textViewGiftName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:textColor="@color/secondaryColor"
                     android:textStyle="bold"
                     android:text="@{vmGifts.selectedMyGift.item}"
                     app:layout_constraintStart_toEndOf="@id/imageViewGift"
+                    app:layout_constraintEnd_toStartOf="@id/textViewPrice"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Gift Item" />
 
@@ -67,6 +67,7 @@
                     app:price_text="@{vmGifts.selectedMyGift.price}"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewGiftName"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/textViewGiftName"
                     app:layout_constraintTop_toTopOf="@id/textViewGiftName"
                     tools:text="100" />
 
@@ -216,7 +217,7 @@
                     android:layout_height="0dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@id/textView1"
-                    tools:listitem="@layout/item_select_my_guest" />
+                    tools:listitem="@layout/item_my_guest_details" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
