@@ -47,12 +47,15 @@ class GetOrderDetailsFragment : Fragment() {
         //Show number of selected guests
         var numberOfGuest = 1
         val giftPrice = myGiftsViewModel.selectedMyGift.value?.price
+        val qty = binding.textViewQuantity.text.toString().toInt()
 
 //Sending gift to user
         if (myGiftsViewModel.giftForMe) {
             binding.containerOrderForMe.visibility = View.VISIBLE
             binding.containerOrderForGuest.visibility = View.GONE
-            binding.textViewTotPayableAmount.text = giftPrice.toString()
+            if (giftPrice != null) {
+                binding.textViewTotPayableAmount.text = (giftPrice * qty).toString()
+            }
         }
 //Sending gift to guests
         else {
