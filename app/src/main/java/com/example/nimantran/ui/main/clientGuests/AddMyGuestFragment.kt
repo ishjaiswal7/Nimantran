@@ -40,15 +40,16 @@ class AddMyGuestFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val address = binding.TextViewEditHouseNo.text.toString()
-            .trim() + ", " + binding.TextViewEditStreet.text.toString()
-            .trim() + ", " + binding.TextViewEditCity.text.toString()
-            .trim() + ", " + binding.TextViewEditState.text.toString()
-            .trim() + ", " + binding.TextViewEditPincode.text.toString().trim()
         val id = myGuestViewModel.getUid()
         val clientId = auth.currentUser!!.uid
 
         binding.buttonAddGuest.setOnClickListener {
+            val hno = binding.TextViewEditHouseNo.text.toString().trim()
+            val street = binding.TextViewEditStreet.text.toString().trim()
+            val pin = binding.TextViewEditPincode.text.toString().trim()
+            val city = binding.TextViewEditCity.text.toString().trim()
+            val state = binding.TextViewEditState.text.toString().trim()
+            val address = "${hno}, ${street}, ${city}, ${state}- ${pin}"
             binding.addGuestContainer.isEnabled = false
             myGuestViewModel.saveGuest(
                 db,

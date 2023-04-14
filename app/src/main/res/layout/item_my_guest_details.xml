@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="myGuestViewModel"
-            type="com.example.nimantran.ui.main.clientGuests.MyGuestViewModel" />
+            name="guest"
+            type="com.example.nimantran.models.user.Guest" />
     </data>
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewMyGuest"
@@ -27,6 +27,7 @@
                 android:layout_marginTop="4dp"
                 android:hint="Name"
                 android:layout_marginLeft="8dp"
+                android:text="@{guest.name}"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
@@ -39,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:hint="9984800187"
                 android:layout_marginEnd="8dp"
+                android:text="@{guest.phone}"
                 app:layout_constraintBottom_toBottomOf="@id/textViewMyGuestName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/textViewMyGuestName" />
@@ -49,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:hint="LDA, Lucknow, UP, India 226016"
+                android:text="@{guest.address}"
                 app:layout_constraintTop_toBottomOf="@id/textViewMyGuestName"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/textViewMyGuestPhone"

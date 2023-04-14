@@ -162,7 +162,7 @@
             app:layout_constraintBottom_toTopOf="@id/buttonSendGift"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="invisible">
+            android:visibility="visible">
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchViewSelectMyGuest"
                 android:layout_width="0dp"
@@ -191,7 +191,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/searchViewSelectMyGuest">
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewSelectMyGuest"
                     android:layout_width="match_parent"

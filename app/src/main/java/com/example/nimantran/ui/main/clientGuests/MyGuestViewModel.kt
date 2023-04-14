@@ -115,35 +115,4 @@ class MyGuestViewModel : ViewModel() {
     fun getUid(): String {
         return UUID.randomUUID().toString()
     }
-
-/*
-    val contacts = Contacts(context)
-        .query()
-        .where {
-            (Name.GivenName startsWith "leo") and
-                    (ContactsContract.CommonDataKinds.Email.Address { endsWith("gmail.com") or endsWith("hotmail.com") }) and
-                    (Address.Country equalToIgnoreCase "us") and
-                    (Event { (Date lessThan Date().toWhereString()) and (Type equalTo EventEntity.Type.BIRTHDAY) }) and
-                    (Contact.Options.Starred equalTo true) and
-                    (ContactsContract.CommonDataKinds.Nickname.Name equalTo "DarEdEvil") and
-                    (ContactsContract.CommonDataKinds.Organization.Company `in` listOf("facebook", "FB")) and
-                    (ContactsContract.CommonDataKinds.Note.Note.isNotNullOrEmpty())
-        }
-        .accounts(
-            Account("john.doe@gmail.com", "com.google"),
-            Account("john.doe@myspace.com", "com.myspace"),
-        )
-        .include { setOf(
-            Contact.Id,
-            Contact.DisplayNamePrimary,
-            ContactsContract.CommonDataKinds.Phone.Number
-        ) }
-        .orderBy(ContactsFields.DisplayNamePrimary.desc())
-        .offset(0)
-        .limit(5)
-        .find()
-
-  */
-
-
 }
