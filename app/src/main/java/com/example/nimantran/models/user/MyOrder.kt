@@ -15,7 +15,7 @@ data class MyOrder(
     val orderStatus: String = "",
     //<gift,qty>
     //total amt
-    val sentTo: String = "",
+    val sentTo : String = "",
     val totalAmount: Double = 0.0,
     val giftQty: String = "",
     val gift: Gift = Gift(),

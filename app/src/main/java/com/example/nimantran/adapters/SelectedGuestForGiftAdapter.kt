@@ -20,7 +20,7 @@ class SelectedGuestForGiftAdapter(
             guest: Guest,
             cardListener: (Guest) -> Unit,
         ) {
-           // binding.guest = guest
+            binding.guest = guest
             binding.cardViewMyGuest.setOnClickListener {
                 cardListener(guest)
             }
@@ -47,6 +47,6 @@ class GuestDiffUtil : DiffUtil.ItemCallback<Guest>() {
     }
 
     override fun areContentsTheSame(oldItem: Guest, newItem: Guest): Boolean {
-        return oldItem == newItem
+        return oldItem.name == newItem.name
     }
 }
