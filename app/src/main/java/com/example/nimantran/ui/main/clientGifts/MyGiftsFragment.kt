@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.nimantran.R
-import com.example.nimantran.adapters.MyGiftAdapter
+import com.example.nimantran.adapters.user.MyGiftAdapter
 import com.example.nimantran.databinding.FragmentMyGiftsBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore

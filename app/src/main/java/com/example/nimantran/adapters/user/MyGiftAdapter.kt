@@ -1,4 +1,4 @@
-package com.example.nimantran.adapters
+package com.example.nimantran.adapters.user
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
