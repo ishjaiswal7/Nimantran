@@ -59,14 +59,12 @@ class MyGuestViewModel : ViewModel() {
             Log.e("TAG", "Deselected guest ${guest.name}")
         }
     }
-
     fun clearGuestList() {
         if (_selectedGuest.value != null) {
             _selectedGuest.value = setOf()
             Log.e("TAG", "Deselected guest")
         }
     }
-
     fun saveGuest(
         db: FirebaseFirestore,
         name: String,

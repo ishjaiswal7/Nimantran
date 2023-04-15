@@ -25,7 +25,6 @@ class MyGuestListAdapter(
             binding.cardViewMyGuest.setOnClickListener {
                 cardListener(guest)
             }
-
             binding.executePendingBindings()
         }
     }

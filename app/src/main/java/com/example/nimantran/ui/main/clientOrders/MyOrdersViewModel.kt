@@ -14,16 +14,14 @@ class MyOrdersViewModel : ViewModel(){
     private val _selectedOrder = MutableLiveData<MyOrder>()
     val selectedOrder: MutableLiveData<MyOrder> = _selectedOrder
 
-
-
-    fun getMyOrders(db: FirebaseFirestore){
-        loadMyOrders(db)
-        deselectOrder()
+    fun getMyOrders(db: FirebaseFirestore, uid: String?){
+        loadMyOrders(db, uid ?: "")
     }
 
-    private fun loadMyOrders(db: FirebaseFirestore){
+    private fun loadMyOrders(db: FirebaseFirestore, uid: String = ""){
         // fetch data from firebase firestore
-        db.collection(COLL_ORDERS).get().addOnFailureListener {
+        db.collection(COLL_ORDERS)
+            .whereEqualTo("clientId", uid).get().addOnFailureListener {
             Log.e("MyOrdersViewModel", "Error fetching myorders ${it.message}")
         }.addOnCanceledListener {
             Log.e("MyOrdersViewModel", "Cancelled fetching myorders")
@@ -37,10 +35,4 @@ class MyOrdersViewModel : ViewModel(){
     fun selectOrder(myorder: MyOrder){
         _selectedOrder.value = myorder
     }
-
-    fun deselectOrder() {
-  //      _selectedOrder.value = null
-    }
-
-
 }

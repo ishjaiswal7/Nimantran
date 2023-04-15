@@ -11,13 +11,17 @@ import com.example.nimantran.models.user.MyOrder
 
 class MyOrdersAdapter (
     private val context: Context,
-    private val listener: (MyOrder) -> Unit
+    private val cardListener: (MyOrder) -> Unit
         ) : ListAdapter<MyOrder, MyOrdersAdapter.ViewHolder>(MyOrdersDiffUtil()) {
             class ViewHolder(
                 private val binding: ItemMyOrdersBinding
             ) : RecyclerView.ViewHolder(binding.root) {
-                fun bind(myorder: MyOrder) {
+                fun bind(myorder: MyOrder,
+                cardListener: (MyOrder) -> Unit) {
                     binding.myOrder = myorder
+                    binding.cardViewMyOrder.setOnClickListener {
+                        cardListener(myorder)
+                    }
                     binding.executePendingBindings()
                 }
             }
@@ -32,8 +36,7 @@ class MyOrdersAdapter (
             }
 
             override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-                holder.bind(getItem(position))
-                holder.itemView.setOnClickListener { listener(getItem(position)) }
+                holder.bind(getItem(position), cardListener)
             }
         }
         class MyOrdersDiffUtil : DiffUtil.ItemCallback<MyOrder>() {

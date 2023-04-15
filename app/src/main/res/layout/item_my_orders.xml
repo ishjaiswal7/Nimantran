@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="myOrder"
             type="com.example.nimantran.models.user.MyOrder" />
-
     </data>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewOrderList"
+        android:id="@+id/cardViewMyOrder"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginLeft="20dp"
@@ -25,15 +23,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-
-            <com.google.android.material.imageview.ShapeableImageView
+            <ImageView
                 android:id="@+id/imageViewOrderedGift"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="12dp"
                 tools:src="@drawable/ic_gift"
-                android:src="@{myOrder.gift.image}"
+                image="@{myOrder.gift.image}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
@@ -80,6 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
+                android:text="@{myOrder.OrderStatus}"
                 app:layout_constraintBottom_toBottomOf="@id/imageViewOrderedGift"
                 app:layout_constraintStart_toStartOf="@id/textViewOrderListTitle"
                 tools:text="Order Status" />
@@ -101,8 +98,6 @@
                 app:layout_constraintBottom_toBottomOf="@id/imageViewOrderedGift"
                 app:layout_constraintEnd_toEndOf="@id/textViewOrderListDate"
                 tools:text="Guests/Me" />
-
-
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
@@ -132,18 +127,6 @@
                 app:layout_constraintTop_toTopOf="@id/textViewOrderListID"
                 app:layout_constraintBottom_toBottomOf="@id/textViewOrderListID"
                 app:layout_constraintEnd_toEndOf="parent" />
-
-            <!--    <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="12dp"
-                    android:src="@drawable/ic_template_designs"
-                    tools:src="@drawable/ic_template_designs"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textViewOrderListDate"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-                   -->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

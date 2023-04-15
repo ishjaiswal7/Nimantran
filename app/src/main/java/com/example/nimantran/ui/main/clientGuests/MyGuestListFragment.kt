@@ -130,7 +130,6 @@ class MyGuestListFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             }
         }
 
-
         binding.fabMyGuestList.setOnClickListener {
             selectContact()
         }

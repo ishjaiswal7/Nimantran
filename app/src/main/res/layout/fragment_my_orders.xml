@@ -43,7 +43,5 @@
                 tools:listitem="@layout/item_my_orders"
                 />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
