@@ -42,7 +42,7 @@
             app:layout_constraintBottom_toTopOf="@id/buttonSendGift"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="invisible">
+            android:visibility="visible">
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
@@ -55,13 +55,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 />
             <EditText
-                android:id="@+id/textViewNumberOfGuest"
+                android:id="@+id/textViewUserGiftQty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:inputType="number"
                 android:hint="20"
-                android:text="20"
+                android:minHeight="48dp"
                 app:layout_constraintBottom_toBottomOf="@id/textView1"
                 app:layout_constraintTop_toTopOf="@id/textView1"
                 app:layout_constraintStart_toEndOf="@id/textView1"
@@ -83,34 +83,35 @@
                 android:id="@+id/TextViewEditHouseNo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="221"
-                android:inputType="text"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="24dp"
+                android:hint="MM-221"
+                android:inputType="text"
+                android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/textView3"
                 app:layout_constraintStart_toEndOf="@id/textView3"
-                />
+                app:layout_constraintTop_toTopOf="@id/textView3" />
 
             <EditText
                 android:id="@+id/TextViewEditStreet"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="New Road"
-                android:inputType="text"
                 android:layout_marginRight="24dp"
+                android:hint="New Road"
+                android:inputType="text"
+                android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/TextViewEditHouseNo"
-                app:layout_constraintTop_toBottomOf="@id/TextViewEditHouseNo"
-                />
+                app:layout_constraintTop_toBottomOf="@id/TextViewEditHouseNo" />
 
 
             <EditText
                 android:id="@+id/TextViewEditCity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Lucknow"
+                android:hint="Lucknow"
                 android:inputType="text"
+                android:minHeight="48dp"
                 android:layout_marginRight="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/TextViewEditStreet"
@@ -120,8 +121,9 @@
                 android:id="@+id/TextViewEditState"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="UP"
+                android:hint="UP"
                 android:inputType="text"
+                android:minHeight="48dp"
                 android:layout_marginRight="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/TextViewEditCity"
@@ -131,9 +133,10 @@
                 android:id="@+id/TextViewEditCountry"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="India"
+                android:hint="India"
                 android:inputType="text"
                 android:layout_marginRight="24dp"
+                android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/TextViewEditState"
                 app:layout_constraintTop_toBottomOf="@id/TextViewEditState"
@@ -143,13 +146,13 @@
                 android:id="@+id/TextViewEditPincode"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="226012"
-                android:inputType="number"
                 android:layout_marginRight="24dp"
+                android:hint="226012"
+                android:inputType="number"
+                android:minHeight="48dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/TextViewEditCountry"
-                app:layout_constraintTop_toBottomOf="@id/TextViewEditCountry"
-                />
+                app:layout_constraintTop_toBottomOf="@id/TextViewEditCountry" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -162,7 +165,7 @@
             app:layout_constraintBottom_toTopOf="@id/buttonSendGift"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="visible">
+            android:visibility="invisible">
       <!--      <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchViewSelectMyGuest"
                 android:layout_width="0dp"

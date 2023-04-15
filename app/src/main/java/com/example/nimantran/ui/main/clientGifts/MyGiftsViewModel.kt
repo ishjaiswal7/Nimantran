@@ -20,6 +20,9 @@ class MyGiftsViewModel : ViewModel() {
     private val _giftForMe = true
     var giftForMe: Boolean = _giftForMe
 
+    var userGiftQty = 1
+    var userAddress = ""
+
     fun getMyGifts(db: FirebaseFirestore) {
         loadMyGifts(db)
         deselectGift()
@@ -59,6 +62,7 @@ class MyGiftsViewModel : ViewModel() {
     fun addOrder(db: FirebaseFirestore, auth: FirebaseAuth, order: MyOrder) {
         db.collection("myOrders").add(order).addOnSuccessListener {
             Log.d("MyGiftsViewModel", "Order added")
+
         }.addOnFailureListener {
             Log.e("MyGiftsViewModel", "Error adding order ${it.message}")
         }

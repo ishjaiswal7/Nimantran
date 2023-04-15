@@ -32,6 +32,7 @@
                     android:layout_width="160dp"
                     android:layout_height="80dp"
                     android:padding="4dp"
+                    image="@{viewModelMyOrders.selectedOrder.gift.image}"
                     tools:src="@drawable/gift_items"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -43,10 +44,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
                     tools:text="Gift Item"
+                    android:text="@{viewModelMyOrders.selectedOrder.gift.item}"
                     android:textStyle="bold"
                     android:textColor="@color/secondaryColor"
                     app:layout_constraintStart_toEndOf="@id/imageViewGift"
-                    app:layout_constraintTop_toTopOf="parent"></TextView>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textViewPrice"
@@ -56,9 +58,10 @@
                     tools:text="100"
                     android:textSize="10sp"
                     android:textStyle="italic"
+                    price_text="@{viewModelMyOrders.selectedOrder.gift.price}"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewGiftName"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/textViewGiftName"></TextView>
+                    app:layout_constraintTop_toTopOf="@id/textViewGiftName" />
                 <ScrollView
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -73,6 +76,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="2dp"
+                        android:text="@{viewModelMyOrders.selectedOrder.gift.description}"
                         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies lacinia, nisl nunc aliquet nisl, eget aliquet nisl nisl sit amet nisl.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies lacinia, nisl nunc aliquet nisl, eget aliquet nisl nisl sit amet nisl."
                         android:textSize="10sp"
                         android:textStyle="normal"/>

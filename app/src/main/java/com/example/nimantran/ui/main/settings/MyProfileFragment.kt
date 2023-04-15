@@ -51,12 +51,7 @@ class MyProfileFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         disableEdit()
 
         val currUser = auth.currentUser
-/*
-        if (currUser != null) {
-            userId = currUser.uid
-            currUser.phoneNumber?.let { binding.editTextEditPhone.setText(it) }
-        }
-*/
+
         myProfileViewModel.getClient(db, currUser?.uid)
 
 
@@ -105,44 +100,6 @@ class MyProfileFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
 
     }
-
-    /*
-        private val getContent =
-            registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-                binding.ImageViewUser.load(uri) {
-                    crossfade(true)
-                    transformations(CircleCropTransformation())
-                    myProfileViewModel.uploadToFirebase(requireActivity(), storage, uri)
-                }
-            }
-
-
-        @AfterPermissionGranted(AddGiftFragment.REQUEST_IMAGE_GET)
-        private fun selectImage() {
-            if (EasyPermissions.hasPermissions(
-                    requireContext(),
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                )
-            ) {
-                getContent.launch("image/*")
-            } else {
-                EasyPermissions.requestPermissions(
-                    this, getString(R.string.permission_required),
-                    122, Manifest.permission.READ_EXTERNAL_STORAGE
-                )
-            }
-        }
-
-        override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<String>,
-            grantResults: IntArray
-        ) {
-            EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
-        }
-    */
-
-     */
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
         Toast.makeText(requireContext(), "Permission granted", Toast.LENGTH_SHORT).show()
 //        selectImage()

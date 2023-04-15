@@ -46,9 +46,9 @@ class MyProfileViewModel : ViewModel(){
         name: String,
         gender: String,
     ){
-        val clientt = client.value
+        val client = client.value
         db.collection(COLL_CLIENT)
-            .whereEqualTo("id", clientt?.id).get().addOnFailureListener{
+            .whereEqualTo("id", client?.id).get().addOnFailureListener{
                 Log.e("MyProfileViewModel", "Error updating client ${it.message}")
             }.addOnCanceledListener {
                 Log.e("MyProfileViewModel", "Cancelled updating client")

@@ -115,7 +115,6 @@
                 app:layout_constraintBottom_toTopOf="@id/textViewOrderSentTo"
                 app:layout_constraintEnd_toEndOf="@id/textViewOrderListDate"
                 tools:text="20" />
-
             <TextView
                 android:id="@+id/textViewOrderListDate"
                 android:layout_width="0dp"

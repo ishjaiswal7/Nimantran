@@ -45,20 +45,38 @@ class GetOrderDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //Show number of selected guests
-        var numberOfGuest = 1
         val giftPrice = myGiftsViewModel.selectedMyGift.value?.price
-        val qty = binding.textViewQuantity.text.toString().toInt()
 
 //Sending gift to user
         if (myGiftsViewModel.giftForMe) {
+            val qty = myGiftsViewModel.userGiftQty
             binding.containerOrderForMe.visibility = View.VISIBLE
             binding.containerOrderForGuest.visibility = View.GONE
-            if (giftPrice != null) {
-                binding.textViewTotPayableAmount.text = (giftPrice * qty).toString()
+            binding.textViewQuantity.text = qty.toString()
+            binding.textViewMyAddress.text = myGiftsViewModel.userAddress
+            binding.textViewTotPayableAmount.text = (giftPrice!! * qty).toString()
+
+            //Place order ( Pay Now Botton )
+            binding.buttonOrderGift.setOnClickListener{
+                MyOrder(
+                    clientID = auth.currentUser?.uid.toString(),
+                    orderStatus = "Placed",
+                    totalAmount = giftPrice!!* qty,
+                    giftQty = qty.toString(),
+                    gift = myGiftsViewModel.selectedMyGift.value!!,
+                    guest = myGuestViewModel.selectedGuest.value!!.toList(),
+                    paymentRefId = "1234567890",
+                    sentTo = "User",
+                ).let {
+                    myGiftsViewModel.addOrder(db, auth, it)
+                }
             }
+            Log.d("GetOrderDetailsFragment", "Gift for me")
+            Log.d("gift", myGiftsViewModel.selectedMyGift.value.toString())
         }
 //Sending gift to guests
         else {
+            var numberOfGuest = 1
             binding.containerOrderForMe.visibility = View.GONE
             binding.containerOrderForGuest.visibility = View.VISIBLE
 
@@ -72,8 +90,6 @@ class GetOrderDetailsFragment : Fragment() {
                     }
                 }
             }
-
-
             //Show selectedguest in recycler view
             myGuestViewModel.selectedGuest.observe(viewLifecycleOwner) { guest ->
                 if (guest.isNotEmpty()) {
@@ -83,6 +99,7 @@ class GetOrderDetailsFragment : Fragment() {
                     selectedGuestForGiftAdapter.submitList(guest.toList())
                 }
             }
+            //Place order ( Pay Now Botton )
             binding.buttonOrderGift.setOnClickListener {
                 MyOrder(
                     clientID = auth.currentUser?.uid.toString(),
@@ -99,7 +116,6 @@ class GetOrderDetailsFragment : Fragment() {
             }
             Log.d("abc", myGuestViewModel.selectedGuest.value.toString())
             Log.d("gift", myGiftsViewModel.selectedMyGift.value.toString())
-
         }
     }
 

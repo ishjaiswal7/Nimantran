@@ -40,14 +40,35 @@ class SelectGuestForGiftFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSendGift.setOnClickListener {
+            //Send gift to me
             if (binding.radioButtonSendToMe.isChecked) {
+                myGiftsViewModel.userGiftQty = binding.textViewUserGiftQty.text.toString().toInt()
+                myGiftsViewModel.userAddress = binding.TextViewEditHouseNo.text.toString() + ", " +
+                        binding.TextViewEditStreet.text.toString() + ", " +
+                        binding.TextViewEditCity.text.toString() + ", " +
+                        binding.TextViewEditState.text.toString() + ", " +
+                        binding.TextViewEditPincode.text.toString()
                 myGiftsViewModel.sendToMe()
-            } else if (binding.radioButtonSendToGuest.isChecked) {
-                myGiftsViewModel.sendToGuest()
-            } else {
+                findNavController().navigate(R.id.action_selectGuestForGiftFragment_to_getOrderDetailsFragment)
+            }
+            //Send gift to guest
+            else if (binding.radioButtonSendToGuest.isChecked) {
+                var numberOfGuest = 0
+                //Count number of selected guest
+                myGuestViewModel.selectedGuest.observe(viewLifecycleOwner) { guest ->
+                    if (guest.isNotEmpty()) {
+                        numberOfGuest = guest.size
+                        if (numberOfGuest == 0) {
+                            Toast.makeText(context, "Select a guest.", Toast.LENGTH_SHORT).show()
+                        } else
+                            myGiftsViewModel.sendToGuest()
+                        findNavController().navigate(R.id.action_selectGuestForGiftFragment_to_getOrderDetailsFragment)
+                    }
+                }
+            }
+            else {
                 Toast.makeText(context, "Select an option above.", Toast.LENGTH_SHORT).show()
             }
-            findNavController().navigate(R.id.action_selectGuestForGiftFragment_to_getOrderDetailsFragment)
         }
         binding.radioButtonSendToMe.setOnClickListener {
             if (binding.radioButtonSendToMe.isChecked) {
@@ -73,32 +94,6 @@ class SelectGuestForGiftFragment : Fragment() {
 
             }
         }
-
-        /*
-        myGuestViewModel.guests.observe(viewLifecycleOwner) { guests ->
-            if (guests.isNotEmpty()) {
-                binding.recyclerViewSelectMyGuest.adapter =
-                    MyGuestListAdapter(requireActivity()) {
-                        myGuestViewModel.selectGuest(it)
-                        val dir =
-                            MyGuestListFragmentDirections.actionMyGuestListFragmentToEditGuestFragment(
-                                it.id
-                            )
-                        findNavController().navigate(dir)
-                    }
-
-                (binding.recyclerViewSelectMyGuest.adapter as MyGuestListAdapter).submitList(
-                    guests
-                )
-            } else {
-                binding.recyclerViewSelectMyGuest.visibility = View.GONE
-            }
-            if (binding.swipeRefreshLayoutMyGuest.isRefreshing) {
-                binding.swipeRefreshLayoutMyGuest.isRefreshing = false
-            }
-        }
-         */
-
         myGuestViewModel.guests.observe(viewLifecycleOwner) { guests ->
             if (guests.isNotEmpty()) {
                 val selectGuestAdapter =
