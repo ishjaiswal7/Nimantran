@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.main.addcard.getCardMsgFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/addGuestContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.main.addcard.getCardMsgFragment">
 
         <TextView
             android:id="@+id/heading_guest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:text="Card Message"
             android:textColor="@color/secondaryColor"
             android:textSize="24dp"
             android:textStyle="bold"
-            android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_person"
-            android:layout_marginTop="40dp"
             android:layout_marginStart="32dp"
-            app:layout_constraintTop_toBottomOf="@id/heading_guest"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_marginTop="40dp"
+            android:src="@drawable/ic_person"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/heading_guest" />
+
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
@@ -43,9 +41,9 @@
             android:textColor="@color/primaryTextColor"
             android:textSize="18dp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imageView1"
             app:layout_constraintStart_toEndOf="@id/imageView1"
-            app:layout_constraintTop_toTopOf="@id/imageView1"
-            app:layout_constraintBottom_toBottomOf="@id/imageView1"/>
+            app:layout_constraintTop_toTopOf="@id/imageView1" />
 
         <EditText
             android:id="@+id/TextViewEditName"
@@ -55,19 +53,21 @@
             android:layout_marginRight="24dp"
             android:hint="Name"
             android:inputType="text"
-            app:layout_constraintStart_toEndOf="@id/textView3"
-            app:layout_constraintTop_toTopOf="@id/textView1"
+            app:layout_constraintBottom_toBottomOf="@id/textView1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/textView1"/>
+            app:layout_constraintStart_toEndOf="@id/textView3"
+            app:layout_constraintTop_toTopOf="@id/textView1" />
+
         <ImageView
             android:id="@+id/imageViewSendNotification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_contact_phone"
             android:layout_marginTop="40dp"
-            app:layout_constraintTop_toBottomOf="@id/imageView1"
+            android:src="@drawable/ic_contact_phone"
+            app:layout_constraintEnd_toEndOf="@id/imageView1"
             app:layout_constraintStart_toStartOf="@id/imageView1"
-            app:layout_constraintEnd_toEndOf="@id/imageView1"/>
+            app:layout_constraintTop_toBottomOf="@id/imageView1" />
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -77,31 +77,34 @@
             android:textColor="@color/primaryTextColor"
             android:textSize="18dp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewSendNotification"
             app:layout_constraintStart_toEndOf="@id/imageViewSendNotification"
-            app:layout_constraintTop_toTopOf="@id/imageViewSendNotification"
-            app:layout_constraintBottom_toBottomOf="@id/imageViewSendNotification"/>
+            app:layout_constraintTop_toTopOf="@id/imageViewSendNotification" />
+
         <EditText
             android:id="@+id/TextViewEditPhone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="24dp"
+            android:enabled="true"
             android:hint="Phone"
             android:inputType="phone"
-            android:enabled="true"
-            app:layout_constraintStart_toEndOf="@id/textView3"
-            app:layout_constraintTop_toTopOf="@id/textView2"
+            app:layout_constraintBottom_toBottomOf="@id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/textView2"/>
+            app:layout_constraintStart_toEndOf="@id/textView3"
+            app:layout_constraintTop_toTopOf="@id/textView2" />
+
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_address"
             android:layout_marginTop="40dp"
-            app:layout_constraintTop_toBottomOf="@id/imageViewSendNotification"
+            android:src="@drawable/ic_address"
+            app:layout_constraintEnd_toEndOf="@id/imageViewSendNotification"
             app:layout_constraintStart_toStartOf="@id/imageViewSendNotification"
-            app:layout_constraintEnd_toEndOf="@id/imageViewSendNotification"/>
+            app:layout_constraintTop_toBottomOf="@id/imageViewSendNotification" />
+
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
@@ -111,22 +114,21 @@
             android:textColor="@color/primaryTextColor"
             android:textSize="18dp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imageView3"
             app:layout_constraintStart_toEndOf="@id/imageView3"
-            app:layout_constraintTop_toTopOf="@id/imageView3"
-            app:layout_constraintBottom_toBottomOf="@id/imageView3"/>
+            app:layout_constraintTop_toTopOf="@id/imageView3" />
 
         <EditText
             android:id="@+id/TextViewEditMessage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Hey, I am sending you an invitation."
-            android:inputType="text"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="24dp"
+            android:hint="Hey, I am sending you an invitation."
+            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textView3"
             app:layout_constraintStart_toEndOf="@id/textView3"
-            />
+            app:layout_constraintTop_toTopOf="@id/textView3" />
 
 
         <com.google.android.material.button.MaterialButton
@@ -136,12 +138,12 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="100dp"
             android:background="@drawable/round_border"
             android:text="Send Invitation Message"
-            android:layout_marginBottom="100dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
