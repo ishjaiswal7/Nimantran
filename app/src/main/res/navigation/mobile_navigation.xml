@@ -131,7 +131,11 @@
     <fragment
         android:id="@+id/selectGuestForCardFragment"
         android:name="com.example.nimantran.ui.main.addcard.SelectGuestForCardFragment"
-        android:label="SelectGuestForCardFragment" />
+        android:label="SelectGuestForCardFragment" >
+        <action
+            android:id="@+id/action_selectGuestForCardFragment_to_getCardMsgFragment"
+            app:destination="@id/getCardMsgFragment" />
+    </fragment>
     <fragment
         android:id="@+id/getOrderDetailsFragment"
         android:name="com.example.nimantran.ui.main.clientGifts.GetOrderDetailsFragment"
@@ -155,4 +159,9 @@
             android:name="id"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/getCardMsgFragment"
+        android:name="com.example.nimantran.ui.main.addcard.getCardMsgFragment"
+        android:label="fragment_get_card_msg"
+        tools:layout="@layout/fragment_get_card_msg" />
 </navigation>
