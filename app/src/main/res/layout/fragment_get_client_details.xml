@@ -63,7 +63,6 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:src="@drawable/ic_person"
-                app:civ_border_width="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

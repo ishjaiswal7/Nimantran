@@ -4,15 +4,15 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.nimantran.models.admin.Order
+import com.example.nimantran.models.user.MyOrder
 import com.google.firebase.firestore.FirebaseFirestore
 
 class OrderListViewModel : ViewModel() {
-    private val _orders = MutableLiveData<List<Order>>()
-    val orders: LiveData<List<Order>> = _orders
+    private val _orders = MutableLiveData<List<MyOrder>>()
+    val orders: LiveData<List<MyOrder>> = _orders
 
-    private val _selectedOrder = MutableLiveData<Order?>()
-    val selectedOrder: MutableLiveData<Order?> = _selectedOrder
+    private val _selectedOrder = MutableLiveData<MyOrder?>()
+    val selectedOrder: MutableLiveData<MyOrder?> = _selectedOrder
 
     fun getOrders(db: FirebaseFirestore) {
         loadOrders(db)
@@ -26,13 +26,13 @@ class OrderListViewModel : ViewModel() {
         }.addOnCanceledListener {
             Log.e("OrderListViewModel", "Cancelled fetching orders")
         }.addOnSuccessListener {
-            val ordersLoaded = it.toObjects(Order::class.java)
+            val ordersLoaded = it.toObjects(MyOrder::class.java)
             _orders.value = ordersLoaded
             Log.d("OrderListViewModel", "Order loaded ${ordersLoaded.size}")
         }
     }
 
-    fun selectOrder(order: Order) {
+    fun selectOrder(order: MyOrder) {
         _selectedOrder.value = order
     }
 
