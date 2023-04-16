@@ -39,7 +39,7 @@ class CardEditorFragment : Fragment() {
                 // display result in the ivTemplate
                 mUri = it.data
                 binding.ivTemplate.setImageURI(mUri)
-
+                mUri?.let { it1 -> viewModel.setInvitationCard(it1) }
             }
         }
 

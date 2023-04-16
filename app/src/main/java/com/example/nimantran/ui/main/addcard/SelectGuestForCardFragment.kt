@@ -26,6 +26,7 @@ class SelectGuestForCardFragment : Fragment() {
     private val guestViewModel: MyGuestViewModel by activityViewModels()
     private lateinit var auth: FirebaseAuth
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         db = Firebase.firestore
@@ -42,18 +43,19 @@ class SelectGuestForCardFragment : Fragment() {
             container,
             false
         )
+        binding.cardViewModel = cardViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        guestViewModel.getGuests(db, auth.currentUser?.uid.toString())
         guestViewModel.guests.observe(viewLifecycleOwner) { guests ->
             if (guests.isNotEmpty()) {
                 val selectGuestAdapter = SelectGuestAdapter { guest, bool ->
-                    guestViewModel.updateInvitedGuest(
-                        guest,
-                        bool
-                    )
+                    guestViewModel.updateInvitedGuest(guest, bool)
                 }
                 binding.recyclerViewSelectMyCardGuest.adapter = selectGuestAdapter
                 selectGuestAdapter.submitList(guests)
