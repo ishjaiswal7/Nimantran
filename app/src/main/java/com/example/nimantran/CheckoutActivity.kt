@@ -1,15 +1,20 @@
 package com.example.nimantran
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.ui.AppBarConfiguration
 import com.example.nimantran.databinding.ActivityCheckoutBinding
-import com.example.nimantran.databinding.ActivityMainBinding
+import com.example.nimantran.ui.main.clientGifts.MyGiftsViewModel.Companion.COLL_ORDERS
 import com.github.kittinunf.fuel.httpPost
 import com.github.kittinunf.fuel.json.responseJson
 import com.github.kittinunf.result.Result
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
 import com.stripe.android.paymentsheet.PaymentSheetResult
@@ -20,15 +25,22 @@ class CheckoutActivity : AppCompatActivity() {
     private lateinit var customerConfig: PaymentSheet.CustomerConfiguration
     private lateinit var paymentIntentClientSecret: String
     private lateinit var binding: ActivityCheckoutBinding
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
+    private lateinit var orderId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCheckoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = Firebase.auth
+        db = Firebase.firestore
+
         paymentSheet = PaymentSheet(this, ::onPaymentSheetResult)
         paymentIntentClientSecret = getString(R.string.pk)
         val amount = intent.getFloatExtra("amount", 0f)
+        orderId = intent.getStringExtra("orderId") ?: ""
         binding.tvTotalAmount.text = amount.toString()
 
         binding.button.setOnClickListener {
@@ -43,7 +55,7 @@ class CheckoutActivity : AppCompatActivity() {
         val params = listOf(
             "amount" to amount * 100,
             "currency" to "inr",
-            "email" to "dummyuser@gmail.com",
+            "phone" to auth.currentUser?.phoneNumber,
             "name" to "Dummy User",
         )
         url.httpPost(
@@ -90,6 +102,15 @@ class CheckoutActivity : AppCompatActivity() {
             }
             is PaymentSheetResult.Completed -> {
                 showAlert("Payment completed successfully")
+                db.collection(COLL_ORDERS).document(orderId).update("orderStatus", "confirmed")
+                    .addOnSuccessListener {
+                        Log.d("CheckoutActivity", "Order status updated to placed")
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        startActivity(intent)
+                    }.addOnFailureListener {
+                        Log.d("CheckoutActivity", "Order status update failed")
+                    }
             }
         }
     }

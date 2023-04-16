@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="myOrder"
             type="com.example.nimantran.models.user.MyOrder" />
@@ -14,10 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="16dp"
-        app:cardElevation="30dp"
-        app:cardCornerRadius="10dp">
+        android:layout_marginRight="20dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="30dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -25,14 +26,14 @@
 
             <ImageView
                 android:id="@+id/imageViewOrderedGift"
+                image="@{myOrder.gift.image}"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="12dp"
-                tools:src="@drawable/ic_gift"
-                image="@{myOrder.gift.image}"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                tools:src="@drawable/ic_gift" />
 
             <TextView
                 android:id="@+id/textViewOrderListID"
@@ -43,19 +44,19 @@
                 android:layout_marginBottom="4dp"
                 android:text="@{myOrder.id}"
                 android:textSize="10sp"
-                tools:text="Order ID"
                 app:layout_constraintStart_toEndOf="@id/imageViewOrderedGift"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Order ID" />
 
             <TextView
                 android:id="@+id/textViewOrderListTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
                 android:text="@{myOrder.gift.item}"
-                tools:text="Order Title"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/textViewOrderListID"
-                app:layout_constraintTop_toBottomOf="@id/textViewOrderListID" />
+                app:layout_constraintTop_toBottomOf="@id/textViewOrderListID"
+                tools:text="Order Title" />
 
 
             <!--   <TextView
@@ -75,57 +76,62 @@
                 android:id="@+id/textViewOrderListStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{myOrder.orderStatus}"
                 android:textSize="12sp"
-                android:text="@{myOrder.OrderStatus}"
                 app:layout_constraintBottom_toBottomOf="@id/imageViewOrderedGift"
                 app:layout_constraintStart_toStartOf="@id/textViewOrderListTitle"
                 tools:text="Order Status" />
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
                 android:layout_marginRight="8dp"
+                android:text="Sent to:"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/imageViewOrderedGift"
-                app:layout_constraintEnd_toStartOf="@id/textViewOrderSentTo"
-                android:text="Sent to:" />
+                app:layout_constraintEnd_toStartOf="@id/textViewOrderSentTo" />
+
             <TextView
                 android:id="@+id/textViewOrderSentTo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
                 android:text="@{myOrder.sentTo}"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@id/imageViewOrderedGift"
                 app:layout_constraintEnd_toEndOf="@id/textViewOrderListDate"
                 tools:text="Guests/Me" />
+
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Quantity:"
                 android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@id/textView"
                 app:layout_constraintBottom_toTopOf="@id/textView"
-                android:text="Quantity:" />
+                app:layout_constraintStart_toStartOf="@id/textView" />
+
             <TextView
                 android:id="@+id/textViewOrderedQty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{String.valueOf(myOrder.giftQty)}"
                 android:textSize="12sp"
-                android:text="@{myOrder.giftQty}"
                 app:layout_constraintBottom_toTopOf="@id/textViewOrderSentTo"
                 app:layout_constraintEnd_toEndOf="@id/textViewOrderListDate"
                 tools:text="20" />
+
             <TextView
                 android:id="@+id/textViewOrderListDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="10/10/24"
-                android:textSize="12sp"
                 android:layout_marginRight="16dp"
-                android:text="@{myOrder.orderDate.date}"
-                app:layout_constraintTop_toTopOf="@id/textViewOrderListID"
+                android:textSize="12sp"
+                app:humanize_date_text="@{myOrder.orderDate}"
                 app:layout_constraintBottom_toBottomOf="@id/textViewOrderListID"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/textViewOrderListID"
+                tools:text="10/10/24" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -13,7 +13,11 @@ import com.example.nimantran.R
 import com.example.nimantran.adapters.SelectGuestAdapter
 import com.example.nimantran.databinding.FragmentSelectMyGuestForGiftBinding
 import com.example.nimantran.ui.main.clientGuests.MyGuestViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class SelectGuestForGiftFragment : Fragment() {
     private var _binding: FragmentSelectMyGuestForGiftBinding? = null
@@ -21,6 +25,13 @@ class SelectGuestForGiftFragment : Fragment() {
     private lateinit var db: FirebaseFirestore
     private val myGiftsViewModel: MyGiftsViewModel by activityViewModels()
     private val myGuestViewModel: MyGuestViewModel by activityViewModels()
+    private lateinit var auth: FirebaseAuth
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        db = Firebase.firestore
+        auth = Firebase.auth
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,13 +43,14 @@ class SelectGuestForGiftFragment : Fragment() {
             container,
             false
         )
-        Toast.makeText(context, "Select an option above.", Toast.LENGTH_SHORT).show()
+        binding.myGiftsViewModel = myGiftsViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        myGuestViewModel.getGuests(db, auth.currentUser?.uid.toString())
         binding.buttonSendGift.setOnClickListener {
             //Send gift to me
             if (binding.radioButtonSendToMe.isChecked) {
@@ -65,8 +77,7 @@ class SelectGuestForGiftFragment : Fragment() {
                         findNavController().navigate(R.id.action_selectGuestForGiftFragment_to_getOrderDetailsFragment)
                     }
                 }
-            }
-            else {
+            } else {
                 Toast.makeText(context, "Select an option above.", Toast.LENGTH_SHORT).show()
             }
         }
