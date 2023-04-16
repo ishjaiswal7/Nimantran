@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="Name"
+            android:text="R.S.V.P"
             android:textColor="@color/primaryTextColor"
             android:textSize="18dp"
             android:textStyle="bold"
@@ -86,12 +86,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="24dp"
             android:enabled="true"
             android:hint="Phone"
             android:inputType="phone"
             app:layout_constraintBottom_toBottomOf="@id/textView2"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/TextViewEditName"
             app:layout_constraintStart_toEndOf="@id/textView5"
             app:layout_constraintTop_toTopOf="@id/textView2" />
 
@@ -124,11 +123,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="24dp"
             android:hint="Enter Date"
             android:inputType="none"
             app:layout_constraintBottom_toBottomOf="@id/textView3"
             app:layout_constraintStart_toEndOf="@id/textView5"
+            app:layout_constraintEnd_toEndOf="@id/TextViewEditPhone"
             app:layout_constraintTop_toTopOf="@id/textView3"/>
 
         <ImageView
@@ -159,11 +158,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="24dp"
             android:hint="Happy Birthday"
             android:inputType="textLongMessage"
             app:layout_constraintBottom_toBottomOf="@id/textView4"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/TextViewEditDate"
             app:layout_constraintStart_toEndOf="@id/textView5"
             app:layout_constraintTop_toTopOf="@id/textView4" />
         <ImageView
