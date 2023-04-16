@@ -58,7 +58,7 @@
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="4dp"
-                    android:text=""
+                    android:text="@{order.selectedOrder.id}"
                     android:textSize="10sp"
                     tools:text="Order ID"
                     app:layout_constraintStart_toEndOf="@id/imageViewOrderedGift"
@@ -81,7 +81,8 @@
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@id/imageViewOrderedGift"
                     app:layout_constraintStart_toStartOf="@id/textViewOrderListTitle"
-                    tools:text="Order Status" />
+                    tools:text="Order Status"
+                    android:text="@{order.selectedOrder.orderStatus}"/>
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
@@ -98,7 +99,8 @@
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@id/imageViewOrderedGift"
                     app:layout_constraintEnd_toEndOf="@id/textViewOrderListDate"
-                    tools:text="Guests/User" />
+                    tools:text="Guests/User"
+                    android:text="@{order.selectedOrder.sentTo}"/>
 
 
                 <TextView
@@ -111,21 +113,38 @@
                     android:text="Quantity:" />
                 <TextView
                     android:id="@+id/textViewOrderedQty"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toTopOf="@id/textViewOrderSentTo"
                     app:layout_constraintEnd_toEndOf="@id/textViewOrderListDate"
-                    tools:text="20" />
+                    tools:text="20"
+                    android:text="@{order.selectedOrder.giftQty}"/>
+
+                <TextView
+                    android:id="@+id/textViewOrderListTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="10:50 PM"
+                    app:humanize_time_text="@{order.selectedOrder.orderDate}"
+                    android:textSize="12sp"
+                    android:layout_marginRight="8dp"
+                    app:layout_constraintTop_toTopOf="@id/textViewOrderListID"
+                    app:layout_constraintStart_toEndOf="@id/textViewOrderListID"
+                    app:layout_constraintBottom_toBottomOf="@id/textViewOrderListID"
+                    app:layout_constraintEnd_toStartOf="@id/textViewOrderListDate" />
+
 
                 <TextView
                     android:id="@+id/textViewOrderListDate"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="10/10/24"
+                    app:humanize_date_text="@{order.selectedOrder.orderDate}"
                     android:textSize="12sp"
                     android:layout_marginRight="16dp"
                     app:layout_constraintTop_toTopOf="@id/textViewOrderListID"
+                    app:layout_constraintStart_toEndOf="@id/textViewOrderListTime"
                     app:layout_constraintBottom_toBottomOf="@id/textViewOrderListID"
                     app:layout_constraintEnd_toEndOf="parent" />
 
@@ -134,6 +153,7 @@
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginStart="12dp"
+                    app:image="@{order.selectedOrder.gift.image}"
                     tools:src="@drawable/ic_gift"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textViewUserName"
@@ -172,7 +192,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_order_status"/>
+                tools:listitem="@layout/item_my_guest_details"/>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
