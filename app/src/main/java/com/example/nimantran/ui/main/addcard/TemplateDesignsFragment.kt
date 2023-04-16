@@ -48,6 +48,9 @@ class TemplateDesignsFragment : Fragment() {
                 (templateDesignsRecyclerView.adapter as TemplateAdapter).submitList(it)
             }
         }
+        binding.imageViewMyCards.setOnClickListener {
+            findNavController().navigate(R.id.action_templateDesignsFragment_to_myCardsFragment)
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()
