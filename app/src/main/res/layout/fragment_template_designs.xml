@@ -24,6 +24,13 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageViewMyCards"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_template_designs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textView"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/templateDesignsRecyclerView"

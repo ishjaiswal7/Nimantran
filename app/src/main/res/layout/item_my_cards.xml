@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="mycards"
             type="com.example.nimantran.models.user.MyCards" />
@@ -36,7 +35,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
             <TextView
                 android:id="@+id/textViewEventDate"
-                android:layout_margin="16dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/black"
@@ -55,13 +55,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
+                app:layout_constraintBottom_toBottomOf="@id/textViewCardDate"
+                app:layout_constraintEnd_toStartOf="@id/textViewCardDate"
+                app:layout_constraintTop_toTopOf="@id/textViewCardDate"
                 android:shadowColor="@color/black"
                 android:shadowDx="3"
                 android:shadowDy="3"
                 android:shadowRadius="0.5"
-                app:layout_constraintBottom_toBottomOf="@id/textViewCardDate"
-                app:layout_constraintEnd_toStartOf="@id/textViewCardDate"
-                app:layout_constraintTop_toTopOf="@id/textViewCardDate"
                 android:text="Sent On"
                 android:textSize="12dp"
                 android:textColor="@color/secondaryColor"/>
@@ -89,11 +89,40 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_margin="16dp"/>
-            <ImageView
+          <!--  <ImageView
                 android:id="@+id/cardDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_delete"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="16dp"/>
+            -->
+            <TextView
+                android:id="@+id/textViewRSVP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Anamika"
+                android:shadowColor="@color/black"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="0.5"
+                android:textSize="12dp"
+                android:textColor="@color/secondaryColor"
+                app:layout_constraintTop_toTopOf="@id/textView1"
+                app:layout_constraintStart_toEndOf="@id/textView1"
+                android:layout_marginLeft="8dp"/>
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RSVP"
+                android:shadowColor="@color/black"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="0.5"
+                android:textSize="12dp"
+                android:textColor="@color/secondaryColor"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_margin="16dp"/>
