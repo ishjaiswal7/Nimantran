@@ -83,6 +83,7 @@ class getCardMsgFragment : Fragment() {
                 .setTitle("Invitation Sent")
                 .setMessage("Invitation has been sent to the guest")
                 .setPositiveButton("OK") { dialog, which ->
+                    shareToAllGuests()
                     dialog.dismiss()
                 }
                 .show()
