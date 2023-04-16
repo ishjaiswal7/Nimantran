@@ -57,6 +57,10 @@ class OrderListFragment : Fragment() {
                 binding.swipeRefreshLayoutOrderList.isRefreshing = false
             }
         }
+
+        binding.imageViewBackFromOrderList.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     override fun onDestroyView() {

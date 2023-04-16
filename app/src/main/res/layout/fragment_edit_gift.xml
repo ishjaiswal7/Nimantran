@@ -23,25 +23,23 @@
             android:padding="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="4dp"
-            app:layout_constraintBottom_toTopOf="@id/viewLine"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:src="@drawable/ic_arrow_back" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Gift Details"
-                android:textColor="@color/secondaryDarkColor"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="@id/imageViewBackToGiftList"
-                app:layout_constraintBottom_toBottomOf="@id/imageViewBackToGiftList"
-                app:layout_constraintStart_toEndOf="@id/imageViewBackToGiftList"
-                app:layout_constraintEnd_toStartOf="@id/imageViewDelete"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Gift Details"
+            android:textColor="@color/secondaryDarkColor"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewBackToGiftList"
+            app:layout_constraintEnd_toStartOf="@id/imageViewDelete"
+            app:layout_constraintStart_toEndOf="@id/imageViewBackToGiftList"
+            app:layout_constraintTop_toTopOf="@id/imageViewBackToGiftList" />
 
             <ImageView
                 android:id="@+id/imageViewDelete"
@@ -58,6 +56,7 @@
             android:id="@+id/viewLine"
             android:layout_width="wrap_content"
             android:layout_height="1dp"
+            android:layout_marginTop="8dp"
             android:background="@color/primaryDarkColor"
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"

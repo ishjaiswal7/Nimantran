@@ -73,6 +73,10 @@ class NotificationListFragment : Fragment() {
             findNavController().navigate(R.id.action_notificationListFragment_to_addNotificationFragment)
         }
 
+        binding.imageViewBackFromNotificationList.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
     }
 
     override fun onDestroyView() {

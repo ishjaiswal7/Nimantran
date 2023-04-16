@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nimantran.R
 import com.example.nimantran.adapters.OrderListAdapter
@@ -64,6 +65,10 @@ class OrderStatusFragment : Fragment() {
             } else {
                 binding.recyclerViewOrderList.visibility = View.GONE
             }
+        }
+
+        binding.imageViewBackFromOrderStatus.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 

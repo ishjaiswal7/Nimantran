@@ -7,6 +7,45 @@
     android:layout_height="match_parent"
     tools:context=".ui.admin.AdminDashboardFragment">
 
+<!--
+    <ImageView
+        android:id="@+id/imageViewBackFromClientList"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/ic_arrow_back" />
+-->
+    <TextView
+        android:id="@+id/textViewAdminDashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Admin Dashboard"
+        android:textColor="@color/secondaryDarkColor"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <View
+        android:id="@+id/viewLine"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/primaryDarkColor"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewAdminDashboard" />
+
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/userManagement"
         android:layout_width="130dp"
@@ -15,7 +54,7 @@
         android:layout_marginTop="24dp"
         app:cardElevation="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewLine"
         app:layout_constraintEnd_toStartOf="@id/appInsight">
 
         <LinearLayout
@@ -57,7 +96,7 @@
         app:cardElevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/userManagement"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/viewLine">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -237,7 +276,8 @@
                 android:layout_height="60dp"
                 android:background="@drawable/circle_1"
                 android:padding="15dp"
-                android:src="@drawable/ic_logout" />
+                android:src="@drawable/ic_logout"
+                app:tint="@color/black" />
 
             <View
                 android:layout_width="match_parent"

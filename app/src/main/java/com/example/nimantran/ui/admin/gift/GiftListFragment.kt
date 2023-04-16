@@ -64,6 +64,10 @@ class GiftListFragment : Fragment() {
 
         binding.fabAddGift.setOnClickListener {
             findNavController().navigate(R.id.action_giftListFragment_to_addGiftFragment) }
+
+        binding.imageViewBackFromGiftList.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     override fun onDestroyView() {

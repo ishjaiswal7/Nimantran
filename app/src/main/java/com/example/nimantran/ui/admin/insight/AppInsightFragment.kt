@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.nimantran.R
 import com.example.nimantran.R.layout.fragment_app_insight
 import com.example.nimantran.databinding.FragmentAppInsightBinding
@@ -39,6 +40,10 @@ class AppInsightFragment : Fragment() {
         appInsightViewModel.getClients(db)
         appInsightViewModel.clients.observe(viewLifecycleOwner) { clients ->
             binding.textViewTotalClients.text = clients.size.toString()
+        }
+
+        binding.imageViewBackFromInsights.setOnClickListener {
+            findNavController().navigateUp()
         }
     }
 
