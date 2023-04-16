@@ -116,7 +116,7 @@ class MyGuestListFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                             MyGuestListFragmentDirections.actionMyGuestListFragmentToEditGuestFragment(
                                 it.id
                             )
-                        findNavController().navigate(dir)
+ //                       findNavController().navigate(dir)
                     }
 
                 (binding.recyclerViewMyGuestList.adapter as MyGuestListAdapter).submitList(
