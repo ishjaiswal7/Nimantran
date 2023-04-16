@@ -128,13 +128,19 @@ class GetOrderDetailsFragment : Fragment() {
                     myGiftsViewModel.addOrder(db, auth, it)
                 }
                 // go to payment gateway
-               // startActivity(Intent(activity, CheckoutActivity::class.java))
-/*
-                Intent(this, CheckoutActivity::class.java).also {
-                    it.putExtra("amount", binding.textViewTotPayableAmount.text.toString().toFloat())
-                    startActivity(it)
+                // startActivity(Intent(activity, CheckoutActivity::class.java))
+                myGiftsViewModel.orderId.observe(viewLifecycleOwner) { orderId ->
+                    if (orderId != null) {
+                        Intent(requireContext(), CheckoutActivity::class.java).also {
+                            it.putExtra(
+                                "amount",
+                                binding.textViewTotPayableAmount.text.toString().toFloat()
+                            )
+                            it.putExtra("orderId", orderId)
+                            requireActivity().startActivity(it)
+                        }
+                    }
                 }
-  */
             }
             Log.d("abc", myGuestViewModel.selectedGuest.value.toString())
             Log.d("gift", myGiftsViewModel.selectedMyGift.value.toString())

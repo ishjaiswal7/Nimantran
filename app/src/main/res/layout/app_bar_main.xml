@@ -27,8 +27,9 @@
                 android:layout_marginLeft="16dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/app_bar_image"
                 />
-<!--android:src="@drawable/app_bar_image"
+<!--
                 -->
             <ImageView
                 android:id="@+id/imageViewMyNotifications"

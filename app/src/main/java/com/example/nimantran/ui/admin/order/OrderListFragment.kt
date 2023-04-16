@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.nimantran.R
 import com.example.nimantran.adapters.OrderListAdapter
 import com.example.nimantran.databinding.FragmentOrderListBinding
@@ -44,6 +45,7 @@ class OrderListFragment : Fragment() {
                         requireActivity(),
                     ) {
                         orderListViewModel.selectOrder(it)
+                        findNavController().navigate(R.id.action_orderListFragment_to_orderStatusFragment)
                     }
 
                 (binding.recyclerViewOrderList.adapter as OrderListAdapter).submitList(orders)

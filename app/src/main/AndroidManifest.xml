@@ -16,7 +16,8 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Nimantran.NoActionBar">
+        android:theme="@style/Theme.Nimantran.NoActionBar"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".AdminActivity"
             android:exported="false">
@@ -86,6 +87,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+
+        <activity android:name=".CheckoutActivity" />
     </application>
 
 </manifest>

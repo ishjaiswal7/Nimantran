@@ -40,7 +40,7 @@
             android:id="@+id/swipeRefreshLayoutMyCardGuest"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fabSendCard"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -50,12 +50,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_select_my_guest" />
+                tools:listitem="@layout/item_select_my_guest"
+                tools:itemCount="9"/>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fabSendCard"
+            android:backgroundTint="@color/primaryColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 

@@ -11,6 +11,8 @@ import com.example.nimantran.ui.main.clientGifts.MyGiftsFragment.Companion.COLL_
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
+private const val s = "myOrders"
+
 class MyGiftsViewModel : ViewModel() {
     private val _myGifts = MutableLiveData<List<Gift>>()
     val myGifts: LiveData<List<Gift>> = _myGifts
@@ -23,6 +25,9 @@ class MyGiftsViewModel : ViewModel() {
 
     private val _giftForMe = true
     var giftForMe: Boolean = _giftForMe
+
+    private val _orderId = MutableLiveData<String>()
+    val orderId: LiveData<String> = _orderId
 
     var userGiftQty = 1
     var userAddress = ""
@@ -72,11 +77,16 @@ class MyGiftsViewModel : ViewModel() {
     }
 
     fun addOrder(db: FirebaseFirestore, auth: FirebaseAuth, order: MyOrder) {
-        db.collection("myOrders").add(order).addOnSuccessListener {
+        db.collection(COLL_ORDERS).add(order).addOnSuccessListener {
             Log.d("MyGiftsViewModel", "Order added")
-
+            _orderId.value = it.id
         }.addOnFailureListener {
             Log.e("MyGiftsViewModel", "Error adding order ${it.message}")
         }
+    }
+
+    companion object {
+        const val COLL_MY_GIFTS = "gifts"
+        const val COLL_ORDERS = "myOrders"
     }
 }
