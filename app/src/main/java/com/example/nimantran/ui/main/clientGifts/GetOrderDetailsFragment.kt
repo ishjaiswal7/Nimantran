@@ -1,5 +1,6 @@
 package com.example.nimantran.ui.main.clientGifts
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.example.nimantran.CheckoutActivity
 import com.example.nimantran.adapters.SelectedGuestForGiftAdapter
 import com.example.nimantran.databinding.FragmentGetOrderDetailsBinding
 import com.example.nimantran.models.user.MyOrder
@@ -113,6 +115,8 @@ class GetOrderDetailsFragment : Fragment() {
                 ).let {
                     myGiftsViewModel.addOrder(db, auth, it)
                 }
+                // go to payment gateway
+                startActivity(Intent(activity, CheckoutActivity::class.java))
             }
             Log.d("abc", myGuestViewModel.selectedGuest.value.toString())
             Log.d("gift", myGiftsViewModel.selectedMyGift.value.toString())
