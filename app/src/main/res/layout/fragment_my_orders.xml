@@ -12,6 +12,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imageViewBackFromMyOrdersList"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="56dp"
+            android:text="My Orders"
+            android:textColor="@color/secondaryDarkColor"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@id/imageViewBackFromMyOrdersList"
+            app:layout_constraintBottom_toBottomOf="@id/imageViewBackFromMyOrdersList"
+            app:layout_constraintStart_toEndOf="@id/imageViewBackFromMyOrdersList"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <View
+            android:id="@+id/viewLine"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/primaryDarkColor"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageViewBackFromMyOrdersList" />
+
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchViewMyOrder"
             android:layout_width="0dp"
@@ -21,26 +58,26 @@
             app:iconifiedByDefault="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewLine"
             app:queryHint="Search order..." />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayoutMyOrders"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="8dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/searchViewMyOrder">
-
+            app:layout_constraintTop_toBottomOf="@id/searchViewMyOrder"
+            >
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewMyOrders"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_my_orders"
+                tools:itemCount="5"
                 />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

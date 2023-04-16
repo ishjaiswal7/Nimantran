@@ -16,7 +16,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class TemplateDesignsFragment : Fragment() {
-
     private var _binding: FragmentTemplateDesignsBinding? = null
     private val binding get() = _binding!!
     private val viewModel:TemplateCardViewModel by activityViewModels()
@@ -50,6 +49,10 @@ class TemplateDesignsFragment : Fragment() {
         }
         binding.imageViewMyCards.setOnClickListener {
             findNavController().navigate(R.id.action_templateDesignsFragment_to_myCardsFragment)
+        }
+
+        binding.swipeRefreshLayoutTemplateList.setOnRefreshListener {
+            viewModel.getTemplates(db)
         }
     }
     override fun onDestroyView() {

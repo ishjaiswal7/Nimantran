@@ -63,6 +63,9 @@ class MyOrdersFragment : Fragment() {
             myOrdersViewModel.getMyOrders(db, auth.currentUser?.uid)
         }
 
+        binding.imageViewBackFromMyOrdersList.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     override fun onDestroyView() {

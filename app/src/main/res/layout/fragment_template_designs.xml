@@ -18,7 +18,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
             android:text="Choose Template"
             android:textSize="30dp"
             android:textStyle="bold"
@@ -26,26 +26,38 @@
             app:layout_constraintTop_toTopOf="parent" />
         <ImageView
             android:id="@+id/imageViewMyCards"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_template_designs"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textView"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/templateDesignsRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_marginEnd="8dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_cards"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textView"
+            app:layout_constraintBottom_toBottomOf="@id/textView"/>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayoutTemplateList"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="50dp"
             app:layout_constraintTop_toBottomOf="@id/textView"
-            app:spanCount="2"
-            tools:listitem="@layout/item_template_design" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/templateDesignsRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView"
+                    app:spanCount="2"
+                    tools:listitem="@layout/item_template_design" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

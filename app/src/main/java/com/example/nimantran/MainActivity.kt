@@ -68,6 +68,8 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         // Passing each menu ID as a set of Ids because each
         appBarConfiguration = AppBarConfiguration(
             setOf(
+                R.id.nav_my_cards,
+                R.id.nav_my_orders,
                 R.id.nav_logout,
                 R.id.homeFragment,
                 R.id.myGuestListFragment,
@@ -104,6 +106,20 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         // add listener to navigation drawer
         binding.navView.setNavigationItemSelectedListener {
             when (it.itemId) {
+                R.id.nav_my_cards -> {
+                    Log.d("my cards", "my cards")
+                    navController.navigate(R.id.myCardsFragment)
+                    //close drawer
+                    binding.drawerLayout.close()
+                }
+
+                R.id.nav_my_orders -> {
+                    Log.d("my orders", "my orders")
+                    navController.navigate(R.id.myOrdersFragment)
+                    //close drawer
+                    binding.drawerLayout.close()
+                }
+
                 R.id.nav_logout -> {
                     Log.d("logout", "logout")
                     auth.signOut()
@@ -111,6 +127,7 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
                     startActivity(Intent(this, AuthenticationActivity::class.java))
                     finish()
                 }
+
             }
             true
         }

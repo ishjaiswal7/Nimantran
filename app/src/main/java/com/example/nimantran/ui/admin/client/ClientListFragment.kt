@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.nimantran.R
 import com.example.nimantran.adapters.ClientListAdapter
 import com.example.nimantran.databinding.FragmentClientListBinding
@@ -55,6 +56,16 @@ class ClientListFragment : Fragment() {
                 binding.swipeRefreshLayoutUserList.isRefreshing = false
             }
         }
+        binding.imageViewBackFromClientList.setOnClickListener {
+            //go back to admin dashboard
+            findNavController().navigateUp()
+            onDestroyView()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {
