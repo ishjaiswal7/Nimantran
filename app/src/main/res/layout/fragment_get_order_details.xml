@@ -5,6 +5,7 @@
     tools:context=".ui.main.clientGifts.GetOrderDetailsFragment">
 
     <data>
+
         <variable
             name="vmGifts"
             type="com.example.nimantran.ui.main.clientGifts.MyGiftsViewModel" />
@@ -35,24 +36,24 @@
 
                 <ImageView
                     android:id="@+id/imageViewGift"
+                    image="@{vmGifts.selectedMyGift.image}"
                     android:layout_width="100dp"
                     android:layout_height="80dp"
                     android:padding="4dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@drawable/gift_items"
-                    image="@{vmGifts.selectedMyGift.image}"
-                    />
+                    tools:src="@drawable/gift_items" />
+
                 <TextView
                     android:id="@+id/textViewGiftName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
+                    android:text="@{vmGifts.selectedMyGift.item}"
                     android:textColor="@color/secondaryColor"
                     android:textStyle="bold"
-                    android:text="@{vmGifts.selectedMyGift.item}"
-                    app:layout_constraintStart_toEndOf="@id/imageViewGift"
                     app:layout_constraintEnd_toStartOf="@id/textViewPrice"
+                    app:layout_constraintStart_toEndOf="@id/imageViewGift"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Gift Item" />
 
@@ -63,11 +64,11 @@
                     android:layout_marginRight="12dp"
                     android:textSize="10sp"
                     android:textStyle="italic"
-                    app:price_text="@{vmGifts.selectedMyGift.price}"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewGiftName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/textViewGiftName"
                     app:layout_constraintTop_toTopOf="@id/textViewGiftName"
+                    app:price_text="@{vmGifts.selectedMyGift.price}"
                     tools:text="100" />
 
                 <ScrollView
@@ -84,9 +85,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="2dp"
+                        android:text="@{vmGifts.selectedMyGift.description}"
                         android:textSize="10sp"
                         android:textStyle="normal"
-                        android:text="@{vmGifts.selectedMyGift.description}"
                         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies lacinia, nisl nunc aliquet nisl, eget aliquet nisl nisl sit amet nisl.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, nisl eget ultricies lacinia, nisl nunc aliquet nisl, eget aliquet nisl nisl sit amet nisl." />
 
                 </ScrollView>
@@ -116,6 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:hint="Name"
+                    android:text="@{vmGifts.me.name}"
                     android:textColor="@color/primaryTextColor"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -128,6 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:hint="9984800187"
+                    android:text="@{vmGifts.me.phone}"
                     android:textColor="@color/primaryTextColor"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -139,6 +142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:hint="LDA, Lucknow, UP, India 226016"
+                    android:text="@{vmGifts.userAddress}"
                     android:textColor="@color/primaryTextColor"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"

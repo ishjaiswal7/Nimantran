@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nimantran.models.user.Guest
+import com.example.nimantran.models.user.Invite
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
@@ -19,6 +20,9 @@ class MyGuestViewModel : ViewModel() {
 
     private val _isSaved = MutableLiveData(false)
     val isSaved: MutableLiveData<Boolean> = _isSaved
+
+    private val _message = MutableLiveData<String>()
+    val message: MutableLiveData<String> = _message
 
     fun getGuests(db: FirebaseFirestore, uid: String?) {
         loadGuests(db, uid ?: "")
@@ -59,12 +63,14 @@ class MyGuestViewModel : ViewModel() {
             Log.e("TAG", "Deselected guest ${guest.name}")
         }
     }
+
     fun clearGuestList() {
         if (_selectedGuest.value != null) {
             _selectedGuest.value = setOf()
             Log.e("TAG", "Deselected guest")
         }
     }
+
     fun saveGuest(
         db: FirebaseFirestore,
         name: String,
@@ -97,6 +103,46 @@ class MyGuestViewModel : ViewModel() {
         }
     }
 
+    fun inviteGuest(
+        db: FirebaseFirestore,
+        uid: String,
+    ) {
+        _isLoading.value = true
+        // get selected guests
+        val selectedGuests = _selectedGuest.value
+        if (selectedGuests != null) {
+            // save guests to invites collection
+            for (guest in selectedGuests) {
+                val invite = Invite(
+                    clientId = uid,
+                    guestname = guest.name,
+                    phone = guest.phone,
+                    address = guest.address,
+                    gid = guest.id,
+                    message = _message.value ?: "",
+                    date = Calendar.getInstance().time.toString()
+                )
+                db.collection(COLL_MY_INVITES).add(invite).addOnSuccessListener {
+                    _isLoading.value = false
+                    _isSaved.value = true
+                    Log.d("MyGuestViewModel", "Guest invited")
+                }.addOnFailureListener {
+                    _isLoading.value = false
+                    _isSaved.value = false
+                    Log.e("MyGuestViewModel", "Error inviting guest ${it.message}")
+                }.addOnCanceledListener {
+                    _isLoading.value = false
+                    _isSaved.value = false
+                    Log.e("MyGuestViewModel", "Cancelled inviting guest")
+                }
+            }
+        } else {
+            _isLoading.value = false
+            _isSaved.value = false
+            Log.e("MyGuestViewModel", "No guest selected")
+        }
+    }
+
     private fun validateGuest(
         name: String,
         phone: String,
@@ -112,5 +158,14 @@ class MyGuestViewModel : ViewModel() {
 
     fun getUid(): String {
         return UUID.randomUUID().toString()
+    }
+
+    fun updateInvitedGuest(guest: Guest, isSelected: Boolean) {
+        if (isSelected) selectGuest(guest)
+        else unSelectGuest(guest)
+    }
+
+    companion object {
+        const val COLL_MY_INVITES = "invites"
     }
 }
