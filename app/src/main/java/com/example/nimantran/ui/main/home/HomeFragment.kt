@@ -17,12 +17,9 @@ import com.google.firebase.ktx.Firebase
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var db: FirebaseFirestore
-    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        db = Firebase.firestore
     }
 
     override fun onCreateView(
@@ -36,22 +33,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        homeViewModel.getMyCards(db) // fetch data only
-        homeViewModel.mycards.observe(viewLifecycleOwner) { mycards ->
-            if (binding.swipeRefreshLayoutHome.isRefreshing) {
-                binding.swipeRefreshLayoutHome.isRefreshing = false
-            }
-        }
-        binding.swipeRefreshLayoutHome.setOnRefreshListener {
-            homeViewModel.getMyCards(db)
-        }
+
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-    companion object {
-        const val COLL_MYCARDS = "mycards"
-    }
 }

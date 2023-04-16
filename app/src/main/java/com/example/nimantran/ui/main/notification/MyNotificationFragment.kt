@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.nimantran.R
 import com.example.nimantran.adapters.MyNotificationAdapter
 import com.example.nimantran.databinding.FragmentMyNotificationBinding
+import com.example.nimantran.ui.main.notification.MyNotificationFragmentDirections
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -47,7 +48,8 @@ class MyNotificationFragment : Fragment() {
                 binding.recyclerViewMyNotification.adapter =
                     MyNotificationAdapter(requireActivity()) {
                         myNotificationViewModel.selectMyNotification(it)
-                        val dir = MyNotificationFragmentDirections.actionMyNotificationFragmentToMyReadNotificationFragment()
+                        val dir =
+                            MyNotificationFragmentDirections.actionMyNotificationFragmentToMyReadNotificationFragment()
                         findNavController().navigate(dir)
                     }
 

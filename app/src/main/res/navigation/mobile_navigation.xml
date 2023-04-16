@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_homeFragment_to_myNotificationFragment"
             app:destination="@id/myNotificationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myCardsFragment"
+            app:destination="@id/myCardsFragment" />
     </fragment>
     <fragment
         android:id="@+id/templateDesignsFragment"
@@ -32,6 +35,9 @@
         <action
             android:id="@+id/action_templateDesignsFragment_to_cardEditorFragment"
             app:destination="@id/cardEditorFragment" />
+        <action
+            android:id="@+id/action_templateDesignsFragment_to_myCardsFragment"
+            app:destination="@id/myCardsFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardEditorFragment"
@@ -164,4 +170,27 @@
         android:name="com.example.nimantran.ui.main.addcard.getCardMsgFragment"
         android:label="fragment_get_card_msg"
         tools:layout="@layout/fragment_get_card_msg" />
+    <fragment
+        android:id="@+id/myCardsFragment"
+        android:name="com.example.nimantran.ui.main.mycards.MyCardsFragment"
+        android:label="fragment_my_cards"
+        tools:layout="@layout/fragment_my_cards" >
+        <action
+            android:id="@+id/action_myCardsFragment_to_myCardViewFragment"
+            app:destination="@id/myCardViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myCardViewFragment"
+        android:name="com.example.nimantran.ui.main.mycards.MyCardViewFragment"
+        android:label="fragment_my_card_view"
+        tools:layout="@layout/fragment_my_card_view" >
+        <action
+            android:id="@+id/action_myCardViewFragment_to_inviteResponseListFragment"
+            app:destination="@id/inviteResponseListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inviteResponseListFragment"
+        android:name="com.example.nimantran.ui.main.mycards.InviteResponseListFragment"
+        android:label="fragment_invite_response_list"
+        tools:layout="@layout/fragment_invite_response_list" />
 </navigation>

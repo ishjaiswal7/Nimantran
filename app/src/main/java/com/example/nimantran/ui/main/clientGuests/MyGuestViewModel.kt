@@ -114,13 +114,12 @@ class MyGuestViewModel : ViewModel() {
             // save guests to invites collection
             for (guest in selectedGuests) {
                 val invite = Invite(
-                    clientId = uid,
-                    guestname = guest.name,
+                    guestId = guest.id,
+                    guestName = guest.name,
                     phone = guest.phone,
-                    address = guest.address,
-                    gid = guest.id,
-                    message = _message.value ?: "",
-                    date = Calendar.getInstance().time.toString()
+                    response = "Not Responded",
+                    //message = _message.value ?: "",
+                    //date = Calendar.getInstance().time.toString()
                 )
                 db.collection(COLL_MY_INVITES).add(invite).addOnSuccessListener {
                     _isLoading.value = false
