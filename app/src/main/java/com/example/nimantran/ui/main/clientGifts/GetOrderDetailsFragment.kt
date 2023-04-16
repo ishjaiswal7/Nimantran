@@ -128,7 +128,13 @@ class GetOrderDetailsFragment : Fragment() {
                     myGiftsViewModel.addOrder(db, auth, it)
                 }
                 // go to payment gateway
-                startActivity(Intent(activity, CheckoutActivity::class.java))
+               // startActivity(Intent(activity, CheckoutActivity::class.java))
+/*
+                Intent(this, CheckoutActivity::class.java).also {
+                    it.putExtra("amount", binding.textViewTotPayableAmount.text.toString().toFloat())
+                    startActivity(it)
+                }
+  */
             }
             Log.d("abc", myGuestViewModel.selectedGuest.value.toString())
             Log.d("gift", myGiftsViewModel.selectedMyGift.value.toString())
@@ -136,3 +142,4 @@ class GetOrderDetailsFragment : Fragment() {
     }
 
 }
+

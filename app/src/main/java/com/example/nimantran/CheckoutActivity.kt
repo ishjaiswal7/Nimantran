@@ -9,6 +9,7 @@ import com.example.nimantran.databinding.ActivityCheckoutBinding
 import com.example.nimantran.databinding.ActivityMainBinding
 import com.github.kittinunf.fuel.httpPost
 import com.github.kittinunf.fuel.json.responseJson
+import com.github.kittinunf.result.Result
 import com.stripe.android.PaymentConfiguration
 import com.stripe.android.paymentsheet.PaymentSheet
 import com.stripe.android.paymentsheet.PaymentSheetResult
@@ -24,7 +25,7 @@ class CheckoutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCheckoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-/*
+
         paymentSheet = PaymentSheet(this, ::onPaymentSheetResult)
         paymentIntentClientSecret = getString(R.string.pk)
         val amount = intent.getFloatExtra("amount", 0f)
@@ -96,7 +97,7 @@ class CheckoutActivity : AppCompatActivity() {
     fun showAlert(message: String) {
         AlertDialog.Builder(this).setTitle("Alert").setMessage(message)
             .setPositiveButton("OK", null).show()
-*/
+
     }
 
 }
