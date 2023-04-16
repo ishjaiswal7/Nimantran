@@ -45,6 +45,7 @@ class OrderListFragment : Fragment() {
                         requireActivity(),
                     ) {
                         orderListViewModel.selectOrder(it)
+
                         findNavController().navigate(R.id.action_orderListFragment_to_orderStatusFragment)
                     }
 
