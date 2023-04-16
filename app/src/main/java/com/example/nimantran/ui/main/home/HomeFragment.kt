@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.nimantran.R
 import com.example.nimantran.adapters.MyCardsAdapter
 import com.example.nimantran.databinding.FragmentHomeBinding
@@ -33,6 +34,30 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.textViewStartDesigning.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_templateDesignsFragment)
+        }
+        binding.imageView.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_templateDesignsFragment)
+        }
+        binding.imageView2.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_templateDesignsFragment)
+        }
+        binding.imageView3.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_templateDesignsFragment)
+        }
+        binding.imageView4.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_myGiftsFragment)
+        }
+        binding.imageView5.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_myGiftsFragment)
+        }
+        binding.imageView6.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_myGiftsFragment)
+        }
+        binding.textViewOrderGift.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_myGiftsFragment)
+        }
 
     }
 

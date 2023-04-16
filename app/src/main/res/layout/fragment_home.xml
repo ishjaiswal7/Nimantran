@@ -12,9 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-
         <TextView
-            android:id="@+id/textViewGift"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Revolutionising the way you invite"
@@ -25,6 +24,97 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+        <TextView
+            android:id="@+id/textViewStartDesigning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:text="Start Designing Your Invitation"
+            android:textSize="18sp"
+            android:layout_marginTop="23dp"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/secondaryColor"
+            app:layout_constraintTop_toBottomOf="@id/textView"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="140dp"
+            android:layout_height="198dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="24dp"
+            android:padding="1dp"
+            android:src="@drawable/template1"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewStartDesigning"
+            />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="140dp"
+            android:layout_height="198dp"
+            android:padding="1dp"
+            android:layout_marginRight="24dp"
+            android:src="@drawable/template3"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imageView"
+            />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="140dp"
+            android:layout_height="198dp"
+            android:padding="1dp"
+            android:src="@drawable/template4"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="-60dp"
+            app:layout_constraintTop_toBottomOf="@id/imageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/textViewOrderGift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:text="Order a Gifts for your Guests"
+            android:textSize="18sp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/secondaryColor"
+            app:layout_constraintTop_toBottomOf="@id/imageView3"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            android:src="@drawable/gift1"
+            android:layout_marginLeft="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewOrderGift"
+            />
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            android:src="@drawable/gift2"
+            android:layout_marginRight="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imageView4"
+            />
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="120dp"
+            android:layout_height="130dp"
+            android:src="@drawable/gift3"
+            android:layout_marginTop="-30dp"
+            app:layout_constraintTop_toBottomOf="@id/imageView4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
