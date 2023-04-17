@@ -15,6 +15,8 @@ import com.example.nimantran.R
 import com.example.nimantran.adapters.OrderListAdapter
 import com.example.nimantran.adapters.admin.GuestListAdapter
 import com.example.nimantran.databinding.FragmentOrderStatusBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -23,11 +25,13 @@ class OrderStatusFragment : Fragment() {
     private var _binding: FragmentOrderStatusBinding? = null
     private val binding get() = _binding!!
     private lateinit var db: FirebaseFirestore
+    private lateinit var auth : FirebaseAuth
     private val orderListViewModel: OrderListViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         db = Firebase.firestore
+        auth = Firebase.auth
     }
 
     override fun onCreateView(
@@ -46,13 +50,15 @@ class OrderStatusFragment : Fragment() {
 
         binding.textViewUserName.text = orderListViewModel.client.value?.name.toString()
         binding.textViewUserPhone.text = orderListViewModel.client.value?.phone.toString()
-        orderListViewModel.selectedOrder.observe(viewLifecycleOwner) { order ->
+        val selectedOrder = orderListViewModel.selectedOrder
+        selectedOrder.observe(viewLifecycleOwner) { order ->
             Toast.makeText(requireContext(), "order loaded", Toast.LENGTH_SHORT).show()
         }
+        val myOrder = selectedOrder.value
 
         orderListViewModel.getGuests(
             db,
-            orderListViewModel.selectedOrder.value?.clientID.toString()
+            selectedOrder.value?.clientID.toString()
         ) // fetch data only
         orderListViewModel.guests.observe(viewLifecycleOwner) { guests ->
             if (guests.isNotEmpty()) {
@@ -60,7 +66,7 @@ class OrderStatusFragment : Fragment() {
                 binding.recyclerViewOrderList.adapter = OrderListAdapter(requireContext()) {
                 }
                 (binding.recyclerViewOrderList.adapter as GuestListAdapter).submitList(
-                    orderListViewModel.selectedOrder.value?.guest
+                    selectedOrder.value?.guest
                 )
             } else {
                 binding.recyclerViewOrderList.visibility = View.GONE

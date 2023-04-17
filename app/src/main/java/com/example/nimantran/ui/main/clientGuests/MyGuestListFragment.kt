@@ -118,7 +118,6 @@ class MyGuestListFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                             )
  //                       findNavController().navigate(dir)
                     }
-
                 (binding.recyclerViewMyGuestList.adapter as MyGuestListAdapter).submitList(
                     guests
                 )

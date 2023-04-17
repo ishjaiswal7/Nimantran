@@ -9,6 +9,7 @@
             type="com.example.nimantran.models.user.MyCards" />
     </data>
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewMyCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -21,12 +22,11 @@
             android:layout_width="340dp"
             android:layout_height="200dp"
             >
-
             <ImageView
                 android:id="@+id/imageViewCard"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@{mycards.cardImage}"
+                image="@{mycards.cardImage}"
                 tools:src="@tools:sample/backgrounds/scenic"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"

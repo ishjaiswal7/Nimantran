@@ -6,21 +6,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.nimantran.adapters.MyCardsAdapter
 import com.example.nimantran.databinding.FragmentMyCardsBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.example.nimantran.ui.main.addcard.TemplateCardViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 
 class MyCardsFragment : Fragment() {
     private var _binding: FragmentMyCardsBinding? = null
     private val binding get() = _binding!!
     private lateinit var db: FirebaseFirestore
-    private val templateCardViewModel: TemplateCardViewModel by activityViewModels()
+    private lateinit var auth: FirebaseAuth
+    private val myCardsViewModel: MyCardsViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         db = Firebase.firestore
+        auth = Firebase.auth
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,14 +38,30 @@ class MyCardsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        templateCardViewModel.getMyCards(db)
-        templateCardViewModel.mycards.observe(viewLifecycleOwner) { mycards ->
+        myCardsViewModel.getMyCards(db, auth.currentUser?.uid)
+        myCardsViewModel.myCards.observe(viewLifecycleOwner) { myCards ->
+            if(myCards.isNotEmpty()){
+                binding.recyclerViewMyCards.adapter =
+                    MyCardsAdapter(requireActivity()){
+                        myCardsViewModel.selectMyCard(it)
+                        val dir =
+                            MyCardsFragmentDirections.actionMyCardsFragmentToMyCardViewFragment(
+                                it.cardID
+                            )
+                        findNavController().navigate(dir)
+                    }
+                (binding.recyclerViewMyCards.adapter as MyCardsAdapter).submitList(
+                    myCards
+                )
+            }else{
+                binding.recyclerViewMyCards.visibility = View.GONE
+            }
             if (binding.swipeRefreshLayoutMyCards.isRefreshing) {
                 binding.swipeRefreshLayoutMyCards.isRefreshing = false
             }
         }
         binding.swipeRefreshLayoutMyCards.setOnRefreshListener {
-            templateCardViewModel.getMyCards(db)
+            myCardsViewModel.getMyCards(db, auth.currentUser?.uid)
         }
     }
     override fun onDestroy() {

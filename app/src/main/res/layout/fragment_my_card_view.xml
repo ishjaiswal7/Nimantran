@@ -3,7 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.main.mycards.MyCardViewFragment">
-
+    <data>
+        <variable
+            name="myCardViewModel"
+            type="com.example.nimantran.ui.main.mycards.MyCardsViewModel"/>
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

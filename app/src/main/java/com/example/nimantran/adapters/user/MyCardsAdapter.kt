@@ -16,8 +16,14 @@ class MyCardsAdapter(
     class ViewHolder(
         private val binding: ItemMyCardsBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(mycards: MyCards) {
+        fun bind(
+            mycards: MyCards,
+            listener: (MyCards) -> Unit,
+        ) {
             binding.mycards = mycards
+            binding.cardViewMyCard.setOnClickListener{
+                listener(mycards)
+            }
             binding.executePendingBindings()
         }
     }
@@ -32,10 +38,9 @@ class MyCardsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), listener)
         holder.itemView.setOnClickListener { listener(getItem(position)) }
     }
-
 }
 class MyCardsDiffUtil : DiffUtil.ItemCallback<MyCards>() {
     override fun areItemsTheSame(oldItem: MyCards, newItem: MyCards): Boolean {

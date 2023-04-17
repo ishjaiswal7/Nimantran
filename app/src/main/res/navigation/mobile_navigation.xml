@@ -187,6 +187,9 @@
         <action
             android:id="@+id/action_myCardViewFragment_to_inviteResponseListFragment"
             app:destination="@id/inviteResponseListFragment" />
+        <argument
+            android:name="cardId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/inviteResponseListFragment"
