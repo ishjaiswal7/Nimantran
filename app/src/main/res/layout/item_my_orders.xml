@@ -26,14 +26,14 @@
 
             <ImageView
                 android:id="@+id/imageViewOrderedGift"
-                image="@{myOrder.gift.image}"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginStart="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_gift" />
+                tools:src="@drawable/ic_gift"
+                app:image="@{myOrder.gift.image}"/>
 
             <TextView
                 android:id="@+id/textViewOrderListID"
