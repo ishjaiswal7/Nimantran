@@ -48,7 +48,7 @@ class MyOrdersFragment : Fragment() {
                 binding.recyclerViewMyOrders.adapter =
                     MyOrdersAdapter(requireActivity()) {
                     myOrdersViewModel.selectMyOrder(it)
- // nav to order details
+                        // nav to order details
                     findNavController().navigate(R.id.action_myOrdersFragment_to_myOrderDetailsFragment)
                 }
                 (binding.recyclerViewMyOrders.adapter as MyOrdersAdapter).submitList(orders)

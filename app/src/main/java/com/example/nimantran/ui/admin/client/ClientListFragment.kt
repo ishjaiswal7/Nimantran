@@ -61,6 +61,33 @@ class ClientListFragment : Fragment() {
             findNavController().navigateUp()
             onDestroyView()
         }
+        binding.searchViewUserList.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    searchUser(newText)
+                }
+                return true
+            }
+        })
+    }
+
+    private fun searchUser(newText: String) {
+        //search user by id or name or phone or gender
+        val searchQuery = newText.toLowerCase()
+        val searchResult = userListViewModel.clients.value?.filter {
+            it.id.toLowerCase().contains(searchQuery) ||
+            it.name.toLowerCase().contains(searchQuery) ||
+                    it.phone.toString().toLowerCase().contains(searchQuery) ||
+                    it.gender.toLowerCase().contains(searchQuery)
+        }
+        if (searchResult != null) {
+            (binding.recyclerViewUserList.adapter as ClientListAdapter).submitList(searchResult)
+        }
     }
 
     override fun onDestroyView() {

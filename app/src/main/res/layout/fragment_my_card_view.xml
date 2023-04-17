@@ -50,7 +50,7 @@
             android:id="@+id/textViewGuestResponses"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="54dp"
             android:text="Guest Responses"
             android:textColor="@color/black"
             android:textSize="16dp"

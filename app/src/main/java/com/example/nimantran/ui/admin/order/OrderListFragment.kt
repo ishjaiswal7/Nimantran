@@ -62,6 +62,36 @@ class OrderListFragment : Fragment() {
         binding.imageViewBackFromOrderList.setOnClickListener {
             findNavController().navigateUp()
         }
+        //search order
+        binding.searchViewOrderList.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    searchOrder(newText)
+                }
+                return true
+            }
+        })
+    }
+
+    private fun searchOrder(newText: String) {
+        //search order by order id or order date or order status or sent to or total amount or gift quantity or gift item
+        val searchQuery = newText.toLowerCase()
+        val searchResult = orderListViewModel.orders.value?.filter {
+            it.id.toLowerCase().contains(searchQuery) ||
+                    it.orderDate.toString().toLowerCase().contains(searchQuery) ||
+                    it.orderStatus.toLowerCase().contains(searchQuery) ||
+                    it.sentTo.toLowerCase().contains(searchQuery) ||
+                    it.totalAmount.toString().toLowerCase().contains(searchQuery) ||
+                    it.giftQty.toLowerCase().contains(searchQuery) ||
+                    it.gift.item.toLowerCase().contains(searchQuery)
+        }
+        if (searchResult != null) {
+            (binding.recyclerViewOrderList.adapter as OrderListAdapter).submitList(searchResult)
+        }
     }
 
     override fun onDestroyView() {

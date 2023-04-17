@@ -13,7 +13,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewOrderList"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="16dp"
@@ -52,7 +52,7 @@
                 android:id="@+id/textViewOrderID"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
+                android:layout_marginLeft="4dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="4dp"
                 android:textStyle="bold"
@@ -63,25 +63,27 @@
 
             <TextView
                 android:id="@+id/textViewOrderListID"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="2dp"
                 android:text="@{order.id}"
                 android:textSize="10sp"
-                tools:text="Order ID"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/textViewOrderID"
-                app:layout_constraintTop_toTopOf="@id/textViewOrderID" />
+                app:layout_constraintTop_toTopOf="@id/textViewOrderID"
+                tools:text="Order ID" />
 
             <TextView
                 android:id="@+id/textViewOrderListTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
                 android:text="@{order.gift.item}"
-                tools:text="Order Title"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewOrderListStatus"
                 app:layout_constraintStart_toStartOf="@id/textViewOrderID"
-                app:layout_constraintTop_toBottomOf="@id/textViewOrderID" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewOrderListID"
+                tools:text="Order Title" />
 
 
          <!--   <TextView
@@ -105,68 +107,77 @@
                 app:layout_constraintStart_toStartOf="@id/textViewOrderListTitle"
                 tools:text="Order Status"
                 android:text="@{order.orderStatus}"/>
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Sent to:"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                android:layout_marginRight="8dp"
-                app:layout_constraintBottom_toBottomOf="@id/imageViewOrderedGift"
-                app:layout_constraintEnd_toStartOf="@id/textViewOrderListDate"
-                android:text="Sent to:" />
+                app:layout_constraintBottom_toBottomOf="@+id/textViewOrderSentTo"
+                app:layout_constraintEnd_toStartOf="@+id/textViewOrderSentTo"
+                app:layout_constraintTop_toTopOf="@+id/textViewOrderSentTo" />
+
             <TextView
                 android:id="@+id/textViewOrderSentTo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{order.sentTo}"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@id/imageViewOrderedGift"
-                app:layout_constraintEnd_toEndOf="@id/textViewOrderListDate"
-                tools:text="Guests/User"
-                android:text="@{order.sentTo}"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Guests/User" />
 
 
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="Quantity:"
                 android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@id/textView"
-                app:layout_constraintBottom_toTopOf="@id/textView"
                 android:textStyle="bold"
-                android:text="Quantity:" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
             <TextView
                 android:id="@+id/textViewOrderedQty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@{order.giftQty}"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toTopOf="@id/textViewOrderSentTo"
-                app:layout_constraintEnd_toEndOf="@id/textViewOrderListDate"
-                tools:text="20"
-                android:text="@{order.giftQty}"/>
+                app:layout_constraintBottom_toBottomOf="@+id/textView1"
+                app:layout_constraintStart_toEndOf="@+id/textView1"
+                app:layout_constraintTop_toTopOf="@+id/textView1"
+                tools:text="20" />
 
             <TextView
                 android:id="@+id/textViewOrderListDate"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="10/10/24"
-                app:humanize_date_text="@{order.orderDate}"
-                android:textSize="12sp"
                 android:layout_marginRight="16dp"
-                app:layout_constraintTop_toTopOf="@id/textViewOrderListID"
-                app:layout_constraintBottom_toBottomOf="@id/textViewOrderListID"
-                app:layout_constraintEnd_toEndOf="parent" />
+                android:textSize="12sp"
+                app:humanize_date_text="@{order.orderDate}"
+                app:layout_constraintBottom_toTopOf="@+id/textViewOrderListID"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewUserPhone"
+                tools:text="10/10/24" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageViewOrderedGift"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="4dp"
                 app:image="@{order.gift.image}"
                 tools:src="@drawable/ic_gift"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewUserName"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/textViewUserName"/>
 
         <!--    <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView3"

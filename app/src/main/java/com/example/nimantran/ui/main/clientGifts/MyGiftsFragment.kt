@@ -59,6 +59,32 @@ class MyGiftsFragment : Fragment() {
         binding.imageViewMyOrders.setOnClickListener {
             findNavController().navigate(R.id.action_myGiftsFragment_to_myOrdersFragment)
         }
+        binding.searchViewMyGifts.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    searchMyGifts(newText)
+                }
+                return true
+            }
+        })
+    }
+
+    private fun searchMyGifts(newText: String) {
+        //search my gifts by item or description or price
+        val searchQuery = newText.toLowerCase()
+        val searchResult = myGiftsViewModel.myGifts.value?.filter {
+            it.item.toLowerCase().contains(searchQuery) ||
+                    it.description.toLowerCase().contains(searchQuery) ||
+                    it.price.toString().contains(searchQuery)
+        }
+        if (searchResult != null) {
+            (binding.recyclerViewMyGifts.adapter as MyGiftAdapter).submitList(searchResult)
+        }
 
     }
 

@@ -83,4 +83,9 @@ class OrderListViewModel : ViewModel() {
         }
     }
 
+    fun updateOrderStatus(db: FirebaseFirestore, status: String) {
+
+    }
+
+
 }

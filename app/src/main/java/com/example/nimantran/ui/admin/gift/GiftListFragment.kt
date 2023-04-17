@@ -68,6 +68,39 @@ class GiftListFragment : Fragment() {
         binding.imageViewBackFromGiftList.setOnClickListener {
             findNavController().navigateUp()
         }
+        binding.searchViewGiftList.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    searchGifts(newText)
+                }
+                return true
+            }
+        })
+    }
+
+    private fun searchGifts(newText: String) {
+        // search in gifts by item or description or price or quantity
+        val searchQuery = newText.toLowerCase()
+        val searchResult = giftViewModel.gifts.value?.filter {
+            it.item.toLowerCase().contains(searchQuery) ||
+                    it.description.toLowerCase().contains(searchQuery) ||
+                    it.price.toString().contains(searchQuery) ||
+                    it.quantity.toString().contains(searchQuery)
+        }
+        if (searchResult != null) {
+            binding.recyclerViewGiftList.adapter = GiftAdapter(requireActivity()) {
+                giftViewModel.selectGift(it)
+                val dir =
+                    GiftListFragmentDirections.actionGiftListFragmentToEditGiftFragment(it.item)
+                findNavController().navigate(dir)
+            }
+            (binding.recyclerViewGiftList.adapter as GiftAdapter).submitList(searchResult)
+        }
     }
 
     override fun onDestroyView() {

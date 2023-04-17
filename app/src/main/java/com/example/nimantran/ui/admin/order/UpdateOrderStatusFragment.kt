@@ -27,6 +27,28 @@ class UpdateOrderStatusFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        db = FirebaseFirestore.getInstance()
+        binding.order = orderListViewModel
+        //update order status on radio button click
+        binding.radioGroupOrderStatus.setOnCheckedChangeListener { group, checkedId ->
+            when(checkedId){
+                R.id.radioButtonOrderPlaced -> {
+                    orderListViewModel.updateOrderStatus(db, "@string/order_placed")
+                }
+                R.id.radioButtonOrderConfirmed -> {
+                    orderListViewModel.updateOrderStatus(db, "@string/order_confirmed")
+                }
+                R.id.radioButtonOrderDispatched -> {
+                    orderListViewModel.updateOrderStatus(db, "@string/order_dispatched")
+                }
+                R.id.radioButtonOrderDelivered -> {
+                    orderListViewModel.updateOrderStatus(db, "@string/order_delivered")
+                }
+                R.id.radioButtonOrderAddressNotFound -> {
+                    orderListViewModel.updateOrderStatus(db, "@string/order_address_not_found")
+                }
+            }
+        }
 
     }
 

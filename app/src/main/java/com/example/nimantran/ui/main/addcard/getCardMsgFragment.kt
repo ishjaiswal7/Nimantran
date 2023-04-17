@@ -118,32 +118,11 @@ class getCardMsgFragment : Fragment() {
                 Toast.makeText(requireContext(), "Whatsapp not installed", Toast.LENGTH_SHORT)
                     .show()
             }
-
         }
     }
 
     private fun shareToAllGuestsUsingSms() {
         templateCardViewModel.inviteList.value?.forEach() {
-            // send to whatsapp
-            val smsIntent =
-                requireActivity().packageManager.getLaunchIntentForPackage("com.android.mms")
-
-            if (smsIntent != null) {
-                val sendIntent = Intent()
-                sendIntent.action = Intent.ACTION_SEND
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "Invitation Card")
-                sendIntent.putExtra(
-                    Intent.EXTRA_STREAM,
-                    Uri.parse(templateCardViewModel.invitationCard.value.toString())
-                )
-                sendIntent.type = "image/*"
-                sendIntent.setPackage("com.android.mms")
-                startActivity(sendIntent)
-            } else {
-                Toast.makeText(requireContext(), "Messages not installed", Toast.LENGTH_SHORT)
-                    .show()
-            }
-
         }
     }
 

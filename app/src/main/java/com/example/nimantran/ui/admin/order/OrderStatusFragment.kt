@@ -76,6 +76,9 @@ class OrderStatusFragment : Fragment() {
         binding.imageViewBackFromOrderStatus.setOnClickListener {
             findNavController().navigateUp()
         }
+        binding.buttonUpdateOrderStatus.setOnClickListener {
+            findNavController().navigate(R.id.action_orderStatusFragment_to_updateOrderStatusFragment)
+        }
     }
 
 

@@ -92,7 +92,8 @@ class TemplateCardViewModel : ViewModel() {
 
         // upload invitation card to firebase storage
         val storageRef = storage.reference
-        val invitationCardRef = storageRef.child("invitation_cards/$uid")
+        val filename = invitationCardUri.substring(invitationCardUri.lastIndexOf("/") + 1)
+        val invitationCardRef = storageRef.child("invitation_cards/$title$filename")
         invitationCardRef.putFile(Uri.parse(invitationCardUri)).addOnSuccessListener {
             Log.d("TemplateCardViewmodel", "Invitation card uploaded")
             // get download url
@@ -118,7 +119,7 @@ class TemplateCardViewModel : ViewModel() {
                     eventDate = date,
                     cardImage = uri.toString()
                 )
-                db.collection(COLL_MYCARDS).document(uid).set(mycards).addOnSuccessListener {
+                db.collection(COLL_MYCARDS).add(mycards).addOnSuccessListener {
                     Log.d("TemplateCardViewmodel", "Invitation saved to firestore   ")
 
                 }.addOnFailureListener {
