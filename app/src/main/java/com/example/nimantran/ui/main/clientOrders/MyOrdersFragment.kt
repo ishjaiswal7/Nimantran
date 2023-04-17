@@ -75,6 +75,6 @@ class MyOrdersFragment : Fragment() {
     }
 
     companion object {
-        const val COLL_ORDERS = "myorders"
+        const val COLL_ORDERS = "myOrders"
     }
 }

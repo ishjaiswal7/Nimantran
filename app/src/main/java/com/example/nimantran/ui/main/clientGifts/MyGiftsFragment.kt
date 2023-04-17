@@ -52,6 +52,10 @@ class MyGiftsFragment : Fragment() {
             }
         }
 
+        binding.swipeRefreshLayoutMyGifts.setOnRefreshListener {
+            myGiftsViewModel.getMyGifts(db)
+        }
+
         binding.imageViewMyOrders.setOnClickListener {
             findNavController().navigate(R.id.action_myGiftsFragment_to_myOrdersFragment)
         }
