@@ -43,11 +43,12 @@ class MyOrdersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         myOrdersViewModel.getMyOrders(db, auth.currentUser?.uid)// get my orders
-        myOrdersViewModel.myorders.observe(viewLifecycleOwner) { orders ->
+        myOrdersViewModel.myOrders.observe(viewLifecycleOwner) { orders ->
             if (orders.isNotEmpty()) {
                 binding.recyclerViewMyOrders.adapter =
                     MyOrdersAdapter(requireActivity()) {
-                    myOrdersViewModel.selectOrder(it)
+                    myOrdersViewModel.selectMyOrder(it)
+ // nav to order details
                     findNavController().navigate(R.id.action_myOrdersFragment_to_myOrderDetailsFragment)
                 }
                 (binding.recyclerViewMyOrders.adapter as MyOrdersAdapter).submitList(orders)
