@@ -24,7 +24,7 @@ class MyOrdersViewModel : ViewModel(){
     private fun loadMyOrders(db: FirebaseFirestore, uid: String = ""){
         // fetch data from firebase firestore
         db.collection(COLL_ORDERS)
-            .whereEqualTo("clientId", uid).get().addOnFailureListener {
+            .whereEqualTo("clientID", uid).get().addOnFailureListener {
             Log.e("MyOrdersViewModel", "Error fetching myorders ${it.message}")
         }.addOnCanceledListener {
             Log.e("MyOrdersViewModel", "Cancelled fetching myorders")
