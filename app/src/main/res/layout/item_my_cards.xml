@@ -103,6 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Anamika"
+                android:text="@{mycards.rsvp}"
                 android:shadowColor="@color/black"
                 android:shadowDx="3"
                 android:shadowDy="3"
@@ -111,6 +112,21 @@
                 android:textColor="@color/secondaryColor"
                 app:layout_constraintTop_toTopOf="@id/textView1"
                 app:layout_constraintStart_toEndOf="@id/textView1"
+                android:layout_marginLeft="8dp"/>
+            <TextView
+                android:id="@+id/textViewPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="9336843452"
+                android:text="@{mycards.phone}"
+                android:shadowColor="@color/black"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="0.5"
+                android:textSize="12dp"
+                android:textColor="@color/secondaryColor"
+                app:layout_constraintTop_toBottomOf="@id/textView1"
+                app:layout_constraintStart_toStartOf="@id/textView1"
                 android:layout_marginLeft="8dp"/>
             <TextView
                 android:id="@+id/textView1"
