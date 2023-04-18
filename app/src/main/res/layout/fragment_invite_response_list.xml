@@ -76,19 +76,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchViewInviteResponseList"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/round_border"
-            app:iconifiedByDefault="false"
-            app:queryHint="Search guest..."
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardViewMyCard"/>
-
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayoutInviteResponseList"
             android:layout_width="match_parent"
@@ -98,7 +85,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/searchViewInviteResponseList">
+            app:layout_constraintTop_toBottomOf="@id/cardViewMyCard">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewInviteResponseList"
