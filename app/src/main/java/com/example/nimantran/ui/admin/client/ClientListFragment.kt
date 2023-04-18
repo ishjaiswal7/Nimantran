@@ -93,12 +93,10 @@ class ClientListFragment : Fragment() {
             (binding.recyclerViewUserList.adapter as ClientListAdapter).submitList(searchResult)
         }
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
     companion object {
         const val COLL_CLIENTS = "clients"
     }

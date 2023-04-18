@@ -53,7 +53,6 @@ class InviteResponseListFragment : Fragment() {
                 (binding.recyclerViewInviteResponseList.adapter as InviteResponseListAdapter).submitList(selectedMyCard.value?.invite)
             }
         }
-
         binding.swipeRefreshLayoutInviteResponseList.setOnRefreshListener {
             binding.swipeRefreshLayoutInviteResponseList.isRefreshing = false
         }

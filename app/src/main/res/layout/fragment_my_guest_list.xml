@@ -81,16 +81,5 @@
                 tools:listitem="@layout/item_my_guest_list"/>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-<com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/fabMyGuestList"
-    app:rippleColor="@color/primaryColor"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:backgroundTint="@color/primaryColor"
-    android:src="@drawable/ic_import_contacts"
-    android:layout_marginTop="-80dp"
-    android:layout_marginRight="20dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/swipeRefreshLayoutMyGuestList"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
