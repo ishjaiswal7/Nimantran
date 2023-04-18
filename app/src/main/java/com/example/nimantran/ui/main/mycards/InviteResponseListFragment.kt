@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nimantran.R
 import com.example.nimantran.adapters.user.InviteResponseListAdapter
 import com.example.nimantran.databinding.FragmentInviteResponseListBinding
@@ -19,7 +20,7 @@ class InviteResponseListFragment : Fragment() {
     private var _binding: FragmentInviteResponseListBinding? = null
     private val binding get() = _binding!!
     private lateinit var db: FirebaseFirestore
-    private val templateCardViewModel: TemplateCardViewModel by activityViewModels()
+    private val myCardViewModel: MyCardsViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         db = Firebase.firestore
@@ -29,12 +30,30 @@ class InviteResponseListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_invite_response_list, container, false)
+        binding.myCardViewModel = myCardViewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding.recyclerViewInviteResponseList.adapter = InviteResponseListAdapter(context, templateCardViewModel)
+
+        // get myCard from MyCardsFragment
+        val selectedMyCard = myCardViewModel.selectedMyCard
+        selectedMyCard.observe(viewLifecycleOwner) { myCard ->
+        }
+
+        // get inviteResponseList of MyCard
+        myCardViewModel.getInviteOfMyCard()
+        myCardViewModel.invite.observe(viewLifecycleOwner) { invite ->
+            if (invite != null) {
+                binding.recyclerViewInviteResponseList.layoutManager = LinearLayoutManager(context)
+                binding.recyclerViewInviteResponseList.adapter = InviteResponseListAdapter(requireContext()){
+                }
+                (binding.recyclerViewInviteResponseList.adapter as InviteResponseListAdapter).submitList(selectedMyCard.value?.invite)
+            }
+        }
+
         binding.swipeRefreshLayoutInviteResponseList.setOnRefreshListener {
             binding.swipeRefreshLayoutInviteResponseList.isRefreshing = false
         }

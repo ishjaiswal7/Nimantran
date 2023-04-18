@@ -3,14 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="guest"
-            type="com.example.nimantran.models.user.Guest" />
-        <variable
             name="invite"
             type="com.example.nimantran.models.user.Invite" />
     </data>
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewMyGuest"
+        android:id="@+id/cardViewMyGuestResponse"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
@@ -31,7 +28,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:hint="Name"
-                android:text="@{guest.name}"
+                android:text="@{invite.guestName}"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +37,7 @@
                 android:id="@+id/textViewMyGuestPhone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{guest.phone}"
+                android:text="@{invite.phone}"
                 android:hint="9984800187"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="4dp"
@@ -66,6 +63,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
                 android:layout_marginLeft="16dp"
+                android:text="@{invite.response}"
                 android:hint="Yes/No/May Be/Not Responded"
                 app:layout_constraintTop_toBottomOf="@id/textViewMyGuestName"
                 app:layout_constraintStart_toEndOf="@id/textView"

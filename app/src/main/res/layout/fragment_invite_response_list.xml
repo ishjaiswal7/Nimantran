@@ -5,8 +5,8 @@
     tools:context=".ui.main.mycards.InviteResponseListFragment">
     <data>
         <variable
-            name="templateCardViewModel"
-            type="com.example.nimantran.ui.main.addcard.TemplateCardViewModel" />
+            name="myCardViewModel"
+            type="com.example.nimantran.ui.main.mycards.MyCardsViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,7 +17,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             app:cardElevation="30dp"
-            app:cardCornerRadius="30dp"
             android:shadowRadius="30"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,17 +25,17 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 >
 
                 <ImageView
                     android:id="@+id/imageViewCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="140dp"
+                    android:layout_height="190dp"
                     tools:src="@tools:sample/backgrounds/scenic"
                     android:scaleType="centerCrop"
+                    image="@{myCardViewModel.selectedMyCard.cardImage}"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
                 <TextView
@@ -48,66 +47,31 @@
                     android:shadowDx="3"
                     android:shadowDy="3"
                     android:shadowRadius="0.5"
+                    android:text="@{myCardViewModel.selectedMyCard.eventDate}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Saturday 12:00 PM"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@color/secondaryColor"/>
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
-                    android:shadowColor="@color/black"
-                    android:shadowDx="3"
-                    android:shadowDy="3"
-                    android:shadowRadius="0.5"
-                    app:layout_constraintBottom_toBottomOf="@id/textViewCardDate"
-                    app:layout_constraintEnd_toStartOf="@id/textViewCardDate"
-                    app:layout_constraintTop_toTopOf="@id/textViewCardDate"
-                    android:text="Sent On"
-                    android:textSize="12dp"
-                    android:textColor="@color/secondaryColor"/>
-                <TextView
-                    android:id="@+id/textViewCardDate"
-                    android:layout_margin="16dp"
-                    android:shadowColor="@color/black"
-                    android:shadowDx="3"
-                    android:shadowDy="3"
-                    android:shadowRadius="0.5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/textViewEventDate"
-                    tools:text="Saturday 12:00 PM"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/secondaryColor"/>
-<!--
-                <ImageView
-                    android:id="@+id/cardDelete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_delete"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_margin="16dp"/>
-    -->
+
                 <TextView
                     android:id="@+id/textViewCardTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:shadowColor="@color/black"
                     android:shadowDx="3"
                     android:shadowDy="3"
                     android:shadowRadius="0.5"
                     tools:text="Happy Birthday"
+                    android:text="@{myCardViewModel.selectedMyCard.cardTitle}"
                     android:textSize="30dp"
                     android:textStyle="bold"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintStart_toEndOf="@id/imageViewCard"
                     android:textColor="@color/secondaryColor"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_margin="16dp"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

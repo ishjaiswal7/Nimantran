@@ -68,12 +68,6 @@ class OrderStatusFragment : Fragment() {
                 (binding.recyclerViewOrderGuestList.adapter as GuestListAdapter).submitList(
                     selectedOrder.value?.guest
                 )
-                //Toast number of guests in order
-                Toast.makeText(
-                    requireContext(),
-                    "Number of guests in order: ${selectedOrder.value?.guest?.size}",
-                    Toast.LENGTH_SHORT
-                ).show()
 
             } else {
                 binding.recyclerViewOrderGuestList.visibility = View.GONE

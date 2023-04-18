@@ -17,8 +17,12 @@ class InviteResponseListAdapter (
         class ViewHolder(
             private val binding: ItemMyInviteResponsesBinding
         ) : RecyclerView.ViewHolder(binding.root) {
-            fun bind(invite: Invite) {
+            fun bind(invite: Invite,
+            listener: (Invite) -> Unit) {
                 binding.invite = invite
+                binding.cardViewMyGuestResponse.setOnClickListener {
+                    listener(invite)
+                }
                 binding.executePendingBindings()
             }
         }
@@ -31,7 +35,7 @@ class InviteResponseListAdapter (
         return ViewHolder(binding)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), listener)
         holder.itemView.setOnClickListener { listener(getItem(position)) }
     }
 }

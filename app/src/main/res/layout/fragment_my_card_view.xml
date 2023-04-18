@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
+            android:text="@{myCardViewModel.selectedMyCard.cardTitle}"
             android:hint="Happy Birthday!"
             android:textSize="22dp"
             android:textStyle="italic"
@@ -28,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
+            android:text="@{myCardViewModel.selectedMyCard.eventDate}"
             android:hint="12th May 2020"
             android:textSize="22dp"
             android:textStyle="italic"
@@ -39,13 +41,12 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
+            image="@{myCardViewModel.selectedMyCard.cardImage}"
             app:layout_constraintBottom_toTopOf="@id/textViewGuestResponses"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewInvitationTitle"
-            app:layout_constraintVertical_bias="1.0"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            />
         <TextView
             android:id="@+id/textViewGuestResponses"
             android:layout_width="wrap_content"
@@ -53,12 +54,11 @@
             android:layout_marginBottom="54dp"
             android:text="Guest Responses"
             android:textColor="@color/black"
-            android:textSize="16dp"
+            android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="8dp"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

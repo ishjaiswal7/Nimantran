@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.nimantran.R
 import com.example.nimantran.adapters.MyCardsAdapter
 import com.example.nimantran.databinding.FragmentMyCardsBinding
 import com.google.firebase.firestore.FirebaseFirestore
@@ -44,11 +45,7 @@ class MyCardsFragment : Fragment() {
                 binding.recyclerViewMyCards.adapter =
                     MyCardsAdapter(requireActivity()){
                         myCardsViewModel.selectMyCard(it)
-                        val dir =
-                            MyCardsFragmentDirections.actionMyCardsFragmentToMyCardViewFragment(
-                                it.cardID
-                            )
-                        findNavController().navigate(dir)
+                        findNavController().navigate(R.id.action_myCardsFragment_to_myCardViewFragment)
                     }
                 (binding.recyclerViewMyCards.adapter as MyCardsAdapter).submitList(
                     myCards

@@ -14,7 +14,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-
 class MyReadNotificationFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentMyReadNotificationBinding? = null
     private val binding get() = _binding!!
@@ -37,7 +36,6 @@ class MyReadNotificationFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         myNotificationViewModel.selectedMyNotification.observe(viewLifecycleOwner) {
-
         }
 
         binding.imageViewClose.setOnClickListener {
