@@ -28,7 +28,6 @@ class GuestListAdapter(
             binding.executePendingBindings()
         }
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemMyGuestDetailsBinding.inflate(
             LayoutInflater.from(context),
