@@ -35,17 +35,24 @@ class GuestAuthenticationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        guestResponseViewModel.loadCards(db)
+
         binding.buttonVerifyRespond.setOnClickListener {
-            guestResponseViewModel.searchCardGuest(db, binding.textInputLayoutInviteCode.text.toString(), binding.textInputLayoutPhone.text.toString())
-            if(guestResponseViewModel.verifiedGuest){
-                findNavController().navigate(R.id.action_guestAuthenticationFragment_to_invitationResponseFragment)
+            guestResponseViewModel.selectCard(binding.textInputLayoutInviteCode.text.toString())
+            if(guestResponseViewModel.selectedCard != null){
+                guestResponseViewModel.searchCardGuest(binding.textInputLayoutPhone.text.toString())
+                if (guestResponseViewModel.selectedInvite != null){
+                    findNavController().navigate(R.id.action_guestAuthenticationFragment_to_invitationResponseFragment)
+                }
+                else{
+                    Toast.makeText(context, "Invalid Phone Number", Toast.LENGTH_SHORT).show()
+                }
             }
             else{
-                Toast.makeText(context, "Invalid Credentials", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Invalid Invite Code", Toast.LENGTH_SHORT).show()
             }
         }
     }
     companion object {
-        const val COLL_MYCARDS = "mycards"
     }
 }

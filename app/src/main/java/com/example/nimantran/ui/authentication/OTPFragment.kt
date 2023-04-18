@@ -254,7 +254,6 @@ class OTPFragment : Fragment() {
             resendVerificationCode()
             resendOtpTextViewVisibility()
         }
-
         binding.textViewClearOtp.setOnClickListener {
             binding.otpEditText1.setText("")
             binding.otpEditText2.setText("")
@@ -264,9 +263,5 @@ class OTPFragment : Fragment() {
             binding.otpEditText6.setText("")
             binding.otpEditText1.requestFocus()
         }
-
-
     }
-
-    companion object
 }
