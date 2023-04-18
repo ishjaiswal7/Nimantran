@@ -56,7 +56,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="4dp"
                 android:textStyle="bold"
-                android:textSize="10sp"
+                android:textSize="8sp"
                 android:text="Order ID:"
                 app:layout_constraintStart_toEndOf="@id/imageViewOrderedGift"
                 app:layout_constraintTop_toTopOf="@id/imageViewOrderedGift" />
@@ -68,10 +68,11 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginEnd="2dp"
                 android:text="@{order.id}"
-                android:textSize="10sp"
+                android:textSize="7sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/textViewOrderID"
                 app:layout_constraintTop_toTopOf="@id/textViewOrderID"
+                app:layout_constraintBottom_toBottomOf="@id/textViewOrderID"
                 tools:text="Order ID" />
 
             <TextView

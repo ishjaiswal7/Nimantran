@@ -41,9 +41,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="12dp"
                 android:text="@{myOrder.id}"
-                android:textSize="10sp"
+                android:textSize="7sp"
                 app:layout_constraintStart_toEndOf="@id/imageViewOrderedGift"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Order ID" />
@@ -52,6 +52,7 @@
                 android:id="@+id/textViewOrderListTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:text="@{myOrder.gift.item}"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/textViewOrderListID"
@@ -109,7 +110,7 @@
                 android:text="Quantity:"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toTopOf="@id/textView"
-                app:layout_constraintStart_toStartOf="@id/textView" />
+                app:layout_constraintEnd_toEndOf="@id/textView" />
 
             <TextView
                 android:id="@+id/textViewOrderedQty"
@@ -128,7 +129,6 @@
                 android:layout_marginRight="16dp"
                 android:textSize="12sp"
                 app:humanize_date_text="@{myOrder.orderDate}"
-                app:layout_constraintBottom_toBottomOf="@id/textViewOrderListID"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/textViewOrderListID"
                 tools:text="10/10/24" />
