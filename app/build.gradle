@@ -84,4 +84,5 @@ dependencies {
     implementation 'com.stripe:stripe-android:20.21.1'
     implementation 'com.github.kittinunf.fuel:fuel:2.3.1'
     implementation 'com.github.kittinunf.fuel:fuel-json:2.3.1'
+
 }
