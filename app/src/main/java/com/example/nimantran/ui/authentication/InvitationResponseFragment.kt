@@ -32,7 +32,7 @@ class InvitationResponseFragment : Fragment() {
         binding.textViewCardMessage.text = guestResponseViewModel.inviteMessage
         binding.textViewRSVP.text = guestResponseViewModel.inviteRSVP
         binding.textViewPhone.text = guestResponseViewModel.invitePhone
-        //Set imviteCardImage in the image view
+        //Set inviteCardImage in the image view
         binding.textViewTapToRespond.setOnClickListener {
             binding.buttonNo.visibility = View.VISIBLE
             binding.buttonYes.visibility = View.VISIBLE

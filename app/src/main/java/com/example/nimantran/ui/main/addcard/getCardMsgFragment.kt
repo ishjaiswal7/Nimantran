@@ -117,7 +117,6 @@ class getCardMsgFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             }
         }
     }
-
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -149,7 +148,6 @@ class getCardMsgFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             }
         }
     }
-
     private fun shareToAllGuestsUsingSms() {
         templateCardViewModel.inviteList.value?.forEach() {
             val smsManager =
@@ -180,10 +178,12 @@ class getCardMsgFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     companion object {}
 
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
-        TODO("Not yet implemented")
+        //on permission granted
+        Toast.makeText(requireContext(), "Permission granted", Toast.LENGTH_SHORT).show()
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
-        TODO("Not yet implemented")
+        //on permission denied
+        Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
     }
 }
