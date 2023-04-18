@@ -72,7 +72,9 @@ class OrderListViewModel : ViewModel() {
     }
 
     fun getClient(db: FirebaseFirestore) {
-        db.collection(OrderStatusFragment.COLL_CLIENTS).whereEqualTo("id", selectedOrder.value?.clientID.toString()).get().addOnFailureListener {
+        db.collection(OrderStatusFragment.COLL_CLIENTS)
+            .whereEqualTo("id", selectedOrder.value?.clientID.toString())
+            .get().addOnFailureListener {
             Log.e("OrderListViewModel", "Error fetching client ${it.message}")
         }.addOnCanceledListener {
             Log.e("OrderListViewModel", "Cancelled fetching client")

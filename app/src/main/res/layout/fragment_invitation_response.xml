@@ -1,24 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.authentication.InvitationResponseFragment"
-    android:padding="4dp">
-
+    tools:context=".ui.authentication.InvitationResponseFragment">
+    <data>
+        <variable
+            name="invitationResponseViewModel"
+            type="com.example.nimantran.ui.authentication.GuestResponseViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/textViewCardTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Invitation"
+        android:textStyle="italic"
+        android:text="@{invitationResponseViewModel.inviteCardTitle}"
+        android:layout_margin="16dp"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Event Date:  "
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/textViewEventDate"
+        app:layout_constraintBottom_toBottomOf="@id/textViewEventDate"
+        app:layout_constraintTop_toTopOf="@id/textViewEventDate"/>
+    <TextView
+        android:id="@+id/textViewEventDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="5 May 2020"
+        android:textStyle="italic"
+        android:text="@{invitationResponseViewModel.inviteEventDate}"
+        android:layout_margin="16dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
     <ImageView
         android:id="@+id/imageViewInvitation"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/cardViewResponse"
+        image="@{invitationResponseViewModel.inviteCardImage}"
+        app:layout_constraintBottom_toTopOf="@+id/textViewCardMessage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/textViewCardTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
+    <TextView
+        android:id="@+id/textViewCardMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        tools:text="Hey, you have been invited to attend the event at Our Venue. Please RSVP to confirm your attendance. Thank you."
+        android:text="@{invitationResponseViewModel.inviteMessage}"
+        app:layout_constraintTop_toBottomOf="@id/imageViewInvitation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <TextView
+        android:id="@+id/textViewRSVPLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RSVP: "
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/textViewCardMessage"
+        app:layout_constraintTop_toBottomOf="@id/textViewCardMessage"
+        />
+
+    <TextView
+        android:id="@+id/textViewRSVP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        tools:text = "Some Name "
+        android:text="@{invitationResponseViewModel.inviteRSVP}"
+        app:layout_constraintTop_toTopOf="@id/textViewRSVPLabel"
+        app:layout_constraintStart_toEndOf="@id/textViewRSVPLabel"
+        app:layout_constraintBottom_toBottomOf="@id/textViewRSVPLabel"
+        />
+    <TextView
+        android:id="@+id/textViewPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        tools:text = "98******"
+        android:text="@{invitationResponseViewModel.invitePhone}"
+        app:layout_constraintTop_toTopOf="@id/textViewRSVPLabel"
+        app:layout_constraintStart_toEndOf="@id/textViewRSVP"
+        app:layout_constraintBottom_toBottomOf="@id/textViewRSVPLabel"
+        />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewResponse"
@@ -28,7 +106,7 @@
         android:backgroundTint="@color/primaryDarkColor"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageViewInvitation"
+        app:layout_constraintTop_toBottomOf="@id/textViewRSVP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
@@ -39,6 +117,7 @@
             android:paddingBottom="8dp">
 
             <TextView
+                android:id="@+id/textViewq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
@@ -48,7 +127,18 @@
                 android:textStyle="italic"
                 app:layout_constraintBottom_toTopOf="@id/buttonYes"
                 app:layout_constraintStart_toStartOf="@+id/buttonYes"
-                app:layout_constraintTop_toTopOf="parent"></TextView>
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewTapToRespond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap to Respond"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@id/textViewq"
+                app:layout_constraintTop_toBottomOf="@id/textViewq"
+                android:layout_marginTop="16dp"
+                android:textStyle="italic"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonNo"
@@ -58,6 +148,7 @@
                 android:background="@drawable/round_border"
                 android:text="No"
                 android:textStyle="bold"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/buttonMayBe"
                 app:layout_constraintStart_toEndOf="@+id/buttonYes" />
@@ -70,6 +161,7 @@
                 android:background="@drawable/round_border"
                 android:text="Yes"
                 android:textStyle="bold"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/buttonNo"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -82,6 +174,7 @@
                 android:text="May Be"
                 android:textStyle="bold"
                 android:layout_margin="2dp"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/buttonNo" />
@@ -90,6 +183,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

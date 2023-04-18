@@ -34,44 +34,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutInviteCode" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
             android:id="@+id/textInputLayoutPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="150dp"
-            android:background="@drawable/round_border"
+            android:hint="Phone Number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/textInputLayoutInviteCode">
+            app:layout_constraintBottom_toTopOf="@id/textInputLayoutInviteCode"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_border"
-                android:hint="Phone Number" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
+        <EditText
             android:id="@+id/textInputLayoutInviteCode"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:hint="Invite Code"
             android:layout_marginBottom="100dp"
-            android:background="@drawable/round_border"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInputLayoutPhone"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/round_border"
-                android:hint="Invitation Code" />
-        </com.google.android.material.textfield.TextInputLayout>
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
