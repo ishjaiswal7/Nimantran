@@ -72,6 +72,7 @@ class GetClientDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks
 
         viewModel.isSaved.observe(viewLifecycleOwner) { state ->
             if (state) {
+                Toast.makeText(activity, "Tap on Logo Above", Toast.LENGTH_SHORT).show()
                 val intent = Intent(requireContext(), MainActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
@@ -122,23 +123,6 @@ class GetClientDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks
                     gender,
                     imageUri
                 ) // save client details to firestore
-
-/*
-
-                val client= Client(clientId, name, phone, gender)
-                db.collection(COLL_CLIENT).document(clientId).set(client).addOnSuccessListener {
-                    prefs.edit().putBoolean("isFirstTime", false).apply()
-                    // jump to main activity
-                    startActivity(Intent(activity, MainActivity::class.java))
-                    requireActivity().finish()
-                }.addOnFailureListener {
-                    makeText(
-                        requireContext(),
-                        "Something went wrong. Please try again later ${it.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-*/
             }
         }
 
@@ -189,12 +173,10 @@ class GetClientDetailsFragment : Fragment(), EasyPermissions.PermissionCallbacks
     }
 
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
-        Toast.makeText(requireContext(), "Permission granted", Toast.LENGTH_SHORT).show()
         selectImage()
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
-        Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {

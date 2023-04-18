@@ -108,11 +108,8 @@ class OTPFragment : Fragment() {
                             prefs.edit().putBoolean("isFirstTime", false).apply()
                             findNavController().navigate(R.id.action_OTPFragment_to_getDetailsFragment)
                         }
-/*                        if (prefs.getBoolean("isFirstTime", true)) {
-                            prefs.edit().putBoolean("isFirstTime", false).apply()
-                            findNavController().navigate(R.id.action_OTPFragment_to_getDetailsFragment)
-                        }*/
                         else {
+                            Toast.makeText(activity, "Tap on Logo Above", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(activity, MainActivity::class.java))
                             requireActivity().finish()
                         }
