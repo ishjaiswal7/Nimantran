@@ -41,18 +41,6 @@
             app:layout_constraintTop_toBottomOf="@id/textViewAccountDetails"
             app:image="@{myProfileViewModel.client.profileImg}" />
 
-        <ImageView
-            android:id="@+id/imageViewEditUser"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginBottom="-8dp"
-            android:background="@drawable/circle_1"
-            android:padding="8dp"
-            android:src="@drawable/ic_edit"
-            app:layout_constraintBottom_toBottomOf="@+id/ImageViewUser"
-            app:layout_constraintStart_toEndOf="@+id/ImageViewUser" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

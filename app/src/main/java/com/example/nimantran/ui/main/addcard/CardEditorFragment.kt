@@ -31,7 +31,6 @@ class CardEditorFragment : Fragment() {
         super.onCreate(savedInstanceState)
         db = Firebase.firestore
     }
-
     // DS Editor Launcher
     private val photoEditorLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -52,22 +51,18 @@ class CardEditorFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.selectedTemplate.value?.let {
             mUri = Uri.parse(it.url)
             binding.ivTemplate.setImageURI(Uri.parse(it.url))
             launchPhotoEditor(Uri.parse(it.url))
-
-            binding.cLEdit.setOnClickListener {
-                launchPhotoEditor(mUri!!)
-            }
         }
         binding.cLShare.setOnClickListener {
             findNavController().navigate(R.id.action_cardEditorFragment_to_selectGuestForCardFragment)
         }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -97,15 +92,12 @@ class CardEditorFragment : Fragment() {
         mUri = getTempFileUri(requireContext())
         cameraLauncher.launch(mUri) // Launch camera with the temp uri.
     }
-
     private val selectImageLauncher =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             uri?.let {
                 launchPhotoEditor(it)
             }
         }
-
-
     // Camera Launcher.
     private val cameraLauncher =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->

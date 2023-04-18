@@ -57,20 +57,19 @@
             android:id="@+id/imageViewTotalClients"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginStart="62dp"
             android:layout_marginTop="16dp"
             android:src="@drawable/users"
-
-            app:layout_constraintTop_toBottomOf="@id/viewLine"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/viewLine" />
 
         <TextView
             android:id="@+id/textViewClients"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Clients"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/imageViewTotalClients"
+            app:layout_constraintEnd_toEndOf="@id/imageViewTotalClients"
             app:layout_constraintTop_toBottomOf="@id/imageViewTotalClients"/>
 
         <TextView
@@ -80,10 +79,136 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:text=""
             tools:text="1001"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/imageViewTotalClients"
+            app:layout_constraintEnd_toEndOf="@id/imageViewTotalClients"
             app:layout_constraintTop_toBottomOf="@id/textViewClients"/>
 
+        <ImageView
+            android:id="@+id/imageViewTotalGifts"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="62dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/gift_items"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewLine" />
+
+        <TextView
+            android:id="@+id/textViewGifts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Gifts"
+            app:layout_constraintStart_toStartOf="@id/imageViewTotalGifts"
+            app:layout_constraintEnd_toEndOf="@id/imageViewTotalGifts"
+            app:layout_constraintTop_toBottomOf="@id/imageViewTotalGifts"
+        />
+
+        <TextView
+            android:id="@+id/textViewTotalGifts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:text=""
+            tools:text="1001"
+            app:layout_constraintStart_toStartOf="@id/imageViewTotalGifts"
+            app:layout_constraintEnd_toEndOf="@id/imageViewTotalGifts"
+            app:layout_constraintTop_toBottomOf="@id/textViewGifts"/>
+
+
+
+        <ImageView
+            android:id="@+id/imageViewTotalOrders"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/orders"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewTotalClients" />
+
+        <TextView
+            android:id="@+id/textViewOrders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Orders"
+            app:layout_constraintStart_toStartOf="@id/imageViewTotalOrders"
+            app:layout_constraintEnd_toEndOf="@id/imageViewTotalOrders"
+            app:layout_constraintTop_toBottomOf="@id/imageViewTotalOrders"
+            />
+
+        <TextView
+            android:id="@+id/textViewTotalOrders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:text=""
+            tools:text="1001"
+            app:layout_constraintStart_toStartOf="@id/imageViewTotalOrders"
+            app:layout_constraintEnd_toEndOf="@id/imageViewTotalOrders"
+            app:layout_constraintTop_toBottomOf="@id/textViewOrders"/>
+
+
+        <ImageView
+            android:id="@+id/imageViewTotalNotifications"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="62dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_notifications"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewTotalOrders" />
+
+        <TextView
+            android:id="@+id/textViewNotifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Notifications"
+            app:layout_constraintStart_toStartOf="@id/imageViewTotalNotifications"
+            app:layout_constraintEnd_toEndOf="@id/imageViewTotalNotifications"
+            app:layout_constraintTop_toBottomOf="@id/imageViewTotalNotifications"/>
+
+        <TextView
+            android:id="@+id/textViewTotalNotifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:text=""
+            tools:text="1001"
+            app:layout_constraintStart_toStartOf="@id/imageViewTotalNotifications"
+            app:layout_constraintEnd_toEndOf="@id/imageViewTotalNotifications"
+            app:layout_constraintTop_toBottomOf="@id/textViewNotifications"/>
+
+
+        <ImageView
+            android:id="@+id/imageViewTotalTemplates"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="62dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_import_contacts"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewTotalOrders" />
+
+        <TextView
+            android:id="@+id/textViewTemplates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Available Templates"
+            app:layout_constraintStart_toStartOf="@id/imageViewTotalTemplates"
+            app:layout_constraintEnd_toEndOf="@id/imageViewTotalTemplates"
+            app:layout_constraintTop_toBottomOf="@id/imageViewTotalTemplates"
+            />
+
+        <TextView
+            android:id="@+id/textViewTotalTemplates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:text=""
+            tools:text="1001"
+            app:layout_constraintStart_toStartOf="@id/imageViewTotalTemplates"
+            app:layout_constraintEnd_toEndOf="@id/imageViewTotalTemplates"
+            app:layout_constraintTop_toBottomOf="@id/textViewTemplates"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

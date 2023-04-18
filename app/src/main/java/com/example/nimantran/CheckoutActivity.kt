@@ -81,6 +81,19 @@ class CheckoutActivity : AppCompatActivity() {
 
     }
 
+    override fun onBackPressed() {
+        db.collection(COLL_ORDERS).document(orderId).update("orderStatus", "Not Paid")
+            .addOnSuccessListener {
+                Log.d("CheckoutActivity", "Order status updated to cancelled")
+                super.onBackPressed()
+            }.addOnFailureListener {
+                Log.d("CheckoutActivity", "Order status update failed")
+            }
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+            super.onBackPressed()
+    }
     private fun presentPaymentSheet() {
 
         paymentSheet.presentWithPaymentIntent(

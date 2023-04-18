@@ -63,9 +63,42 @@ class MyNotificationFragment : Fragment() {
                 binding.swipeRefreshLayoutMyNotification.isRefreshing = false
             }
         }
+        binding.searchViewMyNotification.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    searchMyNotifications(newText)
+                }
+                return true
+            }
+        })
         // swipe to refresh
         binding.swipeRefreshLayoutMyNotification.setOnRefreshListener {
             myNotificationViewModel.getMyNotifications(db)
+        }
+    }
+
+    private fun searchMyNotifications(newText: String) {
+        val searchQuery = newText.toLowerCase()
+        val searchResult = myNotificationViewModel.myNotifications.value?.filter {
+            it.subject.toLowerCase().contains(searchQuery) ||
+                    it.body.toLowerCase().contains(searchQuery)
+        }
+        if (searchResult != null) {
+            binding.recyclerViewMyNotification.adapter =
+                MyNotificationAdapter(requireActivity()) {
+                    myNotificationViewModel.selectMyNotification(it)
+                    val dir =
+                        MyNotificationFragmentDirections.actionMyNotificationFragmentToMyReadNotificationFragment()
+                    findNavController().navigate(dir)
+                }
+            (binding.recyclerViewMyNotification.adapter as MyNotificationAdapter).submitList(
+                searchResult
+            )
         }
     }
 

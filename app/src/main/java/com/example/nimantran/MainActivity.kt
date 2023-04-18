@@ -166,6 +166,13 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
         Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show()
     }
 
+    override fun onBackPressed() {
+        if (binding.drawerLayout.isDrawerOpen(binding.navView)) {
+            binding.drawerLayout.close()
+        } else {
+            super.onBackPressed()
+        }
+    }
 
     private fun disableUI() {
         binding.appBarMain.bottomNavigationView.visibility = android.view.View.GONE

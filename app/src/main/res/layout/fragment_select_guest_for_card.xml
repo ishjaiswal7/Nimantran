@@ -57,11 +57,11 @@
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fabSendCard"
-            android:backgroundTint="@color/primaryColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="55dp"
 
-            android:layout_marginBottom="50dp"
+            android:backgroundTint="@color/primaryColor"
             android:text="Send"
             android:textAlignment="center"
             android:textStyle="bold"

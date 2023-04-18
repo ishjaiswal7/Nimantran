@@ -18,9 +18,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import pub.devrel.easypermissions.EasyPermissions
-
 class MyProfileFragment : Fragment(), EasyPermissions.PermissionCallbacks {
-
     private var _binding: FragmentMyProfileBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
@@ -121,7 +119,6 @@ class MyProfileFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             buttonEditUser.isVisible = false
             buttonSaveEditUser.isVisible = true
             buttonCancelEditUser.isVisible = true
-            imageViewEditUser.isVisible = true
             editTextEditName.isEnabled = true
 //            editTextEditPhone.isEnabled = true
             genderGroup.isEnabled = true
@@ -135,7 +132,6 @@ class MyProfileFragment : Fragment(), EasyPermissions.PermissionCallbacks {
             buttonEditUser.isVisible = true
             buttonSaveEditUser.isVisible = false
             buttonCancelEditUser.isVisible = false
-            imageViewEditUser.isVisible = false
             editTextEditName.isEnabled = false
             editTextEditPhone.isEnabled = false
             genderGroup.isEnabled = false
