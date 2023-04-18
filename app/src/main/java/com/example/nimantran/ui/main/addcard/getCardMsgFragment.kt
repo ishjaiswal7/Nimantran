@@ -101,13 +101,11 @@ class getCardMsgFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                     .setPositiveButton("OK") { dialog, which ->
 //                    shareToAllGuests()
 //                    shareToAllGuestsUsingSms()
-
                         dialog.dismiss()
                     }.show()
             }
             this.templateCardViewModel.isSaved.observe(viewLifecycleOwner) {
                 if (it) {
-//                shareToAllGuests()
                     sendImageAndLinkViaSms(
                         binding.TextViewEditPhone.text.toString(),
                         "Invitation Card",
@@ -180,6 +178,7 @@ class getCardMsgFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
         //on permission granted
         Toast.makeText(requireContext(), "Permission granted", Toast.LENGTH_SHORT).show()
+
     }
 
     override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {

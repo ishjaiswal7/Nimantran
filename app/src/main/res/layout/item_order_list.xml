@@ -13,7 +13,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewOrderList"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="115dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="16dp"
@@ -23,31 +23,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textViewUserName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textSize="12sp"
-                android:text=""
-                tools:text="User Name"
-                app:layout_constraintStart_toStartOf="@id/imageViewOrderedGift"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
-                android:id="@+id/textViewUserPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:text=""
-                tools:text="99******99"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-
             <TextView
                 android:id="@+id/textViewOrderID"
                 android:layout_width="wrap_content"
@@ -164,10 +139,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:textSize="12sp"
+                android:layout_marginTop="4dp"
                 app:humanize_date_text="@{order.orderDate}"
                 app:layout_constraintBottom_toTopOf="@+id/textViewOrderListID"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewUserPhone"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="10/10/24" />
 
             <com.google.android.material.imageview.ShapeableImageView
@@ -175,10 +151,11 @@
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
                 app:image="@{order.gift.image}"
                 tools:src="@drawable/ic_gift"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewUserName"/>
+                app:layout_constraintTop_toTopOf="parent"/>
 
         <!--    <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageView3"

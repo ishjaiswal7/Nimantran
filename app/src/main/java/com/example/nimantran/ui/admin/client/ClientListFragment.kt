@@ -86,6 +86,10 @@ class ClientListFragment : Fragment() {
                     it.gender.toLowerCase().contains(searchQuery)
         }
         if (searchResult != null) {
+            binding.recyclerViewUserList.adapter =
+                ClientListAdapter(requireActivity()) {
+                    userListViewModel.selectClient(it)
+                }
             (binding.recyclerViewUserList.adapter as ClientListAdapter).submitList(searchResult)
         }
     }

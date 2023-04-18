@@ -48,28 +48,35 @@ class OrderStatusFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.textViewUserName.text = orderListViewModel.client.value?.name.toString()
-        binding.textViewUserPhone.text = orderListViewModel.client.value?.phone.toString()
+        // get order from OrderListFragment
         val selectedOrder = orderListViewModel.selectedOrder
         selectedOrder.observe(viewLifecycleOwner) { order ->
-            Toast.makeText(requireContext(), "order loaded", Toast.LENGTH_SHORT).show()
         }
-        val myOrder = selectedOrder.value
 
-        orderListViewModel.getGuests(
-            db,
-            selectedOrder.value?.clientID.toString()
-        ) // fetch data only
+        // get client of Order
+        orderListViewModel.getClient(db) // fetch data only
+        binding.textViewUserName.text = orderListViewModel.selectedOrderClientName
+        binding.textViewUserPhone.text = orderListViewModel.selectedOrderClientPhone
+
+        // get guests of Order
+        orderListViewModel.getGuests() // fetch data only
         orderListViewModel.guests.observe(viewLifecycleOwner) { guests ->
             if (guests.isNotEmpty()) {
-                binding.recyclerViewOrderList.layoutManager = LinearLayoutManager(requireContext())
-                binding.recyclerViewOrderList.adapter = OrderListAdapter(requireContext()) {
+                binding.recyclerViewOrderGuestList.layoutManager = LinearLayoutManager(requireContext())
+                binding.recyclerViewOrderGuestList.adapter = GuestListAdapter(requireContext()) {
                 }
-                (binding.recyclerViewOrderList.adapter as GuestListAdapter).submitList(
+                (binding.recyclerViewOrderGuestList.adapter as GuestListAdapter).submitList(
                     selectedOrder.value?.guest
                 )
+                //Toast number of guests in order
+                Toast.makeText(
+                    requireContext(),
+                    "Number of guests in order: ${selectedOrder.value?.guest?.size}",
+                    Toast.LENGTH_SHORT
+                ).show()
+
             } else {
-                binding.recyclerViewOrderList.visibility = View.GONE
+                binding.recyclerViewOrderGuestList.visibility = View.GONE
             }
         }
 
@@ -80,15 +87,12 @@ class OrderStatusFragment : Fragment() {
             findNavController().navigate(R.id.action_orderStatusFragment_to_updateOrderStatusFragment)
         }
     }
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
     companion object {
-        const val COLL_GUESTS = "myGuests"
         const val COLL_ORDERS = "myOrders"
         const val COLL_CLIENTS = "clients"
     }

@@ -1,7 +1,6 @@
 package com.example.nimantran.ui.admin.order
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +23,6 @@ class UpdateOrderStatusFragment : BottomSheetDialogFragment() {
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_update_order_status, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         db = FirebaseFirestore.getInstance()
@@ -48,13 +46,12 @@ class UpdateOrderStatusFragment : BottomSheetDialogFragment() {
                     orderListViewModel.updateOrderStatus(db, "@string/order_address_not_found")
                 }
             }
+            //dismiss bottom sheet
+            dismiss()
         }
-
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }

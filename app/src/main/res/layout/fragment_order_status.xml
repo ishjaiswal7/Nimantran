@@ -77,8 +77,9 @@
                     android:layout_marginTop="4dp"
                     android:textSize="12sp"
                     android:text=""
+                    android:layout_marginLeft="16dp"
                     tools:text="User Name"
-                    app:layout_constraintStart_toStartOf="@id/imageViewOrderedGift"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
@@ -271,7 +272,7 @@
             app:queryHint="Search order..." />
 -->
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeRefreshLayoutOrderList"
+            android:id="@+id/swipeRefreshLayoutOrderGuestList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="12dp"
@@ -281,7 +282,7 @@
             app:layout_constraintTop_toBottomOf="@id/cardViewOrderDetails">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewOrderList"
+                android:id="@+id/recyclerViewOrderGuestList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

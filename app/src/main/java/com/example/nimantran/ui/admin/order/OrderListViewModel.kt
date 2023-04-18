@@ -28,6 +28,9 @@ class OrderListViewModel : ViewModel() {
     private val _isSaved = MutableLiveData(false)
     val isSaved: MutableLiveData<Boolean> = _isSaved
 
+    var selectedOrderClientName: String = ""
+    var selectedOrderClientPhone: String = ""
+
     fun getOrders(db: FirebaseFirestore) {
         loadOrders(db)
         _selectedOrder.value = null
@@ -54,20 +57,10 @@ class OrderListViewModel : ViewModel() {
         _selectedOrder.value = null
     }
 
-    fun getGuests(db: FirebaseFirestore, guestId: String) {
-        loadGuests(db, guestId)
-    }
-
-    private fun loadGuests(db: FirebaseFirestore, guestId: String) {
-        // fetch data from firebase firestore
-        db.collection(OrderStatusFragment.COLL_GUESTS).whereEqualTo("id", guestId).get().addOnFailureListener {
-            Log.e("OrderListViewModel", "Error fetching guests ${it.message}")
-        }.addOnCanceledListener {
-            Log.e("OrderListViewModel", "Cancelled fetching guests")
-        }.addOnSuccessListener {
-            val guestsLoaded = it.toObjects(Guest::class.java)
-            _guests.value = guestsLoaded
-            Log.d("OrderListViewModel", "Guest loaded ${guestsLoaded.size}")
+    fun getGuests() {
+        //fetch guest of selected order
+        if (selectedOrder != null) {
+            _guests.value = _selectedOrder.value?.guest
         }
     }
 
@@ -82,11 +75,38 @@ class OrderListViewModel : ViewModel() {
         }.addOnSuccessListener {
             val clientLoaded = it.toObjects(Client::class.java)[0]
             Log.d("OrderListViewModel", "Client loaded ${clientLoaded.name}")
+                selectedOrderClientName = clientLoaded.name
+                selectedOrderClientPhone = clientLoaded.phone.toString()
         }
     }
 
     fun updateOrderStatus(db: FirebaseFirestore, status: String) {
-
+        val order = selectedOrder.value
+        db.collection(OrderStatusFragment.COLL_ORDERS)
+            .whereEqualTo("id", order?.id).get().addOnFailureListener{
+                Log.e("OrderListViewModel", "Error fetching order ${it.message}")
+            }.addOnCanceledListener {
+                Log.e("OrderListViewModel", "Cancelled fetching order")
+            }.addOnSuccessListener {
+                try {
+                    db.collection(OrderStatusFragment.COLL_ORDERS)
+                        .document(it.documents[0].id)
+                        .update(
+                            mapOf(
+                                "orderStatus" to status
+                            )
+                        )
+                        .addOnCanceledListener {
+                            Log.e("OrderListViewModel", "Cancelled updating order status")
+                        }.addOnFailureListener {
+                            Log.e("OrderListViewModel", "Error updating order status ${it.message}")
+                        }.addOnSuccessListener {
+                            Log.d("OrderListViewModel", "Order status updated to $status")
+                        }
+                }catch (e:Exception) {
+                    Log.e("OrderListViewModel", "Error updating order status ${e.message}")
+                }
+            }
     }
 
 

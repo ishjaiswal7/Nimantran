@@ -90,6 +90,13 @@ class OrderListFragment : Fragment() {
                     it.gift.item.toLowerCase().contains(searchQuery)
         }
         if (searchResult != null) {
+            binding.recyclerViewOrderList.adapter =
+                OrderListAdapter(
+                    requireActivity(),
+                ) {
+                    orderListViewModel.selectOrder(it)
+                    findNavController().navigate(R.id.action_orderListFragment_to_orderStatusFragment)
+                }
             (binding.recyclerViewOrderList.adapter as OrderListAdapter).submitList(searchResult)
         }
     }

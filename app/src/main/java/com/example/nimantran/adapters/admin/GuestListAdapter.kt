@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nimantran.databinding.ItemMyGuestDetailsBinding
-import com.example.nimantran.databinding.ItemMyGuestListBinding
-import com.example.nimantran.databinding.ItemOrderStatusBinding
 import com.example.nimantran.models.user.Guest
 
 class GuestListAdapter(

@@ -189,34 +189,6 @@ class GiftViewModel : ViewModel() {
         quantity: String,
         description: String,
     ){
-/*
-        _isLoading.value = true
-
-        if (!validateGiftUpdate(quantity, description, price)) {
-            _isLoading.value = false
-            _isSaved.value = false
-        } else {
-            updateToFirebase(db, item, price, quantity, description)
-        }
-
-    }
-
-    private fun validateGiftUpdate(
-        quantity: String,
-        description: String,
-        price: String
-    ): Boolean {
-        return quantity.isNotEmpty() && description.isNotEmpty() && price.isNotEmpty()
-    }
-    fun updateToFirebase(
-        db: FirebaseFirestore,
-        item: String,
-        price: String,
-        quantity: String,
-        description: String,
-    )  {
-
- */
         val gift = selectedGift.value
         db.collection(COLL_GIFTS)
             .whereEqualTo("item", gift?.item).get().addOnFailureListener {

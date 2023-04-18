@@ -83,6 +83,10 @@ class MyGiftsFragment : Fragment() {
                     it.price.toString().contains(searchQuery)
         }
         if (searchResult != null) {
+            binding.recyclerViewMyGifts.adapter = MyGiftAdapter(requireActivity()) {
+                myGiftsViewModel.selectMyGift(it)
+                findNavController().navigate(R.id.action_myGiftsFragment_to_myGiftDetailsFragment)
+            }
             (binding.recyclerViewMyGifts.adapter as MyGiftAdapter).submitList(searchResult)
         }
 

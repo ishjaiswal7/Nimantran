@@ -112,7 +112,6 @@ class EditGiftFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                     description,
                 )  // Save gift to Firestore
 
-
                 //To Disable Edit Mode after saving
                 Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show()
                 disableEdit()
