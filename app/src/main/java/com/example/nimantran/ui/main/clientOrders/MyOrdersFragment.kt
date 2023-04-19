@@ -55,7 +55,7 @@ class MyOrdersFragment : Fragment() {
             } else {
                 binding.recyclerViewMyOrders.visibility = View.GONE
                 binding.textViewNoData.visibility = View.VISIBLE
-                binding.textViewNoData.visibility = View.VISIBLE
+                binding.imageViewNoData.visibility = View.VISIBLE
                 binding.searchViewMyOrder.visibility = View.GONE
             }
             if (binding.swipeRefreshLayoutMyOrders.isRefreshing) {

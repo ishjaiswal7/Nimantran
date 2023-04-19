@@ -77,7 +77,7 @@
             android:id="@+id/textViewNoData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No Guest Added Yet"
+            android:text="No Orders Found"
             android:textSize="20dp"
             android:layout_marginTop="30dp"
             android:visibility="invisible"
