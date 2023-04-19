@@ -7,7 +7,8 @@ import com.example.nimantran.models.user.Invite
 import com.example.nimantran.models.user.MyCards
 import com.google.firebase.firestore.FirebaseFirestore
 
-class GuestResponseViewModel: ViewModel() {
+class
+GuestResponseViewModel : ViewModel() {
     private val _cards = MutableLiveData<List<MyCards>>()
     val cards: MutableLiveData<List<MyCards>> = _cards
 
@@ -16,7 +17,7 @@ class GuestResponseViewModel: ViewModel() {
 
     private val _selectedInvite = MutableLiveData<Invite>()
     val selectedInvite: MutableLiveData<Invite> = _selectedInvite
-    fun loadCards(db: FirebaseFirestore){
+    fun loadCards(db: FirebaseFirestore) {
         loadMyCards(db)
     }
     private fun loadMyCards(db: FirebaseFirestore) {

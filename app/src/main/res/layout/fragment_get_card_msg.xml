@@ -3,11 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.nimantran.ui.main.addcard.TemplateCardViewModel" />
+
+        <variable
+            name="viewModel2"
+            type="com.example.nimantran.ui.main.clientGuests.MyGuestViewModel" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/addGuestContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.addcard.getCardMsgFragment">
+        tools:context=".ui.main.addcard.GetCardMsgFragment">
 
         <TextView
             android:id="@+id/heading_guest"
@@ -126,9 +138,9 @@
             android:hint="Enter Date"
             android:inputType="none"
             app:layout_constraintBottom_toBottomOf="@id/textView3"
-            app:layout_constraintStart_toEndOf="@id/textView5"
             app:layout_constraintEnd_toEndOf="@id/TextViewEditPhone"
-            app:layout_constraintTop_toTopOf="@id/textView3"/>
+            app:layout_constraintStart_toEndOf="@id/textView5"
+            app:layout_constraintTop_toTopOf="@id/textView3" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -164,6 +176,7 @@
             app:layout_constraintEnd_toEndOf="@id/TextViewEditDate"
             app:layout_constraintStart_toEndOf="@id/textView5"
             app:layout_constraintTop_toTopOf="@id/textView4" />
+
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="wrap_content"
@@ -197,19 +210,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/textView5"
             app:layout_constraintTop_toBottomOf="@id/textView5" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonSendInvitation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="100dp"
             android:background="@drawable/round_border"
             android:text="Send Invitation Message"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TextViewEditMessage" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
