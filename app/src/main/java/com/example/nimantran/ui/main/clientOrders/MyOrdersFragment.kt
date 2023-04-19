@@ -54,6 +54,9 @@ class MyOrdersFragment : Fragment() {
                 (binding.recyclerViewMyOrders.adapter as MyOrdersAdapter).submitList(orders)
             } else {
                 binding.recyclerViewMyOrders.visibility = View.GONE
+                binding.textViewNoData.visibility = View.VISIBLE
+                binding.textViewNoData.visibility = View.VISIBLE
+                binding.searchViewMyOrder.visibility = View.GONE
             }
             if (binding.swipeRefreshLayoutMyOrders.isRefreshing) {
                 binding.swipeRefreshLayoutMyOrders.isRefreshing = false

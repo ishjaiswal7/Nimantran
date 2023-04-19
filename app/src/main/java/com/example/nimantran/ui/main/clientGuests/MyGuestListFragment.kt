@@ -57,6 +57,8 @@ class MyGuestListFragment : Fragment(){
                 )
             } else {
                 binding.recyclerViewMyGuestList.visibility = View.GONE
+                binding.textViewNoData.visibility = View.VISIBLE
+                binding.imageViewNoData.visibility = View.VISIBLE
             }
             if (binding.swipeRefreshLayoutMyGuestList.isRefreshing) {
                 binding.swipeRefreshLayoutMyGuestList.isRefreshing = false

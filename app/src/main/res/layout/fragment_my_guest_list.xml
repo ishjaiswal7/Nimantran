@@ -62,7 +62,30 @@
             app:layout_constraintEnd_toEndOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
+<ImageView
+    android:id="@+id/imageViewNoData"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginBottom="50dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:src="@drawable/no_data_present"
+    app:layout_constraintTop_toBottomOf="@id/cardViewAddGuest"
+    android:visibility="invisible"
+    />
+        <TextView
+            android:id="@+id/textViewNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Guest Added Yet"
+            android:textSize="20dp"
+            android:layout_marginTop="30dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardViewAddGuest"
+            />
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayoutMyGuestList"
             android:layout_width="match_parent"

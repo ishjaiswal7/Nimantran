@@ -38,7 +38,6 @@
             app:layout_constraintStart_toEndOf="@id/imageViewBackFromMyOrdersList"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-
         <View
             android:id="@+id/viewLine"
             android:layout_width="wrap_content"
@@ -61,6 +60,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/viewLine"
             app:queryHint="Search order..." />
+
+        <ImageView
+            android:id="@+id/imageViewNoData"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchViewMyOrder"
+            android:src="@drawable/no_data_present"
+            android:visibility="invisible"
+            />
+        <TextView
+            android:id="@+id/textViewNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Guest Added Yet"
+            android:textSize="20dp"
+            android:layout_marginTop="30dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchViewMyOrder"
+            />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayoutMyOrders"

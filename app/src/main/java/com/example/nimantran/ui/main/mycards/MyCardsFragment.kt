@@ -52,6 +52,8 @@ class MyCardsFragment : Fragment() {
                 )
             }else{
                 binding.recyclerViewMyCards.visibility = View.GONE
+                binding.textViewNoData.visibility = View.VISIBLE
+                binding.imageViewNoData.visibility = View.VISIBLE
             }
             if (binding.swipeRefreshLayoutMyCards.isRefreshing) {
                 binding.swipeRefreshLayoutMyCards.isRefreshing = false
