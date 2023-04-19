@@ -31,8 +31,8 @@
 
         <ImageView
             android:id="@+id/ImageViewUser"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="4dp"
             android:src="@drawable/ic_person"
@@ -44,7 +44,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@id/ImageViewUser">
 
             <ImageView
