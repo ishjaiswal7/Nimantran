@@ -55,7 +55,8 @@
         tools:layout="@layout/fragment_guest_authentication" >
         <action
             android:id="@+id/action_guestAuthenticationFragment_to_invitationResponseFragment"
-            app:destination="@id/invitationResponseFragment" />
+            app:destination="@id/invitationResponseFragment"
+            app:popUpTo="@id/getInFragment" />
     </fragment>
     <fragment
         android:id="@+id/invitationResponseFragment"

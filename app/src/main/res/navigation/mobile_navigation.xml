@@ -11,22 +11,28 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_myGiftsFragment"
-            app:destination="@id/myGiftsFragment" />
+            app:destination="@id/myGiftsFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_homeFragment_to_myProfileFragment"
-            app:destination="@id/myProfileFragment" />
+            app:destination="@id/myProfileFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_homeFragment_to_templateDesignsFragment"
-            app:destination="@id/templateDesignsFragment" />
+            app:destination="@id/templateDesignsFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_homeFragment_to_myGuestListFragment"
-            app:destination="@id/myGuestListFragment" />
+            app:destination="@id/myGuestListFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_homeFragment_to_myNotificationFragment"
-            app:destination="@id/myNotificationFragment" />
+            app:destination="@id/myNotificationFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_homeFragment_to_myCardsFragment"
-            app:destination="@id/myCardsFragment" />
+            app:destination="@id/myCardsFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/templateDesignsFragment"
@@ -142,7 +148,8 @@
         android:label="SelectGuestForCardFragment" >
         <action
             android:id="@+id/action_selectGuestForCardFragment_to_getCardMsgFragment"
-            app:destination="@id/getCardMsgFragment" />
+            app:destination="@id/getCardMsgFragment"
+            app:popUpTo="@id/myCardsFragment" />
     </fragment>
     <fragment
         android:id="@+id/getOrderDetailsFragment"

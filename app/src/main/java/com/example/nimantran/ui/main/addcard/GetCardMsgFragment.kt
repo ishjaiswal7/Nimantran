@@ -81,7 +81,6 @@ class GetCardMsgFragment : Fragment(), EasyPermissions.PermissionCallbacks {
     }
 
     private fun updateUI() {
-        Toast.makeText(requireContext(), "updated ui", Toast.LENGTH_SHORT).show()
         binding.TextViewEditDate.setOnClickListener {
             val cal = java.util.Calendar.getInstance()
             val year = cal.get(java.util.Calendar.YEAR)
@@ -117,6 +116,7 @@ class GetCardMsgFragment : Fragment(), EasyPermissions.PermissionCallbacks {
                 .setPositiveButton("OK") { dialog, which ->
                     dialog.dismiss()
                 }.show()
+            binding.buttonSendInvitation.isEnabled = false
         }
         this.templateCardViewModel.inviteId.observe(viewLifecycleOwner) {
             if (it != null) {
@@ -159,7 +159,7 @@ class GetCardMsgFragment : Fragment(), EasyPermissions.PermissionCallbacks {
         smsManager.sendTextMessage(
             phone,
             null,
-            "${binding.TextViewEditMessage.text}\nYour invitation code is $it",
+            "${binding.TextViewEditMessage.text}\nDownload Nimantran, enter your invite code\n $it",
             sentIntent,
             null
         )
