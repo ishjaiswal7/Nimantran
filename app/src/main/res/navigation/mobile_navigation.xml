@@ -169,7 +169,7 @@
     </fragment>
     <fragment
         android:id="@+id/getCardMsgFragment"
-        android:name="com.example.nimantran.ui.main.addcard.getCardMsgFragment"
+        android:name="com.example.nimantran.ui.main.addcard.GetCardMsgFragment"
         android:label="fragment_get_card_msg"
         tools:layout="@layout/fragment_get_card_msg" />
     <fragment

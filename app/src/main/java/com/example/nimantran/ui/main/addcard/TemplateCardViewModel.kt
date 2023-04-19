@@ -43,6 +43,9 @@ class TemplateCardViewModel : ViewModel() {
     val inviteList: MutableLiveData<List<Invite>>
         get() = _inviteList
 
+    private val _inviteId = MutableLiveData<String>()
+    val inviteId: LiveData<String>
+        get() = _inviteId
 
     fun selectTemplate(template: Template) {
         _selectedTemplate.value = template
@@ -121,6 +124,8 @@ class TemplateCardViewModel : ViewModel() {
                 )
                 db.collection(COLL_MYCARDS).add(mycards).addOnSuccessListener {
                     Log.d("TemplateCardViewmodel", "Invitation saved to firestore   ")
+                    _isSaved.value = true
+                    _inviteId.value = mycards.cardID
 
                 }.addOnFailureListener {
                     Log.e("TemplateCardViewmodel", "Error sending invitation ${it.message}")
