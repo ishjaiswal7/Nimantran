@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.nimantran.R
 import com.example.nimantran.databinding.FragmentUpdateOrderStatusBinding
@@ -15,7 +16,7 @@ class UpdateOrderStatusFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentUpdateOrderStatusBinding? = null
     private val binding get() = _binding!!
     private lateinit var db : FirebaseFirestore
-    private val orderListViewModel: OrderListViewModel by viewModels()
+    private val orderListViewModel: OrderListViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

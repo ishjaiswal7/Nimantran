@@ -1,6 +1,7 @@
 package com.example.nimantran.ui.admin.order
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,9 +51,8 @@ class OrderStatusFragment : Fragment() {
 
         // get order from OrderListFragment
         val selectedOrder = orderListViewModel.selectedOrder
-        selectedOrder.observe(viewLifecycleOwner) { order ->
-        }
 
+        Log.d("OrderStatusFragment", "onViewCreated: ${selectedOrder.value}")
         // get client of Order
         orderListViewModel.getClient(db) // fetch data only
         binding.textViewUserName.text = orderListViewModel.selectedOrderClientName

@@ -39,19 +39,17 @@ class GuestAuthenticationFragment : Fragment() {
 
         binding.buttonVerifyRespond.setOnClickListener {
             guestResponseViewModel.selectCard(binding.textInputLayoutInviteCode.text.toString())
-            if(guestResponseViewModel.selectedCard != null){
-                guestResponseViewModel.searchCardGuest(binding.textInputLayoutPhone.text.toString())
-                if (guestResponseViewModel.selectedInvite != null){
+            guestResponseViewModel.searchCardGuest(binding.textInputLayoutPhone.text.toString())
+            guestResponseViewModel.selectedInvite.observe(viewLifecycleOwner) { invite ->
+                if (invite != null) {
                     findNavController().navigate(R.id.action_guestAuthenticationFragment_to_invitationResponseFragment)
                 }
-                else{
-                    Toast.makeText(context, "Invalid Phone Number", Toast.LENGTH_SHORT).show()
+                else {
+                    Toast.makeText(context, "Invalid Invite Code or Phone Number", Toast.LENGTH_SHORT).show()
                 }
             }
-            else{
-                Toast.makeText(context, "Invalid Invite Code", Toast.LENGTH_SHORT).show()
-            }
         }
+
     }
     companion object {
     }

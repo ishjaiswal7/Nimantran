@@ -34,7 +34,8 @@
         android:label="TemplateDesignsFragment" >
         <action
             android:id="@+id/action_templateDesignsFragment_to_cardEditorFragment"
-            app:destination="@id/cardEditorFragment" />
+            app:destination="@id/cardEditorFragment"
+            app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/action_templateDesignsFragment_to_myCardsFragment"
             app:destination="@id/myCardsFragment" />
@@ -129,7 +130,8 @@
         tools:layout="@layout/fragment_select_my_guest_for_gift" >
         <action
             android:id="@+id/action_selectGuestForGiftFragment_to_getOrderDetailsFragment"
-            app:destination="@id/getOrderDetailsFragment" />
+            app:destination="@id/getOrderDetailsFragment"
+            app:popUpTo="@id/myGiftDetailsFragment" />
         <argument
             android:name="item"
             app:argType="string" />

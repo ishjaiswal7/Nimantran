@@ -16,9 +16,10 @@ class GuestResponseViewModel: ViewModel() {
 
     private val _selectedInvite = MutableLiveData<Invite>()
     val selectedInvite: MutableLiveData<Invite> = _selectedInvite
-    fun loadCards(db: FirebaseFirestore){
+    fun loadCards(db: FirebaseFirestore) {
         loadMyCards(db)
     }
+
     private fun loadMyCards(db: FirebaseFirestore) {
         // fetch myCards from firebase firestore
         db.collection("mycards")
@@ -30,29 +31,30 @@ class GuestResponseViewModel: ViewModel() {
                 val myCardsLoaded = it.toObjects(MyCards::class.java)
                 _cards.value = myCardsLoaded
                 Log.d("GuestResponseViewModel", "myCards loaded ${myCardsLoaded.size}")
-              //  myCardsList = myCardsLoaded.toMutableList()
+                //  myCardsList = myCardsLoaded.toMutableList()
             }
     }
-    fun selectCard(cardId: String){
-        if(cards.value != null){
-            for (card in cards.value!!){
-                if(card.cardID == cardId){
+
+    fun selectCard(cardId: String) {
+        if (cards.value != null) {
+            for (card in cards.value!!) {
+                if (card.cardID == cardId) {
                     _selectedCard.value = card
                     Log.d("GuestResponseViewModel", "Card Selected ${card.cardID}")
                     break
                 }
             }
-        }
-        else{
+        } else {
             Log.d("GuestResponseViewModel", "No Cards Loaded")
         }
     }
-    fun searchCardGuest(guestPhone: String){
-                //for each invite in card
-        if(guestPhone != null){
-            for (invite in selectedCard.value!!.invite){
+
+    fun searchCardGuest(guestPhone: String) {
+        //for each invite in card
+        if (guestPhone != null && selectedCard.value != null) {
+            for (invite in selectedCard.value!!.invite) {
                 //if phone number matches
-                if(invite.phone == guestPhone){
+                if (invite.phone == guestPhone) {
                     //set verifiedGuest to true
                     _selectedInvite.value = invite
                     Log.d("GuestResponseViewModel", "Invite Selected ${invite.guestName}")
@@ -61,13 +63,43 @@ class GuestResponseViewModel: ViewModel() {
             }
         }
     }
-    fun updateMyCardInviteResponse(db: FirebaseFirestore, response: String){
+
+    fun updateMyCardInviteResponse(db: FirebaseFirestore, response: String) {
         //firebase query to update response
-        db.collection("mycards").document(selectedCard.value!!.cardID).collection("invite").document(selectedInvite.value!!.phone).update("response", response)
-            .addOnSuccessListener {
-                Log.d("GuestResponseViewModel", "Response Updated")
-            }.addOnFailureListener {
-                Log.e("GuestResponseViewModel", "Error updating response ${it.message}")
+        db.collection("mycards").
+            whereEqualTo("cardID", selectedCard.value!!.cardID).get().addOnSuccessListener {
+            val card = it.toObjects(MyCards::class.java).firstOrNull()
+            val cid = it.documents.firstOrNull()?.id
+            var index = -1
+            if (card != null) {
+                for (invite in card.invite) {
+                    Log.d("GuestResponseViewModel", "Invite Phone ${invite.phone}")
+                    if (invite.phone == selectedInvite.value!!.phone) {
+                        invite.response = response
+                        // get index of invite
+                        index = card.invite.indexOf(invite)
+                        card.invite[index].response = response
+                        break
+                    }
+                }
+                Log.d("GuestResponseViewModel", "${card.invite}")
+                if (index != -1) {
+                    if (cid != null) {
+                        db.collection("mycards").document(cid).update("invite", card.invite).addOnSuccessListener {
+                            Log.d("GuestResponseViewModel", "Invite Response Updated")
+                        }.addOnFailureListener {
+                            Log.d("GuestResponseViewModel", "Invite Response Update Failed")
+                        }
+                    }else{
+                        Log.d("GuestResponseViewModel", "Card ID not found")
+                    }
+                }else{
+                    Log.d("GuestResponseViewModel", "Invite not found")
+                }
             }
+            else{
+                Log.d("GuestResponseViewModel", "Card not found")
+            }
+        }
     }
 }

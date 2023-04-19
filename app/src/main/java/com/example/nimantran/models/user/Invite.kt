@@ -4,5 +4,5 @@ data class Invite(
     val guestId: String = "",
     val guestName: String = "",
     val phone: String = "",
-    val response: String = "Not Responded",
+    var response: String = "Not Responded",
 )

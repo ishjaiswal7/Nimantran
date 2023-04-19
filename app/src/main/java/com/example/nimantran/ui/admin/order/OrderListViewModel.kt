@@ -13,10 +13,10 @@ class OrderListViewModel : ViewModel() {
     private val _orders = MutableLiveData<List<MyOrder>>()
     val orders: LiveData<List<MyOrder>> = _orders
 
-    private val _guests= MutableLiveData<List<Guest>>()
+    private val _guests = MutableLiveData<List<Guest>>()
     val guests: MutableLiveData<List<Guest>> = _guests
 
-    private val _client= MutableLiveData<Client>()
+    private val _client = MutableLiveData<Client>()
     val client: MutableLiveData<Client> = _client
 
     private val _selectedOrder = MutableLiveData<MyOrder?>()
@@ -68,45 +68,41 @@ class OrderListViewModel : ViewModel() {
         db.collection(OrderStatusFragment.COLL_CLIENTS)
             .whereEqualTo("id", selectedOrder.value?.clientID.toString())
             .get().addOnFailureListener {
-            Log.e("OrderListViewModel", "Error fetching client ${it.message}")
-        }.addOnCanceledListener {
-            Log.e("OrderListViewModel", "Cancelled fetching client")
+                Log.e("OrderListViewModel", "Error fetching client ${it.message}")
+            }.addOnCanceledListener {
+                Log.e("OrderListViewModel", "Cancelled fetching client")
 
-        }.addOnSuccessListener {
-            val clientLoaded = it.toObjects(Client::class.java)[0]
-            Log.d("OrderListViewModel", "Client loaded ${clientLoaded.name}")
+            }.addOnSuccessListener {
+                val clientLoaded = it.toObjects(Client::class.java)[0]
+                Log.d("OrderListViewModel", "Client loaded ${clientLoaded.name}")
                 selectedOrderClientName = clientLoaded.name
                 selectedOrderClientPhone = clientLoaded.phone.toString()
-        }
+            }
     }
 
     fun updateOrderStatus(db: FirebaseFirestore, status: String) {
         val order = selectedOrder.value
-        db.collection(OrderStatusFragment.COLL_ORDERS)
-            .whereEqualTo("id", order?.id).get().addOnFailureListener{
+        Log.d("OrderListViewModel", "Updating order ${order?.id} to $status")
+        db.collection(OrderStatusFragment.COLL_ORDERS).whereEqualTo("id", order?.id).get()
+            .addOnFailureListener {
                 Log.e("OrderListViewModel", "Error fetching order ${it.message}")
             }.addOnCanceledListener {
-                Log.e("OrderListViewModel", "Cancelled fetching order")
-            }.addOnSuccessListener {
-                try {
-                    db.collection(OrderStatusFragment.COLL_ORDERS)
-                        .document(it.documents[0].id)
-                        .update(
-                            mapOf(
-                                "orderStatus" to status
-                            )
-                        )
-                        .addOnCanceledListener {
-                            Log.e("OrderListViewModel", "Cancelled updating order status")
-                        }.addOnFailureListener {
-                            Log.e("OrderListViewModel", "Error updating order status ${it.message}")
-                        }.addOnSuccessListener {
-                            Log.d("OrderListViewModel", "Order status updated to $status")
-                        }
-                }catch (e:Exception) {
-                    Log.e("OrderListViewModel", "Error updating order status ${e.message}")
-                }
+            Log.e("OrderListViewModel", "Cancelled fetching order")
+        }.addOnSuccessListener {
+            val orderId = it.documents.firstOrNull()?.id
+            if (orderId != null){
+                db.collection(OrderStatusFragment.COLL_ORDERS).document(orderId).update("orderStatus", status)
+                    .addOnFailureListener { e ->
+                        Log.e("OrderListViewModel", "Error updating order ${e.message}")
+                    }.addOnCanceledListener {
+                        Log.e("OrderListViewModel", "Cancelled updating order")
+                    }.addOnSuccessListener {
+                        Log.d("OrderListViewModel", "Order updated")
+                        loadOrders(db)
+                    }
             }
+
+        }
     }
 
 

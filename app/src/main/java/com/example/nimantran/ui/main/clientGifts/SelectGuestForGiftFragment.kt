@@ -54,14 +54,20 @@ class SelectGuestForGiftFragment : Fragment() {
         binding.buttonSendGift.setOnClickListener {
             //Send gift to me
             if (binding.radioButtonSendToMe.isChecked) {
-                myGiftsViewModel.userGiftQty = binding.textViewUserGiftQty.text.toString().toInt()
-                myGiftsViewModel.userAddress = binding.TextViewEditHouseNo.text.toString() + ", " +
-                        binding.TextViewEditStreet.text.toString() + ", " +
-                        binding.TextViewEditCity.text.toString() + ", " +
-                        binding.TextViewEditState.text.toString() + ", " +
-                        binding.TextViewEditPincode.text.toString()
-                myGiftsViewModel.sendToMe()
-                findNavController().navigate(R.id.action_selectGuestForGiftFragment_to_getOrderDetailsFragment)
+                val qty = binding.textViewUserGiftQty.text.toString()
+                if (qty == "") {
+                    Toast.makeText(context, "invalid quantity.", Toast.LENGTH_SHORT).show()
+                } else {
+                    myGiftsViewModel.userGiftQty = qty.toInt()
+                    myGiftsViewModel.userAddress =
+                        binding.TextViewEditHouseNo.text.toString() + ", " +
+                                binding.TextViewEditStreet.text.toString() + ", " +
+                                binding.TextViewEditCity.text.toString() + ", " +
+                                binding.TextViewEditState.text.toString() + ", " +
+                                binding.TextViewEditPincode.text.toString()
+                    myGiftsViewModel.sendToMe()
+                    findNavController().navigate(R.id.action_selectGuestForGiftFragment_to_getOrderDetailsFragment)
+                }
             }
             //Send gift to guest
             else if (binding.radioButtonSendToGuest.isChecked) {
