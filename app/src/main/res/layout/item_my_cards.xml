@@ -27,7 +27,7 @@
                 android:layout_width="140dp"
                 android:layout_height="198dp"
                 image="@{mycards.cardImage}"
-                tools:src="@tools:sample/backgrounds/scenic"
+                tools:src="@drawable/template3"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="400dp"
+            android:layout_height="500dp"
             android:background="@drawable/round_border"
             app:cardElevation="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -32,21 +32,20 @@
                     android:background="@drawable/round_border"
                     android:text="Order"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/ImageViewGift"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
 
                 <ImageView
                     android:id="@+id/ImageViewGift"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="250dp"
                     android:layout_margin="8dp"
-                    android:src="@drawable/gift_items"
-                    app:image="@{myGiftsViewModel.selectedMyGift.image}"
+                    android:src="@drawable/gift1"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:image="@{myGiftsViewModel.selectedMyGift.image}"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/buttonOrder" />
+                    app:layout_constraintTop_toBottomOf="@id/buttonOrder"
+                    />
 
 
 

@@ -29,8 +29,8 @@
 
                 <ImageView
                     android:id="@+id/imageViewGift"
-                    android:layout_width="160dp"
-                    android:layout_height="80dp"
+                    android:layout_width="180dp"
+                    android:layout_height="200dp"
                     android:padding="4dp"
                     image="@{viewModelMyOrders.selectedOrder.gift.image}"
                     tools:src="@drawable/gift_items"
@@ -40,13 +40,14 @@
 
                 <TextView
                     android:id="@+id/textViewGiftName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
                     tools:text="Gift Item"
                     android:text="@{viewModelMyOrders.selectedOrder.gift.item}"
                     android:textStyle="bold"
                     android:textColor="@color/secondaryColor"
+                    app:layout_constraintEnd_toStartOf="@id/textViewPrice"
                     app:layout_constraintStart_toEndOf="@id/imageViewGift"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="12dp"
                     tools:text="100"
-                    android:textSize="10sp"
+                    android:textSize="16sp"
                     android:textStyle="italic"
                     price_text="@{viewModelMyOrders.selectedOrder.gift.price}"
                     app:layout_constraintBottom_toBottomOf="@+id/textViewGiftName"
@@ -173,7 +174,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:visibility="invisible">
+            android:visibility="visible">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -183,7 +184,7 @@
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Total Recipients"
+                    android:text="Total Items Sent:"
                     android:textColor="@color/primaryTextColor"
                     android:textStyle="bold"
                     app:layout_constraintTop_toTopOf="parent"
@@ -194,7 +195,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="10"
+                    android:text="@{viewModelMyOrders.selectedOrder.giftQty}"
                     android:textColor="@color/secondaryColor"
                     app:layout_constraintBottom_toBottomOf="@id/textView1"
                     app:layout_constraintTop_toTopOf="@id/textView1"
@@ -230,7 +231,7 @@
             android:id="@+id/textViewTotAmountPaid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10000"
+            price_text="@{viewModelMyOrders.selectedOrder.totalAmount}"
             android:layout_marginLeft="16dp"
             android:textSize="20sp"
             android:textColor="@color/secondaryColor"

@@ -32,7 +32,7 @@
                     android:id="@+id/imageViewCard"
                     android:layout_width="140dp"
                     android:layout_height="190dp"
-                    tools:src="@tools:sample/backgrounds/scenic"
+                    tools:src="@drawable/template1"
                     android:scaleType="centerCrop"
                     image="@{myCardViewModel.selectedMyCard.cardImage}"
                     app:layout_constraintBottom_toBottomOf="parent"
