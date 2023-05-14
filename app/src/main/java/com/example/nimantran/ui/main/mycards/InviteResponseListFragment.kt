@@ -56,9 +56,33 @@ class InviteResponseListFragment : Fragment() {
         binding.swipeRefreshLayoutInviteResponseList.setOnRefreshListener {
             binding.swipeRefreshLayoutInviteResponseList.isRefreshing = false
         }
-
+        binding.searchViewMyCardResponses.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    searchMyCardResponses(newText)
+                }
+                return true
+            }
+        })
     }
-
+    private fun searchMyCardResponses(newText: String) {
+        val searchQuery = newText.toLowerCase()
+        val searchResult = myCardViewModel.invite.value?.filter {
+            it.response.toLowerCase().contains(searchQuery) ||
+                    it.guestName.toLowerCase().contains(searchQuery) ||
+                    it.phone.toLowerCase().contains(searchQuery)
+        }
+        if (searchResult != null) {
+            binding.recyclerViewInviteResponseList.layoutManager = LinearLayoutManager(context)
+            binding.recyclerViewInviteResponseList.adapter = InviteResponseListAdapter(requireContext()){
+            }
+            (binding.recyclerViewInviteResponseList.adapter as InviteResponseListAdapter).submitList(searchResult)
+        }
+    }
     companion object {
     }
 }
