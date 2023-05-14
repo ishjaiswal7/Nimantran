@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -32,23 +33,26 @@ class UpdateOrderStatusFragment : BottomSheetDialogFragment() {
         binding.radioGroupOrderStatus.setOnCheckedChangeListener { group, checkedId ->
             when(checkedId){
                 R.id.radioButtonOrderPlaced -> {
-                    orderListViewModel.updateOrderStatus(db, "@string/order_placed")
+                    orderListViewModel.updateOrderStatus(db, "Order Placed")
+                    Toast.makeText(context, "Order Placed", Toast.LENGTH_SHORT).show()
                 }
                 R.id.radioButtonOrderConfirmed -> {
-                    orderListViewModel.updateOrderStatus(db, "@string/order_confirmed")
+                    orderListViewModel.updateOrderStatus(db, "Order Confirmed")
+                    Toast.makeText(context, "Order Confirmed", Toast.LENGTH_SHORT).show()
                 }
                 R.id.radioButtonOrderDispatched -> {
-                    orderListViewModel.updateOrderStatus(db, "@string/order_dispatched")
+                    orderListViewModel.updateOrderStatus(db, "Order Dispatched")
+                    Toast.makeText(context, "Order Dispatched", Toast.LENGTH_SHORT).show()
                 }
                 R.id.radioButtonOrderDelivered -> {
-                    orderListViewModel.updateOrderStatus(db, "@string/order_delivered")
+                    orderListViewModel.updateOrderStatus(db, "Order Delivered")
+                    Toast.makeText(context, "Order Delivered", Toast.LENGTH_SHORT).show()
                 }
                 R.id.radioButtonOrderAddressNotFound -> {
-                    orderListViewModel.updateOrderStatus(db, "@string/order_address_not_found")
+                    orderListViewModel.updateOrderStatus(db, "Order Address Not Found")
+                    Toast.makeText(context, "Order Address Not Found", Toast.LENGTH_SHORT).show()
                 }
             }
-            //dismiss bottom sheet
-            dismiss()
         }
     }
     override fun onDestroyView() {
