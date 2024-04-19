@@ -1,6 +1,6 @@
 # Nimantran
 
-## This is an Invitation Designing and Gifting android mobile application developed on Kotlin
+## This is an Invitation Management and Gifting android mobile application developed on Kotlin
 
 # Developed by : 
 ##      Stuti Rajeev (@thestutirajeev)
